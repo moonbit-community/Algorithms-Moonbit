@@ -24,7 +24,8 @@ Welcome to contribute!!! specific reference [here](#contribution).
 |         Heap(Pairing)          | Unfinished |                                                                       -                                                                       |
 |     Leftist Tree(Mutable)      | Unfinished |                                                                       -                                                                       |
 |    Leftist Tree(Immutable)     | Unfinished |                                                                       -                                                                       |
-|         Union-Find Set         | Unfinished |                                                                       -                                                                       |
+|    Union-Find Set(Mutable)     | Unfinished |                                                                       -                                                                       |
+|   Union-Find Set(Immutable)    | Unfinished |                                                                       -                                                                       |
 | Segment Tree(Mutable, no lazy) | Unfinished |                                                                       -                                                                       |
 |  Segment Tree(Mutable, lazy)   | Unfinished |                                                                       -                                                                       |
 |    Segment Tree(Immutable)     | Unfinished |                                                                       -                                                                       |
