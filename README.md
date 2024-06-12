@@ -1,4 +1,5 @@
 # Algorithms Moonbit
+[![check](https://github.com/moonbit-community/Algorithms-Moonbit/actions/workflows/check.yml/badge.svg)](https://github.com/moonbit-community/Algorithms-Moonbit/actions/workflows/check.yml)
 
 Here are some classic algorithms implemented using Moonbit.
 
