@@ -1,45 +1,45 @@
+///|
 enum Prefix1d {
   Nil
   Pre(pre~ : Array[Int], n~ : Int)
 } derive(Show)
 
+///|
 enum Prefix2d {
   Nil
   Pre(pre~ : Array[Array[Int]], n~ : Int, m~ : Int)
 } derive(Show)
 
 // make prefix for 1 dimension
+///|
 fn prefix1d(data : Array[Int]) -> Array[Int] {
   let n = data.length()
   let ret = Array::make(n + 1, 0)
   ret[1] = data[0]
-  for i = 1; i < n; i=i+1 {
-    ret[i+1] = ret[i] + data[i]
+  for i = 1; i < n; i = i + 1 {
+    ret[i + 1] = ret[i] + data[i]
   }
   ret
 }
 
 // make prefix for 2 dimension
+///|
 fn prefix2d(data : Array[Array[Int]]) -> Array[Array[Int]] {
   let n = data.length()
   let m = data[0].length()
-  let ret = Array::makei(
-    n + 1, 
-    fn(row : Int){
-      Array::make(m + 1, 0)
-    }
-  )
-  for j = 1; j <= m; j = j+1 {
-    for i = 1; i <= n; i = i+1 {
-      ret[i][j] = ret[i][j-1] + ret[i-1][j] - ret[i-1][j-1] + data[i-1][j-1]
+  let ret = Array::makei(n + 1, fn(row : Int) { Array::make(m + 1, 0) })
+  for j = 1; j <= m; j = j + 1 {
+    for i = 1; i <= n; i = i + 1 {
+      ret[i][j] = ret[i][j - 1] +
+        ret[i - 1][j] -
+        ret[i - 1][j - 1] +
+        data[i - 1][j - 1]
     }
   }
-  println(ret)
   ret
 }
 
-
-/// Sum of 1 dimension prefix 
+///| Sum of 1 dimension prefix 
 /// 
 /// # Parameters
 /// 
@@ -60,14 +60,14 @@ fn prefix2d(data : Array[Array[Int]]) -> Array[Array[Int]] {
 /// }
 /// ```
 pub fn sum(self : Prefix1d, left : Int, right : Int) -> Int {
-  guard let Prefix1d::Pre(pre = pre, n = n) = self
-  if left < 1 || left > n || right > n || right < 1 || left > right{
+  guard let Prefix1d::Pre(pre~, n~) = self
+  if left < 1 || left > n || right > n || right < 1 || left > right {
     abort("Range out of index")
   }
-  pre[right] - pre[left-1]
+  pre[right] - pre[left - 1]
 }
 
-/// Prefix of 1 dimension array
+///| Prefix of 1 dimension array
 /// 
 /// # Parameters
 /// 
@@ -83,16 +83,13 @@ pub fn sum(self : Prefix1d, left : Int, right : Int) -> Int {
 /// let prefix = make_prefix1d(arr)
 /// ```
 pub fn make_prefix1d(data : Array[Int]) -> Prefix1d {
-  match (data.length()) {
-    (0) => Nil
-    (_) => { 
-      Pre (pre = prefix1d(data), n = data.length())
-    }
+  match data.length() {
+    0 => Nil
+    _ => Pre(pre=prefix1d(data), n=data.length())
   }
 }
 
-
-/// Sum of 2 dimension prefix 
+///| Sum of 2 dimension prefix 
 /// 
 /// # Parameters
 /// 
@@ -115,14 +112,14 @@ pub fn make_prefix1d(data : Array[Int]) -> Prefix1d {
 /// }
 /// ```
 pub fn sum(self : Prefix2d, x1 : Int, y1 : Int, x2 : Int, y2 : Int) -> Int {
-  guard let Prefix2d::Pre(pre = pre, n = n, m = m) = self
+  guard let Prefix2d::Pre(pre~, n~, m~) = self
   if x1 < 1 || y1 < 1 || x2 > n || y2 > m || x2 < x1 || y2 < y1 {
     abort("Range out of index")
   }
-  pre[x2][y2] - pre[x2][y1-1] - pre[x1-1][y2] + pre[x1-1][y1-1]
+  pre[x2][y2] - pre[x2][y1 - 1] - pre[x1 - 1][y2] + pre[x1 - 1][y1 - 1]
 }
 
-/// Prefix of 2 dimension array
+///| Prefix of 2 dimension array
 /// 
 /// # Parameters
 /// 
@@ -138,11 +135,8 @@ pub fn sum(self : Prefix2d, x1 : Int, y1 : Int, x2 : Int, y2 : Int) -> Int {
 /// let prefix = make_prefix2d(arr)
 /// ```
 pub fn make_prefix2d(data : Array[Array[Int]]) -> Prefix2d {
-  match (data.length()) {
-    (0) => Nil
-    (_) => { 
-      Pre (pre = prefix2d(data), n = data.length(), m = data[0].length())
-    }
+  match data.length() {
+    0 => Nil
+    _ => Pre(pre=prefix2d(data), n=data.length(), m=data[0].length())
   }
 }
-

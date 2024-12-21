@@ -1,3 +1,4 @@
+///|
 fn merge[T : Compare](a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
   if l >= r {
     return 0
@@ -6,7 +7,6 @@ fn merge[T : Compare](a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
   let mid = (l + r) / 2
   res += merge(a, b, l, mid)
   res += merge(a, b, mid + 1, r)
-
   let mut i = l
   let mut j = mid + 1
   let mut idx = l
@@ -37,8 +37,7 @@ fn merge[T : Compare](a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
   res
 }
 
-
-/// Inverse Pair
+///| Inverse Pair
 /// 
 /// # Parameters
 /// 
@@ -60,4 +59,3 @@ fn merge[T : Compare](a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
 pub fn inverse_pair[T : Compare](arr : Array[T]) -> Int {
   merge(arr, Array::make(arr.length(), arr[0]), 0, arr.length() - 1)
 }
-

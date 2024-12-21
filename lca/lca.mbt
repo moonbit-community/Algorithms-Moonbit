@@ -1,3 +1,4 @@
+///|
 struct LCA {
   head : Array[Int]
   to : Array[Int]
@@ -9,24 +10,24 @@ struct LCA {
   root : Int
 }
 
-fn LCA :: new(size : Int, root : Int) -> LCA {
+///|
+fn LCA::new(size : Int, root : Int) -> LCA {
   let size = size + 2
-  LCA :: {
-    head : Array::make(size, -1),
-    to : Array::make(size * 2, 0),
-    next : Array::make(size * 2, 0),
-    idx : 0,
-    dep : Array::make(size, 0),
-    fa : Array::makei(
-      size, 
-      fn(row : Int) -> Array[Int] {
-        Array::make(@math.log2(size.to_double()).to_int() + 1, 0)
-      }
-    ),
-    n : size - 1,
-    root : root
+  LCA::{
+    head: Array::make(size, -1),
+    to: Array::make(size * 2, 0),
+    next: Array::make(size * 2, 0),
+    idx: 0,
+    dep: Array::make(size, 0),
+    fa: Array::makei(size, fn(row : Int) -> Array[Int] {
+      Array::make(@math.log2(size.to_double()).to_int() + 1, 0)
+    }),
+    n: size - 1,
+    root,
   }
 }
+
+///|
 fn add(self : LCA, u : Int, v : Int) -> Unit {
   let idx = self.idx
   self.to[idx] = v
@@ -35,6 +36,7 @@ fn add(self : LCA, u : Int, v : Int) -> Unit {
   self.idx = idx + 1
 }
 
+///|
 fn dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
   self.dep[u] = d
   for i = self.head[u]; i != -1; i = self.next[i] {
@@ -47,6 +49,7 @@ fn dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
   }
 }
 
+///|
 fn _init(self : LCA) -> Unit {
   for j = 1; j <= @math.log2(self.n.to_double()).to_int(); j = j + 1 {
     for i = 1; i <= self.n; i = i + 1 {
@@ -55,7 +58,7 @@ fn _init(self : LCA) -> Unit {
   }
 }
 
-/// Create LCA (Lowest Common Ancestor)
+///| Create LCA (Lowest Common Ancestor)
 /// 
 /// # Parameters
 /// 
@@ -80,7 +83,6 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
   } else if root < 1 || root > data.length() {
     abort("Root out of index")
   }
-
   let lca = LCA::new(data.length(), root)
   for p in data {
     let (u, v) = p
@@ -91,8 +93,7 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
   lca
 }
 
-
-/// Find LCA (Lowest Common Ancestor)
+///| Find LCA (Lowest Common Ancestor)
 /// 
 /// # Parameters
 /// 
