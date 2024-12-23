@@ -1,6 +1,6 @@
 ///| Min Max
 
-/// Maximum value
+///| Maximum value
 /// 
 /// # Parameters
 /// 
@@ -15,9 +15,15 @@
 /// ```
 /// max(1, 2) -> 2
 /// ```
-pub fn max[T : Compare](a : T, b : T) -> T { if a > b {a} else {b} }
+pub fn max[T : Compare](a : T, b : T) -> T {
+  if a > b {
+    a
+  } else {
+    b
+  }
+}
 
-/// Minimum value
+///| Minimum value
 /// 
 /// # Parameters
 /// 
@@ -32,10 +38,15 @@ pub fn max[T : Compare](a : T, b : T) -> T { if a > b {a} else {b} }
 /// ```
 /// min(1, 2) -> 1
 /// ```
-pub fn min[T : Compare](a : T, b : T) -> T { if a < b {a} else {b} }
+pub fn min[T : Compare](a : T, b : T) -> T {
+  if a < b {
+    a
+  } else {
+    b
+  }
+}
 
-
-/// Maximum value in array
+///| Maximum value in array
 /// 
 /// # Parameters
 /// 
@@ -58,11 +69,10 @@ pub fn max_element[T : Compare](data : Array[T]) -> T {
   if data.length() == 0 {
     abort("Empty array")
   }
-  data.fold(init = data[0], fn(mx, x) {if x > mx {x} else {mx}})
+  data.fold(init=data[0], fn(mx, x) { if x > mx { x } else { mx } })
 }
 
-
-/// Minimum value in array
+///| Minimum value in array
 /// 
 /// # Parameters
 /// 
@@ -85,13 +95,12 @@ pub fn min_element[T : Compare](data : Array[T]) -> T {
   if data.length() == 0 {
     abort("Empty array")
   }
-  data.fold(init = data[0], fn(mx, x) {if x < mx {x} else {mx}})
+  data.fold(init=data[0], fn(mx, x) { if x < mx { x } else { mx } })
 }
-
 
 ///| Binary Search
 
-/// Find first index of element in array that not less than value
+///| Find first index of element in array that not less than value
 /// 
 /// # Parameters
 /// 
@@ -114,11 +123,10 @@ pub fn min_element[T : Compare](data : Array[T]) -> T {
 pub fn lower_bound[T : Compare](data : Array[T], value : T) -> Int {
   let mut count = data.length()
   let mut first = 0
-
   while count > 0 {
     let step = count / 2
     let it = first + step
-    if (data[it] < value) {
+    if data[it] < value {
       first = it + 1
       count -= step + 1
     } else {
@@ -128,8 +136,7 @@ pub fn lower_bound[T : Compare](data : Array[T], value : T) -> Int {
   first
 }
 
-
-/// Find first index of element in array that bigger than value
+///| Find first index of element in array that bigger than value
 /// 
 /// # Parameters
 /// 
@@ -151,11 +158,10 @@ pub fn lower_bound[T : Compare](data : Array[T], value : T) -> Int {
 pub fn upper_bound[T : Compare](data : Array[T], value : T) -> Int {
   let mut count = data.length()
   let mut first = 0
-
   while count > 0 {
     let step = count / 2
     let it = first + step
-    if (data[it] <= value) {
+    if data[it] <= value {
       first = it + 1
       count -= step + 1
     } else {
@@ -165,8 +171,7 @@ pub fn upper_bound[T : Compare](data : Array[T], value : T) -> Int {
   first
 }
 
-
-/// Find whether a value in the array
+///| Find whether a value in the array
 /// 
 /// # Parameters
 /// 
@@ -190,8 +195,7 @@ pub fn binary_search[T : Compare](data : Array[T], value : T) -> Bool {
   first != data.length() && data[first] == value
 }
 
-
-/// Find range of array equal to value
+///| Find range of array equal to value
 /// 
 /// # Parameters
 /// 
@@ -213,16 +217,15 @@ pub fn binary_search[T : Compare](data : Array[T], value : T) -> Bool {
 pub fn equal_range[T : Compare](data : Array[T], value : T) -> (Int, Int) {
   let l = lower_bound(data, value)
   let r = upper_bound(data, value)
-  if l > r-1{ return (-1, -1) }
-  (l, r-1)
+  if l > r - 1 {
+    return (-1, -1)
+  }
+  (l, r - 1)
 }
-
-
-
 
 ///| Merge
 
-/// Merge two sorted array in sequence
+///| Merge two sorted array in sequence
 /// 
 /// # Parameters
 /// 
@@ -245,13 +248,15 @@ pub fn equal_range[T : Compare](data : Array[T], value : T) -> (Int, Int) {
 /// }
 /// ```
 pub fn merge[T : Compare](data1 : Array[T], data2 : Array[T]) -> Array[T] {
-  let len1 = data1.length(); let len2 = data2.length()
+  let len1 = data1.length()
+  let len2 = data2.length()
   let mut res = []
-  let mut i = 0 ;let mut j = 0
-  for ; i < len1 ; {
+  let mut i = 0
+  let mut j = 0
+  for ; i < len1; {
     if j == len2 {
       return res.iter().concat(data1[i:].iter()).collect()
-    } 
+    }
     if data1[i] < data2[j] {
       res += [data1[i]]
       i += 1
@@ -265,7 +270,7 @@ pub fn merge[T : Compare](data1 : Array[T], data2 : Array[T]) -> Array[T] {
 
 ///|
 
-/// Fast Exponentiation
+///| Fast Exponentiation
 /// 
 /// # Parameters
 /// 
@@ -286,21 +291,21 @@ pub fn quick_pow(base : Int, power : Int, mod~ : Int = 1) -> Int64 {
   let mut ret : Int64 = 1
   while p != 0 {
     if (p & 1) != 0 {
-      ret = (ret * b) % mod.to_int64()
+      ret = ret * b % mod.to_int64()
     }
-    b = (b * b) % mod.to_int64()
+    b = b * b % mod.to_int64()
     p /= 2
   }
   ret % mod.to_int64()
 }
 
-pub struct Point {
+///|
+pub(all) struct Point {
   x : Int
   y : Int
 } derive(Show)
 
-
-/// Calculate max manhattan distance
+///| Calculate max manhattan distance
 /// 
 /// # Parameters
 /// 
@@ -322,20 +327,18 @@ pub fn max_manhattan_distance(points : Array[Point]) -> Int {
   let mut b = @int.max_value
   let mut c = @int.min_value
   let mut d = @int.max_value
-
-  for i = 0; i < points.length(); i=i+1 {
+  for i = 0; i < points.length(); i = i + 1 {
     let x = points[i].x
     let y = points[i].y
-
-    a = max(a, x+y)
-    b = min(b, x+y)
-    c = max(c, x-y)
-    d = min(d, x-y)
+    a = max(a, x + y)
+    b = min(b, x + y)
+    c = max(c, x - y)
+    d = min(d, x - y)
   }
-  max(a-b, c-d)
+  max(a - b, c - d)
 }
 
-/// Calculate Inverse Element
+///| Calculate Inverse Element
 /// 
 /// # Parameters
 /// 
@@ -353,9 +356,7 @@ pub fn max_manhattan_distance(points : Array[Point]) -> Int {
 /// }
 /// ```
 pub fn inv(x : Int, mod : Int) -> Int {
-    quick_pow(x, mod-2, mod=mod).to_int()
+  quick_pow(x, mod - 2, mod~).to_int()
 }
 
-
 ///|sort
-
