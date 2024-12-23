@@ -1,10 +1,10 @@
+///|
 struct Floyd {
   map : Array[Array[Int]]
   node : Int
 }
 
-
-/// Create Floyd (All-Pairs Shortest Path)
+///| Create Floyd (All-Pairs Shortest Path)
 /// 
 /// # Parameters
 /// 
@@ -21,21 +21,15 @@ struct Floyd {
 /// let floyd = create_floyd(edge, 3)
 /// ```
 pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
-  let map : Array[Array[Int]] = Array::makei(
-    node + 1,
-    fn(row : Int) {
-      Array::makei(
-        node + 1,
-        fn(col : Int) {
-          if row == col {
-            0
-          } else {
-            0x3f3f3f3f
-          }
-        }
-      )
-    }
-  )
+  let map : Array[Array[Int]] = Array::makei(node + 1, fn(row : Int) {
+    Array::makei(node + 1, fn(col : Int) {
+      if row == col {
+        0
+      } else {
+        0x3f3f3f3f
+      }
+    })
+  })
   map[0][0] = @int.max_value
   for e in edge {
     let (u, v, d) = e
@@ -50,14 +44,10 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
       }
     }
   }
-  Floyd :: {
-    map : map,
-    node : node
-  }
+  Floyd::{ map, node }
 }
 
-
-/// Query shortest path
+///| Query shortest path
 /// 
 /// # Parameters
 /// 
@@ -83,4 +73,3 @@ pub fn query(self : Floyd, u : Int, v : Int) -> Int {
   }
   self.map[u][v]
 }
-
