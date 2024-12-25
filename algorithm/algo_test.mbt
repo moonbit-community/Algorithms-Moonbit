@@ -59,6 +59,8 @@ test "merge" {
 }
 
 test "quick_pow" {
+  inspect!(@algorithm.quick_pow(2, 0), content="1")
+  inspect!(@algorithm.quick_pow(2, 1), content="2")
   inspect!(@algorithm.quick_pow(2, 10), content="1024")
 }
 
@@ -71,6 +73,16 @@ test "max_manhattan_distance" {
   inspect!(@algorithm.max_manhattan_distance(arr), content="2")
 }
 
-test "inv" {
-  inspect!(@algorithm.inv(2, 1000_000_007), content="500000004")
+test "gcd" {
+  assert_eq!(@algorithm.gcd(12, 18), 6)
+  assert_eq!(@algorithm.gcd(17, 23), 1)
+}
+
+test "ext_euclidean" {
+  inspect!(@algorithm.ext_euc(5, 7), content="(1, 3, -2)")
+}
+
+test "mod_inverse" {
+  assert_eq!(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
+  assert_eq!(@algorithm.mod_inverse(3, 26), 9)
 }

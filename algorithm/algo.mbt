@@ -268,8 +268,6 @@ pub fn merge[T : Compare](data1 : Array[T], data2 : Array[T]) -> Array[T] {
   res.iter().concat(data2[j:].iter()).collect()
 }
 
-///|
-
 ///| Fast Exponentiation
 /// 
 /// # Parameters
@@ -283,20 +281,21 @@ pub fn merge[T : Compare](data1 : Array[T], data2 : Array[T]) -> Array[T] {
 /// 
 /// # Example
 /// ```
-/// let qpow = quick_pow(2, 10)
+/// assert_eq!(quick_pow(2, 10), 1024)
 /// ```
-pub fn quick_pow(base : Int, power : Int, mod~ : Int = 1) -> Int64 {
-  let mut b : Int64 = base.to_int64()
-  let mut p : Int = power
-  let mut ret : Int64 = 1
-  while p != 0 {
-    if (p & 1) != 0 {
-      ret = ret * b % mod.to_int64()
-    }
-    b = b * b % mod.to_int64()
-    p /= 2
+pub fn quick_pow(base : Int, exp : Int) -> Int64 {
+  let base_int64 = base.to_int64()
+  if exp == 0 {
+    1
+  } else if exp == 1 {
+    base_int64
+  } else if exp % 2 == 0 {
+    let half_pow = quick_pow(base, exp / 2)
+    half_pow * half_pow
+  } else {
+    let half_pow = quick_pow(base, (exp - 1) / 2)
+    half_pow * half_pow * base_int64
   }
-  ret % mod.to_int64()
 }
 
 ///|
@@ -338,6 +337,64 @@ pub fn max_manhattan_distance(points : Array[Point]) -> Int {
   max(a - b, c - d)
 }
 
+///|
+/// Calculates the Greatest Common Divisor (GCD) of two integers using Euclidean
+/// algorithm.
+///
+/// Parameters:
+///
+/// * `first` : First integer.
+/// * `second` : Second integer.
+///
+/// Returns the greatest common divisor of the two integers.
+///
+/// Example:
+///
+/// ```
+/// 
+///inspect!(@algorithm.gcd(12, 18), content="6")
+///inspect!(@algorithm.gcd(17, 23), content="1")
+/// 
+/// ```
+pub fn gcd(a : Int, b : Int) -> Int {
+  if b == 0 {
+    a
+  } else {
+    gcd(b, a % b)
+  }
+}
+
+///|
+/// Implements the Extended Euclidean Algorithm to find the greatest common
+/// divisor (GCD) of two integers and the coefficients of Bézout's identity.
+///
+/// Parameters:
+///
+/// * `first` : First integer input
+/// * `second` : Second integer input
+///
+/// Returns a tuple `(gcd, x, y)` where:
+///
+/// * `gcd` is the greatest common divisor of the two inputs
+/// * `x` and `y` are the coefficients satisfying Bézout's identity: `first * x +
+/// second * y = gcd`
+///
+/// Example:
+///
+/// ```
+/// inspect!(@algorithm.ext_euc(5, 7), content="(1, 3, -2)")
+/// ```
+pub fn ext_euc(a : Int, b : Int) -> (Int, Int, Int) {
+  if b == 0 {
+    (a, 1, 0)
+  } else {
+    let (gcd, x, y) = ext_euc(b, a % b)
+    let x_ = y
+    let y_ = x - a / b * y
+    (gcd, x_, y_)
+  }
+}
+
 ///| Calculate Inverse Element
 /// 
 /// # Parameters
@@ -351,12 +408,15 @@ pub fn max_manhattan_distance(points : Array[Point]) -> Int {
 /// 
 /// # Example
 /// ```
-/// test "inv" { 
-///     inspect!(@algorithm.inv(2, 1000_000_007), content="500000004")
-/// }
+/// assert_eq!(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
+/// assert_eq!(@algorithm.mod_inverse(3, 26), 9)
+/// 
 /// ```
-pub fn inv(x : Int, mod : Int) -> Int {
-  quick_pow(x, mod - 2, mod~).to_int()
+pub fn mod_inverse(a : Int, mod : Int) -> Int {
+  let (_, x, _) = ext_euc(a, mod)
+  if x < 0 {
+    (1 - x) % mod
+  } else {
+    x % mod
+  }
 }
-
-///|sort
