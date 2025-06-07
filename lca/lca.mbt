@@ -118,7 +118,9 @@ pub fn lca(self : LCA, u : Int, v : Int) -> Int {
   let mut u = u
   let mut v = v
   if self.dep[u] < self.dep[v] {
-    self.dep.swap(self.dep[u], self.dep[v])
+    let tmp = u
+    u = v
+    v = tmp
   }
   for i = @math.log2(self.n.to_double() + 1).to_int(); i >= 0; i = i - 1 {
     if self.dep[self.fa[u][i]] >= self.dep[v] {
