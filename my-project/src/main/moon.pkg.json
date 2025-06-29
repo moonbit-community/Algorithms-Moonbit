@@ -1,0 +1,6 @@
+{
+  "is-main": true,
+  "import": [
+    "Pzl-love/bubble_sort/lib"
+  ]
+}
