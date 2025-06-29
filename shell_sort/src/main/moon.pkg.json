@@ -1,0 +1,6 @@
+{
+  "is-main": true,
+  "import": [
+    "Pzl-love/shell_sort/lib"
+  ]
+}
