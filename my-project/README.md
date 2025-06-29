@@ -1,0 +1,2 @@
+# Pzl-love/bubble_sort
+Bubble sort is a simple sorting algorithm that sorts a list by repeatedly traversing it, comparing adjacent elements, and swapping their positions. The name of the algorithm comes from the way smaller elements 'bubble' up to the top of the list.
