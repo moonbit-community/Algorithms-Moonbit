@@ -1,4 +1,5 @@
 // max min test
+
 ///|
 test "min_max" {
   inspect(@algorithm.max(1, 2), content="2")
@@ -24,7 +25,7 @@ test "upper_bound" {
   inspect(@algorithm.upper_bound(arr, 7), content="5")
 }
 
-// 
+//
 
 ///|
 test "binary_search" {
