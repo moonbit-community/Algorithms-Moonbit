@@ -17,7 +17,7 @@ struct ST {
 /// # Example
 /// ```
 /// let arr = [1,2,3,4,5,6,1,2]
-/// let st = @st.st(arr)
+/// let _ = st(arr)
 /// ```
 pub fn st(data : Array[Int]) -> ST {
   let n = data.length()
@@ -46,12 +46,10 @@ pub fn st(data : Array[Int]) -> ST {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let arr = [1,2,3,4,5,6,1,2]
 ///   let st= @st.st(arr)
-///   inspect!(st.max_elem(1, 1), content="1")
-///   inspect!(st.max_elem(2, 8), content="6")
-/// }
+///   inspect(st.max_elem(1, 1), content="1")
+///   inspect(st.max_elem(2, 8), content="6")
 /// ```
 pub fn max_elem(self : ST, left : Int, right : Int) -> Int {
   if right < left {

@@ -35,11 +35,9 @@ fn getNext(t : String) -> Array[Int] {
 ///
 /// # Example
 /// ```
-/// test "kmp" {
 ///   let s = "ABABABC"
 ///   let t = "ABA"
 ///   inspect(@kmp.kmp(s, t), content="[1, 3]")
-/// }
 /// ```
 pub fn kmp(s : String, t : String) -> Array[Int] {
   let next = getNext(t)
@@ -104,12 +102,10 @@ fn get_z(s : String) -> Array[Int] {
 ///
 /// # Example
 /// ```
-/// test "z_func" {
 ///   let a = "aaaabaa"
 ///   let b = "aaaaa"
 ///   inspect(z_func(b), content="[5, 4, 3, 2, 1]")
 ///   inspect(z_func(b, t=a), content="[4, 3, 2, 1, 0, 2, 1]")
-/// }
 /// ```
 pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
   let z : Array[Int] = get_z(s)

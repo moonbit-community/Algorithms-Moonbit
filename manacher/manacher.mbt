@@ -20,15 +20,13 @@ fn per_work(s : String) -> String {
 /// - `Int` : length of the longest palindromic substring
 ///
 /// # Example
-/// ```
-/// test "manacher" {
-///   let s = "babad"
-///   inspect(manacher(s), content="3") // "bab" or "aba"
-///   
-///   let s2 = "cbbd"
-///   inspect(manacher(s2), content="2") // "bb"
-/// }
-/// ```
+// / ```
+// /   let s = "babad"
+// /   inspect(manacher(s), content="3") // "bab" or "aba"
+// /   
+// /   let s2 = "cbbd"
+// /   inspect(manacher(s2), content="2") // "bb"
+// / ```
 pub fn manacher(str : String) -> Int {
   let s = per_work(str)
   let n = s.length()

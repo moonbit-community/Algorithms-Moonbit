@@ -10,6 +10,10 @@ struct LCA {
   root : Int
 }
 
+pub fn LCA::get_root(self : LCA) -> Int {
+  self.root
+}
+
 ///|
 fn LCA::new(size : Int, root : Int) -> LCA {
   let size = size + 2
@@ -71,11 +75,9 @@ fn _init(self : LCA) -> Unit {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let data = [(1, 2), (1, 3), (2, 4), (2, 5)]
 ///   let lca = create_Lca(data, root = 1)
-///   inspect!(lca.root, content="1")
-/// }
+///   inspect(lca.get_root(), content="1")
 /// ```
 pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
   if data.length() == 0 {
@@ -107,12 +109,10 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let data = [(1, 2), (1, 3), (2, 4), (2, 5)]
 ///   let lca = create_Lca(data, root = 1)
-///   inspect!(lca.lca(4, 5), content="2")
-///   inspect!(lca.lca(4, 3), content="1")
-/// }
+///   inspect(lca.lca(4, 5), content="2")
+///   inspect(lca.lca(4, 3), content="1")
 /// ```
 pub fn lca(self : LCA, u : Int, v : Int) -> Int {
   let _ = self.root 

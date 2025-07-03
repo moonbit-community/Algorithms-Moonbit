@@ -67,8 +67,8 @@ priv suberror IndexOutOfBounds String derive(Show)
 ///
 /// Example
 /// ```
-/// let hash = StringHash::new("abc")
-/// inspect!(sh.get_hash(0, 1), content="133") // hash of "ab" 
+/// let sh = StringHash::new("abc")
+/// inspect(sh.get_hash(left_idx = 0, right_idx = 1), content="133") // hash of "ab" 
 /// ```
 pub fn StringHash::get_hash(
   self : StringHash,

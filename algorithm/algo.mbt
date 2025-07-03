@@ -13,7 +13,7 @@
 /// 
 /// # Example
 /// ```
-/// max(1, 2) -> 2
+/// //max(1, 2) -> 2
 /// ```
 pub fn[T : Compare] max(a : T, b : T) -> T {
   if a > b {
@@ -36,7 +36,7 @@ pub fn[T : Compare] max(a : T, b : T) -> T {
 /// 
 /// # Example
 /// ```
-/// min(1, 2) -> 1
+/// //min(1, 2) -> 1
 /// ```
 pub fn[T : Compare] min(a : T, b : T) -> T {
   if a < b {
@@ -58,12 +58,10 @@ pub fn[T : Compare] min(a : T, b : T) -> T {
 /// 
 /// # Example
 /// ```
-/// test "max_element" {
 ///   let arr = [1,2,3,4,5]
 ///   inspect(max_element(arr), content="5")
 ///   let arr = [1.1,2.4,3.9,4.0,5.9,1.0]
 ///   inspect(max_element(arr), content="5.9")
-/// }
 /// ```
 pub fn[T : Compare] max_element(data : Array[T]) -> T {
   if data.length() == 0 {
@@ -84,12 +82,10 @@ pub fn[T : Compare] max_element(data : Array[T]) -> T {
 /// 
 /// # Example
 /// ```
-/// test "min_element" {
 ///   let arr = [1,2,3,4,5]
 ///   inspect(min_element(arr), content="1")
 ///   let arr = [1.1,2.4,3.9,4.0,5.9,1.2]
 ///   inspect(min_element(arr), content="1.1")
-/// }
 /// ```
 pub fn[T : Compare] min_element(data : Array[T]) -> T {
   if data.length() == 0 {
@@ -113,12 +109,10 @@ pub fn[T : Compare] min_element(data : Array[T]) -> T {
 /// 
 /// /// # Example
 /// ```
-/// test "lower_bound" {
 ///   let arr = [1,2,3,4,5]
 ///   inspect(lower_bound(arr, 7), content="5")
 ///   let arr = [1.1, 2.0, 3.5, 9.0]
 ///   inspect(lower_bound(arr, 1.2), content="1")
-///   }
 /// ```
 pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int {
   let mut count = data.length()
@@ -149,11 +143,9 @@ pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int {
 /// 
 /// # Example
 /// ```
-/// test "upper_bound" {
 ///   let arr = [1,2,3,4,5]
 ///   inspect(upper_bound(arr, -1), content="0")
 ///   inspect(upper_bound(arr, 7), content="5")
-/// }
 /// ```
 pub fn[T : Compare] upper_bound(data : Array[T], value : T) -> Int {
   let mut count = data.length()
@@ -184,11 +176,9 @@ pub fn[T : Compare] upper_bound(data : Array[T], value : T) -> Int {
 /// 
 /// # Example
 /// ```
-/// test "binary_search" {
 ///   let arr = [1,2,3,4,5]
 ///   inspect(binary_search(arr, 1), content="true")
 ///   inspect(binary_search(arr, 6), content="false")
-/// }
 /// ```
 pub fn[T : Compare] binary_search(data : Array[T], value : T) -> Bool {
   let first = lower_bound(data, value)
@@ -208,11 +198,9 @@ pub fn[T : Compare] binary_search(data : Array[T], value : T) -> Bool {
 ///
 /// # Example
 /// ```
-/// test "equal_range" {
 ///   let arr = [1,2,2,2,3,4,5]
 ///   inspect(equal_range(arr, 2), content="(1, 3)")
 ///   inspect(equal_range(arr, 7), content="(-1, -1)")
-/// }
 /// ```
 pub fn[T : Compare] equal_range(data : Array[T], value : T) -> (Int, Int) {
   let l = lower_bound(data, value)
@@ -238,14 +226,12 @@ pub fn[T : Compare] equal_range(data : Array[T], value : T) -> (Int, Int) {
 ///
 /// # Example
 /// ```
-/// test "merge" {
 ///   let arr1 = [1,2,5]
 ///   let arr2 = [3,4,6]
 ///   inspect(merge(arr1, arr2), content="[1, 2, 3, 4, 5, 6]")
 ///   let arr1 = [1,2,3]
 ///   let arr2 = [4,5,6]
 ///   inspect(merge(arr1, arr2), content="[1, 2, 3, 4, 5, 6]")
-/// }
 /// ```
 pub fn[T : Compare] merge(data1 : Array[T], data2 : Array[T]) -> Array[T] {
   let len1 = data1.length()
@@ -281,7 +267,7 @@ pub fn[T : Compare] merge(data1 : Array[T], data2 : Array[T]) -> Array[T] {
 /// 
 /// # Example
 /// ```
-/// assert_eq!(quick_pow(2, 10), 1024)
+/// assert_eq(quick_pow(2, 10), 1024)
 /// ```
 pub fn quick_pow(base : Int, exp : Int) -> Int64 {
   let base_int64 = base.to_int64()
@@ -315,11 +301,9 @@ pub(all) struct Point {
 /// - `Int` : max manhattan distance between all points
 /// 
 /// # Example
-/// ```
-/// test "max_manhattan_distance" { 
+/// ``` 
 ///     let arr = [Point::{x:0,y:0}, Point::{x:1,y:0}, Point::{x:1,y:1}]
 ///     inspect(max_manhattan_distance(arr), content="2")
-/// }
 /// ```
 pub fn max_manhattan_distance(points : Array[Point]) -> Int {
   let mut a = @int.min_value
@@ -408,8 +392,8 @@ pub fn ext_euc(a : Int, b : Int) -> (Int, Int, Int) {
 /// 
 /// # Example
 /// ```
-/// assert_eq!(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
-/// assert_eq!(@algorithm.mod_inverse(3, 26), 9)
+/// assert_eq(mod_inverse(2, 1000_000_007), 500000004)
+/// assert_eq(mod_inverse(3, 26), 9)
 /// 
 /// ```
 pub fn mod_inverse(a : Int, mod : Int) -> Int {
