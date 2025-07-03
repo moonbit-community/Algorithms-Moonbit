@@ -38,16 +38,16 @@ pub fn StringHash::new(
   h[0] = 1
   for i = 1; i <= n; i = i + 1 {
     p[i] = p[i - 1] * base % mod
-    h[i] = (h[i - 1] * base + (s[i - 1] - 'a' + 1).to_int64()) % mod
+    h[i] = (h[i - 1] * base + (s.charcode_at(i - 1) - 'a' + 1).to_int64()) % mod
   }
   StringHash::{ n, mod, base, hash: h, prework: Util(p~) }
 }
 
 ///|
-type! Uninitialized String derive(Show)
+priv suberror Uninitialized String derive(Show)
 
 ///|
-type! IndexOutOfBounds String derive(Show)
+priv suberror IndexOutOfBounds String derive(Show)
 
 ///| Get string hash value
 /// 
@@ -72,9 +72,17 @@ type! IndexOutOfBounds String derive(Show)
 /// ```
 pub fn StringHash::get_hash(
   self : StringHash,
-  left~ : Int = 0,
-  right~ : Int = self.n - 1
-) -> Int64!Error {
+  left_idx ? : Int, 
+  right_idx ? : Int,
+) -> Int64 raise Error {
+  let left = match left_idx {
+      Some(l) => l
+      None => 0 
+  }
+  let right = match right_idx { 
+      Some(r) => r
+      None => self.n - 1
+  }
   if left < 0 || right >= self.n {
     raise IndexOutOfBounds("Index out of bounds.")
   }

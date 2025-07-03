@@ -74,8 +74,8 @@ test "max_manhattan_distance" {
 }
 
 test "gcd" {
-  assert_eq!(@algorithm.gcd(12, 18), 6)
-  assert_eq!(@algorithm.gcd(17, 23), 1)
+  assert_eq(@algorithm.gcd(12, 18), 6)
+  assert_eq(@algorithm.gcd(17, 23), 1)
 }
 
 test "ext_euclidean" {

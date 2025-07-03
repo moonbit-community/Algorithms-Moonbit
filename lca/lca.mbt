@@ -115,6 +115,7 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
 /// }
 /// ```
 pub fn lca(self : LCA, u : Int, v : Int) -> Int {
+  let _ = self.root 
   let mut u = u
   let mut v = v
   if self.dep[u] < self.dep[v] {
