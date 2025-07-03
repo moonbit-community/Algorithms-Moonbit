@@ -38,7 +38,7 @@ pub fn StringHash::new(
   h[0] = 1
   for i = 1; i <= n; i = i + 1 {
     p[i] = p[i - 1] * base % mod
-    h[i] = (h[i - 1] * base + (s[i - 1] - 'a' + 1).to_int64()) % mod
+    h[i] = (h[i - 1] * base + (s.charcode_at(i - 1) - 'a'.to_int() + 1).to_int64()) % mod //对char类型进行加减法的错误修正
   }
   StringHash::{ n, mod, base, hash: h, prework: Util(p~) }
 }
