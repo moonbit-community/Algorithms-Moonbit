@@ -19,7 +19,7 @@ fn LCA::new(size : Int, root : Int) -> LCA {
     next: Array::make(size * 2, 0),
     idx: 0,
     dep: Array::make(size, 0),
-    fa: Array::makei(size, fn(row : Int) -> Array[Int] {
+    fa: Array::makei(size, fn(_row : Int) -> Array[Int] {
       Array::make(@math.log2(size.to_double()).to_int() + 1, 0)
     }),
     n: size - 1,
