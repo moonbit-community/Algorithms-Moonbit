@@ -44,10 +44,10 @@ pub fn StringHash::new(
 }
 
 ///|
-type! Uninitialized String derive(Show)
+suberror Uninitialized String derive(Show)
 
 ///|
-type! IndexOutOfBounds String derive(Show)
+suberror IndexOutOfBounds String derive(Show)
 
 ///| Get string hash value
 /// 
@@ -73,9 +73,9 @@ type! IndexOutOfBounds String derive(Show)
 pub fn StringHash::get_hash(
   self : StringHash,
   left~ : Int = 0,
-  right~ : Int = self.n - 1
-) -> Int64!Error {
-  if left < 0 || right >= self.n {
+  right~ : Int = self.n - 1        
+) -> Int64 raise (Uninitialized | IndexOutOfBounds) { 
+  if left < 0 || right >= self.n { 
     raise IndexOutOfBounds("Index out of bounds.")
   }
   let p = match self.prework {
