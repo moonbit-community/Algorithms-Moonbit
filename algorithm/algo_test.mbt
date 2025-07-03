@@ -79,10 +79,10 @@ test "gcd" {
 }
 
 test "ext_euclidean" {
-  inspect(algorithm.ext_euc(5, 7), content="(1, 3, -2)")
+  inspect(ext_euc(5, 7), content="(1, 3, -2)")
 }
 
 test "mod_inverse" {
-  assert_eq(algorithm.mod_inverse(2, 1000_000_007), 500000004)
-  assert_eq(algorithm.mod_inverse(3, 26), 9)
+  assert_eq(mod_inverse(2, 1000_000_007), 500000004)
+  assert_eq(mod_inverse(3, 26), 9)
 }
