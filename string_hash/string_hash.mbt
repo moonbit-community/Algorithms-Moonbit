@@ -72,16 +72,16 @@ priv suberror IndexOutOfBounds String derive(Show)
 /// ```
 pub fn StringHash::get_hash(
   self : StringHash,
-  left_idx ? : Int, 
-  right_idx ? : Int,
+  left_idx? : Int,
+  right_idx? : Int
 ) -> Int64 raise Error {
   let left = match left_idx {
-      Some(l) => l
-      None => 0 
+    Some(l) => l
+    None => 0
   }
-  let right = match right_idx { 
-      Some(r) => r
-      None => self.n - 1
+  let right = match right_idx {
+    Some(r) => r
+    None => self.n - 1
   }
   if left < 0 || right >= self.n {
     raise IndexOutOfBounds("Index out of bounds.")

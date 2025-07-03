@@ -1,3 +1,4 @@
+///|
 test {
   let a1 = [1, 2, 3, 4, 5, 6, 1, 2]
   let pre1 = make_prefix1d(a1)

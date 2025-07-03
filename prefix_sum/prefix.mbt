@@ -11,6 +11,7 @@ enum Prefix2d {
 } derive(Show)
 
 // make prefix for 1 dimension
+
 ///|
 fn prefix1d(data : Array[Int]) -> Array[Int] {
   let n = data.length()
@@ -25,6 +26,7 @@ fn prefix1d(data : Array[Int]) -> Array[Int] {
 }
 
 // make prefix for 2 dimension
+
 ///|
 fn prefix2d(data : Array[Array[Int]]) -> Array[Array[Int]] {
   let n = data.length()
@@ -35,9 +37,9 @@ fn prefix2d(data : Array[Array[Int]]) -> Array[Array[Int]] {
   let ret = Array::makei(n + 1, fn(_row : Int) { Array::make(m + 1, 0) })
   for i = 1; i <= n; i = i + 1 {
     for j = 1; j <= m; j = j + 1 {
-            ret[i][j] = ret[i][j - 1] + 
-        ret[i - 1][j] - 
-        ret[i - 1][j - 1] + 
+      ret[i][j] = ret[i][j - 1] +
+        ret[i - 1][j] -
+        ret[i - 1][j - 1] +
         data[i - 1][j - 1]
     }
   }

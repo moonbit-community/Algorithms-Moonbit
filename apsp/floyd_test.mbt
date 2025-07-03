@@ -1,3 +1,4 @@
+///|
 test "floyd" {
   let eg = [(1, 2, 1), (2, 3, 20), (1, 4, 1), (4, 5, 1), (5, 3, 1)]
   let floyd = create_floyd(eg, 5)

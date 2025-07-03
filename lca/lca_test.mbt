@@ -1,3 +1,4 @@
+///|
 test {
   let lca = create_Lca([(1, 2), (1, 3), (2, 4), (2, 5)])
   inspect(lca.lca(2, 3), content="1")

@@ -1,3 +1,4 @@
+///|
 test {
   let arr = [1, 2, 3, 4, 1]
   inspect(inverse_pair(arr), content="3")

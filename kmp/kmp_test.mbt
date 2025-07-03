@@ -1,9 +1,11 @@
+///|
 test "kmp" {
   let s = "ABABABC"
   let t = "ABA"
   inspect(kmp(s, t), content="[1, 3]")
 }
 
+///|
 test "z_func" {
   let a = "aaaabaa"
   let b = "aaaaa"

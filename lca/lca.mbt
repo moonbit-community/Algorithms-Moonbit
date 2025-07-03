@@ -10,6 +10,7 @@ struct LCA {
   root : Int
 }
 
+///|
 pub fn LCA::get_root(self : LCA) -> Int {
   self.root
 }
@@ -115,7 +116,7 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
 ///   inspect(lca.lca(4, 3), content="1")
 /// ```
 pub fn lca(self : LCA, u : Int, v : Int) -> Int {
-  let _ = self.root 
+  let _ = self.root
   let mut u = u
   let mut v = v
   if self.dep[u] < self.dep[v] {
