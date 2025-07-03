@@ -3,7 +3,7 @@ fn per_work(s : String) -> String {
   let mut res = "<"
   for i = 0; i < s.length(); i = i + 1 {
     res += "#"
-    res += s[i].to_string()
+    res += s.charcode_at(i).to_char().to_string()
   }
   res += "#>"
   res
@@ -23,10 +23,10 @@ fn per_work(s : String) -> String {
 /// ```
 /// test "manacher" {
 ///   let s = "babad"
-///   inspect!(manacher(s), content="3") // "bab" or "aba"
+///   inspect(manacher(s), content="3") // "bab" or "aba"
 ///   
 ///   let s2 = "cbbd"
-///   inspect!(manacher(s2), content="2") // "bb"
+///   inspect(manacher(s2), content="2") // "bb"
 /// }
 /// ```
 pub fn manacher(str : String) -> Int {
@@ -42,7 +42,7 @@ pub fn manacher(str : String) -> Int {
     } else {
       p[i] = 1
     }
-    while s[i - p[i]] == s[i + p[i]] {
+    while s.charcode_at(i - p[i]) == s.charcode_at(i + p[i]) {
       p[i] += 1
     }
     if i + p[i] > r {
