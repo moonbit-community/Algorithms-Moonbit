@@ -56,6 +56,6 @@ fn[T : Compare] merge(a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
 ///   inspect(inverse_pair(arr2), content="10")
 /// }
 /// ```
-pub fn inverse_pair[T : Compare](arr : Array[T]) -> Int {
+pub fn[T : Compare] inverse_pair(arr : Array[T]) -> Int {
   merge(arr, Array::make(arr.length(), arr[0]), 0, arr.length() - 1)
 }

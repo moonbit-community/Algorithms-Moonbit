@@ -1,6 +1,6 @@
 test "foreach" {
   let list : @list.List[Int] = Cons(1, Cons(2, Cons(3, Nil)))
-  inspect!(
+  inspect(
     loop list, [] {
       Nil, arr => break arr
       Cons(x, t), arr => continue t, arr + [x]
