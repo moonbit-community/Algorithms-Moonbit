@@ -83,6 +83,6 @@ test "ext_euclidean" {
 }
 
 test "mod_inverse" {
-  assert_eq!(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
-  assert_eq!(@algorithm.mod_inverse(3, 26), 9)
+  assert_eq(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
+  assert_eq(@algorithm.mod_inverse(3, 26), 9)
 }
