@@ -1,4 +1,4 @@
-/// Verify that the array is in ascending order
+///| Verify that the array is in ascending order
 /// 'true' means sorted, 'false' means unsorted
 ///
 /// Example:
@@ -8,7 +8,7 @@
 ///   inspect!(is_sorted(arr), content="true")
 /// }
 /// ```
-pub fn is_sorted(arr: Array[Int]) -> Bool {
+pub fn is_sorted(arr : Array[Int]) -> Bool {
   let n = arr.length()
   let mut i = 0
   while i < n - 1 {

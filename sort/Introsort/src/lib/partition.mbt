@@ -16,9 +16,9 @@ fn partition(arr: Array[Int], start: Int, end: Int) -> Int {
   while i < end {
     if arr[i] < pivot_value {
       swap(arr, store_index, i)
-      store_index = store_index + 1
+      store_index += 1
     }
-    i = i + 1
+    i += 1
   }
   swap(arr, store_index, end)
   store_index
