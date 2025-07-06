@@ -5,6 +5,7 @@ struct Tree[Int] {
 }
 
 // fn op_add(self : T, other : T) -> T {self + other}
+
 ///|
 fn lowbit(x : Int) -> Int {
   x & -x
@@ -29,12 +30,10 @@ fn update_in(self : Tree[Int], x : Int, val : Int) -> Unit {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let arr = [1,2,3,4,5]
-///   let tmp = @binaryIndexedTree.bitTree(arr)
+///   let tmp = bitTree(arr)
 ///   tmp.update(1,5,2)
-///   inspect!(tmp.query(4), content="6")
-/// }
+///   inspect(tmp.query(4), content="6")
 /// ```
 pub fn update(self : Tree[Int], left : Int, right : Int, val : Int) -> Unit {
   self.update_in(left, val)
@@ -53,11 +52,9 @@ pub fn update(self : Tree[Int], left : Int, right : Int, val : Int) -> Unit {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let arr = [1,2,3,4,5]
-///   let tmp = @binaryIndexedTree.bitTree(arr)
-///   inspect!(tmp.query(2), content="2")
-/// }
+///   let tmp = bitTree(arr)
+///   inspect(tmp.query(2), content="2")
 /// ```
 pub fn query(self : Tree[Int], x : Int) -> Int {
   let mut res : Int = 0
@@ -79,7 +76,8 @@ pub fn query(self : Tree[Int], x : Int) -> Int {
 ///
 /// # Example
 /// ```
-/// @binaryIndexedTree.bitTree(arr)
+/// let arr = Array::make(5, 0) 
+/// let _ = bitTree(arr) 
 /// ```
 pub fn bitTree(data : Array[Int]) -> Tree[Int] {
   let sz = data.length()

@@ -11,6 +11,11 @@ struct LCA {
 }
 
 ///|
+pub fn LCA::get_root(self : LCA) -> Int {
+  self.root
+}
+
+///|
 fn LCA::new(size : Int, root : Int) -> LCA {
   let size = size + 2
   LCA::{
@@ -19,7 +24,7 @@ fn LCA::new(size : Int, root : Int) -> LCA {
     next: Array::make(size * 2, 0),
     idx: 0,
     dep: Array::make(size, 0),
-    fa: Array::makei(size, fn(row : Int) -> Array[Int] {
+    fa: Array::makei(size, fn(_row : Int) -> Array[Int] {
       Array::make(@math.log2(size.to_double()).to_int() + 1, 0)
     }),
     n: size - 1,
@@ -71,11 +76,9 @@ fn _init(self : LCA) -> Unit {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let data = [(1, 2), (1, 3), (2, 4), (2, 5)]
 ///   let lca = create_Lca(data, root = 1)
-///   inspect!(lca.root, content="1")
-/// }
+///   inspect(lca.get_root(), content="1")
 /// ```
 pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
   if data.length() == 0 {
@@ -107,14 +110,13 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let data = [(1, 2), (1, 3), (2, 4), (2, 5)]
 ///   let lca = create_Lca(data, root = 1)
-///   inspect!(lca.lca(4, 5), content="2")
-///   inspect!(lca.lca(4, 3), content="1")
-/// }
+///   inspect(lca.lca(4, 5), content="2")
+///   inspect(lca.lca(4, 3), content="1")
 /// ```
 pub fn lca(self : LCA, u : Int, v : Int) -> Int {
+  let _ = self.root
   let mut u = u
   let mut v = v
   if self.dep[u] < self.dep[v] {

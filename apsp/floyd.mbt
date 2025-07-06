@@ -18,7 +18,7 @@ struct Floyd {
 /// # Example
 /// ```
 /// let edge = [(1, 2, 3), (2, 3, 4), (1, 3, 10)]
-/// let floyd = create_floyd(edge, 3)
+/// let _ = create_floyd(edge, 3)
 /// ```
 pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
   let map : Array[Array[Int]] = Array::makei(node + 1, fn(row : Int) {
@@ -61,11 +61,9 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
 ///
 /// # Example
 /// ```
-/// test {
 ///   let edge = [(1, 2, 3), (2, 3, 4), (1, 3, 10)]
 ///   let floyd = create_floyd(edge, 3)
-///   inspect!(floyd.query(1, 3), content="7")
-/// }
+///   inspect(floyd.query(1, 3), content="7")
 /// ```
 pub fn query(self : Floyd, u : Int, v : Int) -> Int {
   if u < 1 || u > self.node || v < 1 || v > self.node {

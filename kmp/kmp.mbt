@@ -1,4 +1,5 @@
 // get next array
+
 ///|
 fn getNext(t : String) -> Array[Int] {
   let n = t.length()
@@ -7,10 +8,10 @@ fn getNext(t : String) -> Array[Int] {
   let nextp = Array::make(n + 1, 0)
   nextp[0] = -1
   while i < n - 1 {
-    if k == -1 || t[k] == t[i] {
+    if k == -1 || t.charcode_at(k) == t.charcode_at(i) {
       i += 1
       k += 1
-      if t[k] == t[i] {
+      if t.charcode_at(k) == t.charcode_at(i) {
         nextp[i] = nextp[k]
       } else {
         nextp[i] = k
@@ -35,11 +36,9 @@ fn getNext(t : String) -> Array[Int] {
 ///
 /// # Example
 /// ```
-/// test "kmp" {
 ///   let s = "ABABABC"
 ///   let t = "ABA"
-///   inspect!(@kmp.kmp(s, t), content="[1, 3]")
-/// }
+///   inspect(@kmp.kmp(s, t), content="[1, 3]")
 /// ```
 pub fn kmp(s : String, t : String) -> Array[Int] {
   let next = getNext(t)
@@ -51,7 +50,7 @@ pub fn kmp(s : String, t : String) -> Array[Int] {
   while i < n1 {
     j = 0
     while i < n1 && j < n2 {
-      if j == -1 || s[i] == t[j] {
+      if j == -1 || s.charcode_at(i) == t.charcode_at(j) {
         i += 1
         j += 1
       } else {
@@ -69,6 +68,7 @@ pub fn kmp(s : String, t : String) -> Array[Int] {
 }
 
 // get z array of s
+
 ///|
 fn get_z(s : String) -> Array[Int] {
   let n = s.length()
@@ -80,7 +80,7 @@ fn get_z(s : String) -> Array[Int] {
     if i <= r {
       z[i] = @math.minimum(z[i - l], r - i + 1)
     }
-    while i + z[i] < n && s[z[i]] == s[i + z[i]] {
+    while i + z[i] < n && s.charcode_at(z[i]) == s.charcode_at(i + z[i]) {
       z[i] += 1
     }
     if i + z[i] - 1 > r {
@@ -104,12 +104,10 @@ fn get_z(s : String) -> Array[Int] {
 ///
 /// # Example
 /// ```
-/// test "z_func" {
 ///   let a = "aaaabaa"
 ///   let b = "aaaaa"
-///   inspect!(@kmp.z_func(b), content="[5, 4, 3, 2, 1]")
-///   inspect!(@kmp.z_func(b, t = a), content="[4, 3, 2, 1, 0, 2, 1]")
-/// }
+///   inspect(z_func(b), content="[5, 4, 3, 2, 1]")
+///   inspect(z_func(b, t=a), content="[4, 3, 2, 1, 0, 2, 1]")
 /// ```
 pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
   let z : Array[Int] = get_z(s)
@@ -125,7 +123,9 @@ pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
         if i <= r {
           q[i] = @math.minimum(z[i - l], r - i + 1)
         }
-        while q[i] < n && i + q[i] < m && s[q[i]] == t[i + q[i]] {
+        while q[i] < n &&
+              i + q[i] < m &&
+              s.charcode_at(q[i]) == t.charcode_at(i + q[i]) {
           q[i] += 1
         }
         if i + q[i] - 1 > r {
