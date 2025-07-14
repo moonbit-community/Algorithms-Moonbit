@@ -1,5 +1,5 @@
 ///|
-pub struct Stack[T] {
+pub(all) struct Stack[T] {
   stack : Array[T]
 }
 

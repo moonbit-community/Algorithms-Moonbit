@@ -1,0 +1,14 @@
+package "Lampese/Algorithms-Moonbit/lca"
+
+// Values
+fn create_Lca(Array[(Int, Int)], root~ : Int = ..) -> LCA
+
+// Types and methods
+type LCA
+fn LCA::get_root(Self) -> Int
+fn LCA::lca(Self, Int, Int) -> Int
+
+// Type aliases
+
+// Traits
+

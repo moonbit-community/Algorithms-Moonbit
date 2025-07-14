@@ -3,7 +3,7 @@ package "Lampese/Algorithms-Moonbit/stack"
 // Values
 
 // Types and methods
-pub struct Stack[T] {
+pub(all) struct Stack[T] {
   stack : Array[T]
 }
 fn[T] Stack::is_empty(Self[T]) -> Bool
