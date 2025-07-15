@@ -1,0 +1,14 @@
+package "Lampese/Algorithms-Moonbit/list"
+
+// Values
+
+// Types and methods
+pub(all) enum List[T] {
+  Nil
+  Cons(T, List[T])
+}
+
+// Type aliases
+
+// Traits
+

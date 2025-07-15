@@ -1,0 +1,13 @@
+package "Lampese/Algorithms-Moonbit/st"
+
+// Values
+fn st(Array[Int]) -> ST
+
+// Types and methods
+type ST
+fn ST::max_elem(Self, Int, Int) -> Int
+
+// Type aliases
+
+// Traits
+

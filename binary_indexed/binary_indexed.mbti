@@ -1,0 +1,14 @@
+package "Lampese/Algorithms-Moonbit/binary_indexed"
+
+// Values
+fn bitTree(Array[Int]) -> Tree[Int]
+
+// Types and methods
+type Tree[Int]
+fn Tree::query(Self[Int], Int) -> Int
+fn Tree::update(Self[Int], Int, Int, Int) -> Unit
+
+// Type aliases
+
+// Traits
+
