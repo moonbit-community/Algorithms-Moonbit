@@ -1,0 +1,20 @@
+package "Lampese/Algorithms-Moonbit/stack"
+
+// Values
+
+// Types and methods
+pub(all) struct Stack[T] {
+  stack : Array[T]
+}
+fn[T] Stack::is_empty(Self[T]) -> Bool
+fn[T] Stack::new() -> Self[T]
+fn[T] Stack::peek(Self[T]) -> T?
+fn[T] Stack::pop(Self[T]) -> T?
+fn[T] Stack::push(Self[T], T) -> Unit
+fn[T] Stack::size(Self[T]) -> Int
+fn[T] Stack::to_array(Self[T]) -> Array[T]
+
+// Type aliases
+
+// Traits
+
