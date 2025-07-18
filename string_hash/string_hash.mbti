@@ -1,0 +1,21 @@
+package "Lampese/Algorithms-Moonbit/string_hash"
+
+// Values
+
+// Types and methods
+type Prework
+
+pub(all) struct StringHash {
+  n : Int
+  mod : Int64
+  base : Int64
+  hash : Array[Int64]
+  prework : Prework
+}
+fn StringHash::get_hash(Self, left_idx? : Int, right_idx? : Int) -> Int64 raise
+fn StringHash::new(mod~ : Int64 = .., base~ : Int64 = .., String) -> Self
+
+// Type aliases
+
+// Traits
+

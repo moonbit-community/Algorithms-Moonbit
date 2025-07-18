@@ -1,0 +1,35 @@
+package "Lampese/Algorithms-Moonbit/avl"
+
+// Values
+fn balance_factor(AVLTree) -> Int
+
+fn height(AVLTree?) -> Int
+
+fn insert(AVLTree?, Int) -> AVLTree?
+
+fn left_rotate(AVLTree) -> AVLTree
+
+fn max(Int, Int) -> Int
+
+fn new(Int) -> AVLTree
+
+fn remove(AVLTree?, Int) -> AVLTree?
+
+fn right_rotate(AVLTree) -> AVLTree
+
+fn rotate(AVLTree) -> AVLTree
+
+fn update_height(AVLTree) -> AVLTree
+
+// Types and methods
+pub(all) struct AVLTree {
+  val : Int
+  height : Int
+  left : AVLTree?
+  right : AVLTree?
+}
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,42 @@
+package "Lampese/Algorithms-Moonbit/algorithm"
+
+// Values
+fn[T : Compare] binary_search(Array[T], T) -> Bool
+
+fn[T : Compare] equal_range(Array[T], T) -> (Int, Int)
+
+fn ext_euc(Int, Int) -> (Int, Int, Int)
+
+fn gcd(Int, Int) -> Int
+
+fn[T : Compare] lower_bound(Array[T], T) -> Int
+
+fn[T : Compare] max(T, T) -> T
+
+fn[T : Compare] max_element(Array[T]) -> T
+
+fn max_manhattan_distance(Array[Point]) -> Int
+
+fn[T : Compare] merge(Array[T], Array[T]) -> Array[T]
+
+fn[T : Compare] min(T, T) -> T
+
+fn[T : Compare] min_element(Array[T]) -> T
+
+fn mod_inverse(Int, Int) -> Int
+
+fn quick_pow(Int, Int) -> Int64
+
+fn[T : Compare] upper_bound(Array[T], T) -> Int
+
+// Types and methods
+pub(all) struct Point {
+  x : Int
+  y : Int
+}
+impl Show for Point
+
+// Type aliases
+
+// Traits
+
