@@ -78,7 +78,7 @@ fn get_z(s : String) -> Array[Int] {
   z[0] = n
   for i = 1; i < n; i = i + 1 {
     if i <= r {
-      z[i] = @math.minimum(z[i - l], r - i + 1)
+      z[i] = @cmp.minimum(z[i - l], r - i + 1)
     }
     while i + z[i] < n && s.charcode_at(z[i]) == s.charcode_at(i + z[i]) {
       z[i] += 1
@@ -121,7 +121,7 @@ pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
       let mut r = -1
       for i = 0; i < m; i = i + 1 {
         if i <= r {
-          q[i] = @math.minimum(z[i - l], r - i + 1)
+          q[i] = @cmp.minimum(z[i - l], r - i + 1)
         }
         while q[i] < n &&
               i + q[i] < m &&
