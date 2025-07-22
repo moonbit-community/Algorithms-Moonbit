@@ -33,13 +33,13 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
   map[0][0] = @int.max_value
   for e in edge {
     let (u, v, d) = e
-    map[u][v] = @math.minimum(map[u][v], d)
+    map[u][v] = @cmp.minimum(map[u][v], d)
     map[v][u] = map[u][v]
   }
   for k = 1; k <= node; k = k + 1 {
     for i = 1; i <= node; i = i + 1 {
       for j = i + 1; j <= node; j = j + 1 {
-        map[i][j] = @math.minimum(map[i][j], map[i][k] + map[k][j])
+        map[i][j] = @cmp.minimum(map[i][j], map[i][k] + map[k][j])
         map[j][i] = map[i][j]
       }
     }

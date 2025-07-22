@@ -36,7 +36,7 @@ pub fn manacher(str : String) -> Int {
   let p = Array::make(n + 1, 0)
   for i = 1; i < n - 1; i = i + 1 {
     if i < r {
-      p[i] = @math.minimum(r - i, p[2 * c - i])
+      p[i] = @cmp.minimum(r - i, p[2 * c - i])
     } else {
       p[i] = 1
     }
@@ -46,7 +46,7 @@ pub fn manacher(str : String) -> Int {
     if i + p[i] > r {
       c = i
       r = i + p[i]
-      mx = @math.maximum(mx, p[i])
+      mx = @cmp.maximum(mx, p[i])
     }
   }
   mx - 1
