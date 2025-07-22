@@ -1,0 +1,14 @@
+package "Lampese/Algorithms-Moonbit/combinator"
+
+// Values
+
+// Types and methods
+type Comb
+fn Comb::a(Self, Int, Int) -> Int64
+fn Comb::c(Self, Int, Int) -> Int64
+fn Comb::new(Int, Int64) -> Self
+
+// Type aliases
+
+// Traits
+
