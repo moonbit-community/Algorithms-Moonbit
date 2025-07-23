@@ -3,3 +3,6 @@
 support create 1 dimension and 2 dimension prefix array
 
 query prefix sum in O(1)
+
+two version in Int32 and Int64
+
