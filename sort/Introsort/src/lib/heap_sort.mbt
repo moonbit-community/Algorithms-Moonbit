@@ -2,14 +2,13 @@
 /// * `start` : The starting index of the heap interval
 /// * `end` : The end index of the heap interval
 ///
-fn heap_sort(arr: Array[Int], start: Int, end: Int) -> Unit {
-  let n = end - start + 1
-  build_max_heap(arr, start, n)
+fn[T:Compare] heap_sort(arr: ArrayView[T]) -> Unit {
+  build_max_heap(arr)
   
-  let mut last = n - 1
+  let mut last = arr.length() - 1
   while last > 0 {
-    swap(arr, start, start + last)
-    sift_down(arr, start, 0, last)
+    swap(arr, 0, last)
+    sift_down(arr, 0, last)
     last = last - 1
   }
 }

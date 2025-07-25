@@ -1,15 +1,15 @@
 ///| The three numbers are taken in the middle method to select the pivot element index
 ///
-fn choose_pivot(arr : Array[Int], start : Int, end : Int) -> Int {
-  let mid = start + (end - start) / 2
-  let a = arr[start]
+fn[T:Compare] choose_pivot(arr : ArrayView[T]) -> Int {
+  let mid = 0 + (arr.length() - 0) / 2
+  let a = arr[0]
   let b = arr[mid]
-  let c = arr[end]
+  let c = arr[arr.length() - 1]
   if (a < b && b < c) || (c < b && b < a) {
     mid
   } else if (b < a && a < c) || (c < a && a < b) {
-    start
+    0
   } else {
-    end
+    arr.length() - 1
   }
 }
