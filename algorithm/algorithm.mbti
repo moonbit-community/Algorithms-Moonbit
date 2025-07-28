@@ -1,3 +1,4 @@
+// Generated using `moon info`, DON'T EDIT IT
 package "Lampese/Algorithms-Moonbit/algorithm"
 
 // Values
@@ -8,6 +9,8 @@ fn[T : Compare] equal_range(Array[T], T) -> (Int, Int)
 fn ext_euc(Int, Int) -> (Int, Int, Int)
 
 fn gcd(Int, Int) -> Int
+
+fn lcm(Int, Int) -> Int
 
 fn[T : Compare] lower_bound(Array[T], T) -> Int
 
