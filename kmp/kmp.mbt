@@ -8,10 +8,10 @@ fn getNext(t : String) -> Array[Int] {
   let nextp = Array::make(n + 1, 0)
   nextp[0] = -1
   while i < n - 1 {
-    if k == -1 || t.charcode_at(k) == t.charcode_at(i) {
+    if k == -1 || t[k] == t[i] {
       i += 1
       k += 1
-      if t.charcode_at(k) == t.charcode_at(i) {
+      if t[k] == t[i] {
         nextp[i] = nextp[k]
       } else {
         nextp[i] = k
@@ -50,7 +50,7 @@ pub fn kmp(s : String, t : String) -> Array[Int] {
   while i < n1 {
     j = 0
     while i < n1 && j < n2 {
-      if j == -1 || s.charcode_at(i) == t.charcode_at(j) {
+      if j == -1 || s[i] == t[j] {
         i += 1
         j += 1
       } else {
@@ -80,7 +80,7 @@ fn get_z(s : String) -> Array[Int] {
     if i <= r {
       z[i] = @cmp.minimum(z[i - l], r - i + 1)
     }
-    while i + z[i] < n && s.charcode_at(z[i]) == s.charcode_at(i + z[i]) {
+    while i + z[i] < n && s[z[i]] == s[i + z[i]] {
       z[i] += 1
     }
     if i + z[i] - 1 > r {
@@ -125,7 +125,7 @@ pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
         }
         while q[i] < n &&
               i + q[i] < m &&
-              s.charcode_at(q[i]) == t.charcode_at(i + q[i]) {
+              s[q[i]] == t[i + q[i]] {
           q[i] += 1
         }
         if i + q[i] - 1 > r {

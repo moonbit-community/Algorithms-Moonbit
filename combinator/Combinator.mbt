@@ -33,7 +33,7 @@ fn qpow(base: Int64, exp: Int64, mod: Int64) -> Int64 {
 /// 
 /// # Example
 /// ```
-/// let comb = Comb::new(10,998242353)
+/// let _ = Comb::new(10,998242353)
 /// ```
 pub fn Comb::new(size: Int,mod: Int64) -> Comb {
     let fact: Array[Int64] = Array::make(size, 1L)
