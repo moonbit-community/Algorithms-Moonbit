@@ -9,16 +9,19 @@ package "Lampese/Algorithms-Moonbit/segment_tree"
 pub struct SegmentTree[T] {
   size : Int
   nodes : Array[T]
-  op : (T, T) -> T
+  merge : (T, T) -> T
 }
 fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
 fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
 fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
+impl[T : Show] Show for SegmentTree[T]
 
 pub enum SegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 }
+impl Eq for SegmentTreeError
+impl Show for SegmentTreeError
 
 // Type aliases
 
