@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/segment_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct SegmentTree[T] {
+  size : Int
+  nodes : Array[T]
+  op : (T, T) -> T
+}
+fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
+fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
+fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
+
+pub enum SegmentTreeError {
+  IndexOutOfBounds
+  InvalidRange
+}
+
+// Type aliases
+
+// Traits
+
