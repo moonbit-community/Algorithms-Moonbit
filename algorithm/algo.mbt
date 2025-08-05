@@ -349,6 +349,28 @@ pub fn gcd(a : Int, b : Int) -> Int {
 }
 
 ///|
+/// Calculates the Lowest Common Multiple (LCM) of two integers.
+///
+/// Parameters:
+///
+/// * `first` : First integer.
+/// * `second` : Second integer.
+///
+/// Returns the lowest common multiple of the two integers.
+///
+/// Example:
+///
+/// ```
+/// 
+///inspect(@algorithm.lcm(2, 3), content="6")
+///inspect(@algorithm.lcm(17, 20), content="340")
+/// 
+/// ```
+pub fn lcm(a : Int, b : Int) -> Int {
+    a * b / gcd(a, b)
+}
+
+///|
 /// Implements the Extended Euclidean Algorithm to find the greatest common
 /// divisor (GCD) of two integers and the coefficients of Bézout's identity.
 ///
