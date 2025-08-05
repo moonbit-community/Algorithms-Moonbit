@@ -26,7 +26,7 @@ let empty_hash : StringHash = StringHash::{
 pub fn StringHash::new(
   mod~ : Int64 = 998244353,
   base~ : Int64 = 131,
-  s : String
+  s : String,
 ) -> StringHash {
   let n = s.length()
   if n == 0 {
@@ -38,7 +38,7 @@ pub fn StringHash::new(
   h[0] = 1
   for i = 1; i <= n; i = i + 1 {
     p[i] = p[i - 1] * base % mod
-    h[i] = (h[i - 1] * base + (s.charcode_at(i - 1) - 'a' + 1).to_int64()) % mod
+    h[i] = (h[i - 1] * base + (s[i - 1] - 'a' + 1).to_int64()) % mod
   }
   StringHash::{ n, mod, base, hash: h, prework: Util(p~) }
 }
@@ -73,7 +73,7 @@ priv suberror IndexOutOfBounds String derive(Show)
 pub fn StringHash::get_hash(
   self : StringHash,
   left_idx? : Int,
-  right_idx? : Int
+  right_idx? : Int,
 ) -> Int64 raise Error {
   let left = match left_idx {
     Some(l) => l
