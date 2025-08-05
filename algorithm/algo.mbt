@@ -367,7 +367,7 @@ pub fn gcd(a : Int, b : Int) -> Int {
 /// 
 /// ```
 pub fn lcm(a : Int, b : Int) -> Int {
-    a * b / gcd(a, b)
+  a * b / gcd(a, b)
 }
 
 ///|

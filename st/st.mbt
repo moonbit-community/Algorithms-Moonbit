@@ -2,7 +2,7 @@
 struct ST[T] {
   n : Int
   f : Array[Array[T]]
-  op: (T, T) -> T
+  op : (T, T) -> T
 }
 
 ///| Build Sparse Table
@@ -20,10 +20,12 @@ struct ST[T] {
 /// let arr = [1,2,3,4,5,6,1,2]
 /// let _ = from(arr, @cmp.maximum)
 /// ```
-pub fn[T: Default] from(data : Array[T], op: (T, T) -> T) -> ST[T] {
+pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
   let n = data.length()
   let range : Int = @math.log2(n.to_double()).to_int() + 1
-  let f: Array[Array[T]] = Array::makei(n+1, fn(_row: Int) {Array::make(range, T::default())} )
+  let f : Array[Array[T]] = Array::makei(n + 1, fn(_row : Int) {
+    Array::make(range, T::default())
+  })
   for i = 0; i < n; i = i + 1 {
     f[i + 1][0] = data[i]
   }
@@ -32,7 +34,7 @@ pub fn[T: Default] from(data : Array[T], op: (T, T) -> T) -> ST[T] {
       f[i][j] = op(f[i][j - 1], f[i + (1 << (j - 1))][j - 1])
     }
   }
-  ST::{ n, f, op}
+  ST::{ n, f, op }
 }
 
 ///| Build Binary Indexed Tree
@@ -52,7 +54,7 @@ pub fn[T: Default] from(data : Array[T], op: (T, T) -> T) -> ST[T] {
 ///   inspect(st.query(1, 1), content="1")
 ///   inspect(st.query(2, 8), content="6")
 /// ```
-pub fn[T] query(self : ST[T], left : Int, right : Int) -> T{
+pub fn[T] query(self : ST[T], left : Int, right : Int) -> T {
   if right < left {
     abort("Invalid range.")
   } else if left > self.n || right < 1 {
