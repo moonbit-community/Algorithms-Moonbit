@@ -2,11 +2,11 @@
 package "Lampese/Algorithms-Moonbit/st"
 
 // Values
-fn st(Array[Int]) -> ST
+fn[T : Default] st(Array[T], (T, T) -> T) -> ST[T]
 
 // Types and methods
-type ST
-fn ST::max_elem(Self, Int, Int) -> Int
+type ST[T]
+fn[T] ST::query(Self[T], Int, Int) -> T
 
 // Type aliases
 
