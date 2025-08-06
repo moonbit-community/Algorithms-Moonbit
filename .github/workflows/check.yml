@@ -17,25 +17,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Moon
-        uses: illusory0x0/setup-moonbit@v0.1.0
-        with: 
-          version: ${{ matrix.version }} 
+      - name: Setup Moonbit
+        uses: hustcer/setup-moonbit@v1
 
-      - name: moon version
+      - name: Check Moonbit Version
         run: |
           moon version --all
-          moonrun --version
 
       - name: moon check
         run: moon check --deny-warn
-
-      - name: moon test
-        run: |
-          moon test
-          moon test --target js
 
       - name: format diff
         run: |
           moon fmt
           git diff --exit-code
+
+      - name: moon test
+        run: |
+          moon test
+
+      - name: moon bench
+        run: |
+          moon bench
