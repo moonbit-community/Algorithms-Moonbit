@@ -6,7 +6,8 @@ struct DSU {
 
 ///|
 
-///| Construct a dsu structure
+///|
+/// Construct a dsu structure
 /// 
 /// # Parameters
 /// 
@@ -32,7 +33,8 @@ pub fn DSU::new(n : Int) -> DSU {
   { parent, siz }
 }
 
-///| Find the root of x
+///|
+/// Find the root of x
 /// 
 /// # Parameters
 /// 
@@ -59,7 +61,8 @@ pub fn find(self : DSU, x : Int) -> Int {
   root
 }
 
-///| Merge two unions x and y into one unoin
+///|
+/// Merge two unions x and y into one unoin
 /// 
 /// # Parameters
 /// 
@@ -94,7 +97,8 @@ pub fn merge(self : DSU, x : Int, y : Int) -> Bool {
   true
 }
 
-///| Find out that if x and y belong to the same union
+///|
+/// Find out that if x and y belong to the same union
 /// 
 /// # Parameters
 /// 
@@ -117,7 +121,8 @@ pub fn same(self : DSU, x : Int, y : Int) -> Bool {
   self.find(x) == self.find(y)
 }
 
-///| Get the size of the union that x belongs to
+///|
+/// Get the size of the union that x belongs to
 /// 
 /// # Parameters
 /// 

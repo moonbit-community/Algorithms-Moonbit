@@ -37,7 +37,8 @@ fn[T : Compare] merge(a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
   res
 }
 
-///| Inverse Pair
+///|
+/// Inverse Pair
 /// 
 /// # Parameters
 /// 

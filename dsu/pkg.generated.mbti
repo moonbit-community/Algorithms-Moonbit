@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/dsu"
+
+// Values
+
+// Errors
+
+// Types and methods
+type DSU
+fn DSU::find(Self, Int) -> Int
+fn DSU::merge(Self, Int, Int) -> Bool
+fn DSU::new(Int) -> Self
+fn DSU::same(Self, Int, Int) -> Bool
+fn DSU::size(Self, Int) -> Int
+
+// Type aliases
+
+// Traits
+

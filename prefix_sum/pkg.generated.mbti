@@ -1,0 +1,22 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/prefix_sum"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Prefix1d[T]
+fn[T : Add + Default] Prefix1d::from(Array[T]) -> Self[T]
+fn[T : Sub] Prefix1d::sum(Self[T], Int, Int) -> T
+impl[T : Show] Show for Prefix1d[T]
+
+type Prefix2d[T]
+fn[T : Add + Sub + Default] Prefix2d::from(Array[Array[T]]) -> Self[T]
+fn[T : Add + Sub] Prefix2d::sum(Self[T], Int, Int, Int, Int) -> T
+impl[T : Show] Show for Prefix2d[T]
+
+// Type aliases
+
+// Traits
+

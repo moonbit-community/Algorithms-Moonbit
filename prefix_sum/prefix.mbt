@@ -48,7 +48,8 @@ fn[T : Add + Sub + Default] prefix2d(data : Array[Array[T]]) -> Array[Array[T]] 
   ret
 }
 
-///| Sum of 1 dimension prefix 
+///|
+/// Sum of 1 dimension prefix 
 /// 
 /// # Parameters
 /// 
@@ -78,7 +79,8 @@ pub fn[T : Sub] Prefix1d::sum(self : Self[T], left : Int, right : Int) -> T {
   }
 }
 
-///| Prefix of 1 dimension array
+///|
+/// Prefix of 1 dimension array
 /// 
 /// # Parameters
 /// 
@@ -100,7 +102,8 @@ pub fn[T : Add + Default] Prefix1d::from(data : Array[T]) -> Prefix1d[T] {
   }
 }
 
-///| Sum of 2 dimension prefix 
+///|
+/// Sum of 2 dimension prefix 
 /// 
 /// # Parameters
 /// 
@@ -138,7 +141,8 @@ pub fn[T : Add + Sub] Prefix2d::sum(
   }
 }
 
-///| Prefix of 2 dimension array
+///|
+/// Prefix of 2 dimension array
 /// 
 /// # Parameters
 /// 

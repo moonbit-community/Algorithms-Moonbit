@@ -22,10 +22,11 @@ let empty_hash : StringHash = StringHash::{
   prework: Prework::Nil,
 }
 
-///| Create a new StringHash object.
+///|
+/// Create a new StringHash object.
 pub fn StringHash::new(
-  mod~ : Int64 = 998244353,
-  base~ : Int64 = 131,
+  mod? : Int64 = 998244353,
+  base? : Int64 = 131,
   s : String,
 ) -> StringHash {
   let n = s.length()
@@ -49,7 +50,8 @@ priv suberror Uninitialized String derive(Show)
 ///|
 priv suberror IndexOutOfBounds String derive(Show)
 
-///| Get string hash value
+///|
+/// Get string hash value
 /// 
 /// Parameters
 /// 

@@ -1,6 +1,7 @@
 ///| Min Max
 
-///| Maximum value
+///|
+/// Maximum value
 /// 
 /// # Parameters
 /// 
@@ -23,7 +24,8 @@ pub fn[T : Compare] max(a : T, b : T) -> T {
   }
 }
 
-///| Minimum value
+///|
+/// Minimum value
 /// 
 /// # Parameters
 /// 
@@ -46,7 +48,8 @@ pub fn[T : Compare] min(a : T, b : T) -> T {
   }
 }
 
-///| Maximum value in array
+///|
+/// Maximum value in array
 /// 
 /// # Parameters
 /// 
@@ -70,7 +73,8 @@ pub fn[T : Compare] max_element(data : Array[T]) -> T {
   data.fold(init=data[0], fn(mx, x) { if x > mx { x } else { mx } })
 }
 
-///| Minimum value in array
+///|
+/// Minimum value in array
 /// 
 /// # Parameters
 /// 
@@ -96,7 +100,8 @@ pub fn[T : Compare] min_element(data : Array[T]) -> T {
 
 ///| Binary Search
 
-///| Find first index of element in array that not less than value
+///|
+/// Find first index of element in array that not less than value
 /// 
 /// # Parameters
 /// 
@@ -130,7 +135,8 @@ pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int {
   first
 }
 
-///| Find first index of element in array that bigger than value
+///|
+/// Find first index of element in array that bigger than value
 /// 
 /// # Parameters
 /// 
@@ -163,7 +169,8 @@ pub fn[T : Compare] upper_bound(data : Array[T], value : T) -> Int {
   first
 }
 
-///| Find whether a value in the array
+///|
+/// Find whether a value in the array
 /// 
 /// # Parameters
 /// 
@@ -185,7 +192,8 @@ pub fn[T : Compare] binary_search(data : Array[T], value : T) -> Bool {
   first != data.length() && data[first] == value
 }
 
-///| Find range of array equal to value
+///|
+/// Find range of array equal to value
 /// 
 /// # Parameters
 /// 
@@ -213,7 +221,8 @@ pub fn[T : Compare] equal_range(data : Array[T], value : T) -> (Int, Int) {
 
 ///| Merge
 
-///| Merge two sorted array in sequence
+///|
+/// Merge two sorted array in sequence
 /// 
 /// # Parameters
 /// 
@@ -254,7 +263,8 @@ pub fn[T : Compare] merge(data1 : Array[T], data2 : Array[T]) -> Array[T] {
   res.iter().concat(data2[j:].iter()).collect()
 }
 
-///| Fast Exponentiation
+///|
+/// Fast Exponentiation
 /// 
 /// # Parameters
 /// 
@@ -290,7 +300,8 @@ pub(all) struct Point {
   y : Int
 } derive(Show)
 
-///| Calculate max manhattan distance
+///|
+/// Calculate max manhattan distance
 /// 
 /// # Parameters
 /// 
@@ -401,7 +412,8 @@ pub fn ext_euc(a : Int, b : Int) -> (Int, Int, Int) {
   }
 }
 
-///| Calculate Inverse Element
+///|
+/// Calculate Inverse Element
 /// 
 /// # Parameters
 /// 

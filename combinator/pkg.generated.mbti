@@ -1,0 +1,17 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/combinator"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Comb
+fn Comb::a(Self, Int, Int) -> Int64
+fn Comb::c(Self, Int, Int) -> Int64
+fn Comb::new(Int, Int64) -> Self
+
+// Type aliases
+
+// Traits
+

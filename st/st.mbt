@@ -5,7 +5,8 @@ struct ST[T] {
   op : (T, T) -> T
 }
 
-///| Build Sparse Table
+///|
+/// Build Sparse Table
 /// 
 /// # Parameters
 /// 
@@ -37,7 +38,8 @@ pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
   ST::{ n, f, op }
 }
 
-///| Build Binary Indexed Tree
+///|
+/// Build Binary Indexed Tree
 /// 
 /// # Parameters
 /// 

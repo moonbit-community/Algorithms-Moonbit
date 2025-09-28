@@ -63,7 +63,8 @@ fn _init(self : LCA) -> Unit {
   }
 }
 
-///| Create LCA (Lowest Common Ancestor)
+///|
+/// Create LCA (Lowest Common Ancestor)
 /// 
 /// # Parameters
 /// 
@@ -80,7 +81,7 @@ fn _init(self : LCA) -> Unit {
 ///   let lca = create_Lca(data, root = 1)
 ///   inspect(lca.get_root(), content="1")
 /// ```
-pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
+pub fn create_Lca(data : Array[(Int, Int)], root? : Int = 1) -> LCA {
   if data.length() == 0 {
     abort("Data is empty")
   } else if root < 1 || root > data.length() {
@@ -96,7 +97,8 @@ pub fn create_Lca(data : Array[(Int, Int)], root~ : Int = 1) -> LCA {
   lca
 }
 
-///| Find LCA (Lowest Common Ancestor)
+///|
+/// Find LCA (Lowest Common Ancestor)
 /// 
 /// # Parameters
 /// 

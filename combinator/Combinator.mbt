@@ -22,7 +22,8 @@ fn qpow(base : Int64, exp : Int64, mod : Int64) -> Int64 {
   res
 }
 
-///| Constructor
+///|
+/// Constructor
 /// 
 /// # Parameters
 /// 
@@ -47,7 +48,8 @@ pub fn Comb::new(size : Int, mod : Int64) -> Comb {
   { fact, inv_fact, mod }
 }
 
-///| Combination
+///|
+/// Combination
 /// 
 /// # Parameters
 /// 
@@ -74,7 +76,8 @@ pub fn c(self : Comb, x : Int, y : Int) -> Int64 {
   self.fact[x] * self.inv_fact[y] % self.mod * self.inv_fact[x - y] % self.mod
 }
 
-///| Arrangement
+///|
+/// Arrangement
 /// 
 /// # Parameters
 /// 

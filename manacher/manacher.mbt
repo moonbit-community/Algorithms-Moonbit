@@ -9,7 +9,8 @@ fn per_work(s : String) -> String {
   res
 }
 
-///| Manacher's Algorithm (Longest Palindromic Substring)
+///|
+/// Manacher's Algorithm (Longest Palindromic Substring)
 /// 
 /// # Parameters
 /// 

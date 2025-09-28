@@ -1,0 +1,16 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/apsp"
+
+// Values
+fn create_floyd(Array[(Int, Int, Int)], Int) -> Floyd
+
+// Errors
+
+// Types and methods
+type Floyd
+fn Floyd::query(Self, Int, Int) -> Int
+
+// Type aliases
+
+// Traits
+

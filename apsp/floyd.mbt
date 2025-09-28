@@ -4,7 +4,8 @@ struct Floyd {
   node : Int
 }
 
-///| Create Floyd (All-Pairs Shortest Path)
+///|
+/// Create Floyd (All-Pairs Shortest Path)
 /// 
 /// # Parameters
 /// 
@@ -47,7 +48,8 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
   Floyd::{ map, node }
 }
 
-///| Query shortest path
+///|
+/// Query shortest path
 /// 
 /// # Parameters
 /// 

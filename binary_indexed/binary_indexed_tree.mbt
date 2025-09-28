@@ -18,7 +18,8 @@ fn update_in(self : Tree[Int], x : Int, val : Int) -> Unit {
   }
 }
 
-///| Update
+///|
+/// Update
 /// 
 /// # Parameters
 /// 
@@ -40,7 +41,8 @@ pub fn update(self : Tree[Int], left : Int, right : Int, val : Int) -> Unit {
   self.update_in(right + 1, -val)
 }
 
-///| Build Binary Indexed Tree
+///|
+/// Build Binary Indexed Tree
 /// 
 /// # Parameters
 /// 
@@ -64,7 +66,8 @@ pub fn query(self : Tree[Int], x : Int) -> Int {
   res
 }
 
-///| Build Binary Indexed Tree
+///|
+/// Build Binary Indexed Tree
 /// 
 /// # Parameters
 /// 

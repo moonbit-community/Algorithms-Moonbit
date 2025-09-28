@@ -11,7 +11,8 @@ pub struct SegmentTree[T] {
   merge : (T, T) -> T
 } derive(Show)
 
-///|Creates a new `SegmentTree` from the provided slice of elements.
+///|
+///Creates a new `SegmentTree` from the provided slice of elements.
 /// 
 /// # Parameters
 /// 
@@ -42,7 +43,8 @@ pub fn[T : Default] SegmentTree::from_array(
   SegmentTree::{ size, nodes: buffer, merge }
 }
 
-///|Queries the segment tree for the result of merging the elements in the given range.
+///|
+///Queries the segment tree for the result of merging the elements in the given range.
 /// 
 /// # Parameters
 /// 
@@ -98,7 +100,8 @@ pub fn[T] SegmentTree::query(
   Ok(res)
 }
 
-///|Updates the value at the specified index in the segment tree.
+///|
+///Updates the value at the specified index in the segment tree.
 /// 
 /// # Parameters
 /// 
