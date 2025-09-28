@@ -1,0 +1,25 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/heap"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct Heap[T] {
+  items : Array[T]
+  comparator : (T, T) -> Bool
+}
+fn[T] Heap::add(Self[T], T) -> Unit
+fn[T] Heap::build_heap(Self[T]) -> Unit
+fn[T] Heap::from_vec(Array[T], (T, T) -> Bool) -> Self[T]
+fn[T] Heap::is_empty(Self[T]) -> Bool
+fn[T] Heap::iter(Self[T]) -> Iter[T]
+fn[T] Heap::len(Self[T]) -> Int
+fn[T] Heap::new((T, T) -> Bool) -> Self[T]
+fn[T] Heap::pop(Self[T]) -> T?
+
+// Type aliases
+
+// Traits
+
