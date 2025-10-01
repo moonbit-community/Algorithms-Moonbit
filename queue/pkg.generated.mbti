@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/queue"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct Queue[T] {
+  elements : Array[T]
+  mut start : Int
+}
+fn[T] Queue::back(Self[T]) -> Ref[T]?
+fn[T] Queue::clear(Self[T]) -> Unit
+fn[T] Queue::front(Self[T]) -> Ref[T]?
+fn[T] Queue::is_empty(Self[T]) -> Bool
+fn[T] Queue::len(Self[T]) -> Int
+fn[T : Default] Queue::new() -> Self[T]
+fn[T] Queue::pop(Self[T]) -> T?
+fn[T] Queue::push(Self[T], T) -> Unit
+impl[T : Default] Default for Queue[T]
+
+// Type aliases
+
+// Traits
+
