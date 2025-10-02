@@ -1,0 +1,33 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/lazy_segment_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct LazySegmentTree[T, L] {
+  size : Int
+  tree : Array[T]
+  tag : Array[L]
+  merge : (T, T) -> T
+  apply : (T, L, Int) -> T
+  compose : (L, L) -> L
+  identity : L
+}
+fn[T : Default, L] LazySegmentTree::from_array(Array[T], (T, T) -> T, (T, L, Int) -> T, (L, L) -> L, L) -> Self[T, L]
+fn[T, L] LazySegmentTree::range_query(Self[T, L], Int, Int) -> Result[T?, LazySegmentTreeError]
+fn[T, L] LazySegmentTree::range_update(Self[T, L], Int, Int, L) -> Result[Unit, LazySegmentTreeError]
+impl[T : Show, L : Show] Show for LazySegmentTree[T, L]
+
+pub enum LazySegmentTreeError {
+  IndexOutOfBounds
+  InvalidRange
+}
+impl Eq for LazySegmentTreeError
+impl Show for LazySegmentTreeError
+
+// Type aliases
+
+// Traits
+
