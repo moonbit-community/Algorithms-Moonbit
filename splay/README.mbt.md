@@ -12,6 +12,7 @@ workloads.
 
 ## Quick Start
 ```moonbit
+///|
 test "README basic usage" {
   let tree : SplayTree[Int, String] = SplayTree::new()
   tree.insert(42, "answer")
@@ -21,7 +22,6 @@ test "README basic usage" {
   assert_eq(tree.remove(42), true)
   assert_eq(tree.contains(42), false)
   assert_eq(tree.len(), 2)
-
   tree.clear()
   assert_eq(tree.is_empty(), true)
 }
