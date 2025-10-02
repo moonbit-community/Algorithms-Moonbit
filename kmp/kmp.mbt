@@ -111,7 +111,7 @@ fn get_z(s : String) -> Array[Int] {
 ///   inspect(z_func(b), content="[5, 4, 3, 2, 1]")
 ///   inspect(z_func(b, t=a), content="[4, 3, 2, 1, 0, 2, 1]")
 /// ```
-pub fn z_func(s : String, t~ : String = "") -> Array[Int] {
+pub fn z_func(s : String, t? : String = "") -> Array[Int] {
   let z : Array[Int] = get_z(s)
   match t {
     "" => z
