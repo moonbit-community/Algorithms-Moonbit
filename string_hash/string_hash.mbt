@@ -25,8 +25,8 @@ let empty_hash : StringHash = StringHash::{
 ///|
 /// Create a new StringHash object.
 pub fn StringHash::new(
-  mod? : Int64 = 998244353,
-  base? : Int64 = 131,
+  mod~ : Int64 = 998244353,
+  base~ : Int64 = 131,
   s : String,
 ) -> StringHash {
   let n = s.length()
