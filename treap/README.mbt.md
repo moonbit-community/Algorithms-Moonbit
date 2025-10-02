@@ -11,6 +11,7 @@ like an ordered map keyed by `Compare` values.
 
 ## Quick Start
 ```moonbit
+///|
 test "README treap usage" {
   let treap : Treap[Int, String] = Treap::new()
   treap.insert(8, "eight")
@@ -19,12 +20,10 @@ test "README treap usage" {
   assert_eq(treap.len(), 3)
   assert_eq(treap.get(5), Some("five"))
   assert_eq(treap.contains(7), false)
-
   treap.insert(5, "FIVE")
   assert_eq(treap.get(5), Some("FIVE"))
   assert_eq(treap.remove(3), true)
   assert_eq(treap.contains(3), false)
-
   treap.clear()
   assert_eq(treap.is_empty(), true)
 }
