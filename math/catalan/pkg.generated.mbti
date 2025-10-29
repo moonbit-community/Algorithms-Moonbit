@@ -1,0 +1,18 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/math/catalan"
+
+// Values
+fn catalan_number(Int) -> Int64
+
+// Errors
+
+// Types and methods
+type Catalan
+fn Catalan::new(Int) -> Self
+fn Catalan::nth(Self, Int) -> Int64
+fn Catalan::values(Self) -> Array[Int64]
+
+// Type aliases
+
+// Traits
+
