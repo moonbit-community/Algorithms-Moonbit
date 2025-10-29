@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/lazy_segment_tree"
+package "Lampese/Algorithms-Moonbit/data_structures/lazy_segment_tree"
 
 // Values
 

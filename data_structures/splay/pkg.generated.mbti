@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/splay"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Node[K, V]
+
+pub struct SplayTree[K, V] {
+  mut root : Node[K, V]?
+  mut size : Int
+}
+fn[K, V] SplayTree::clear(Self[K, V]) -> Unit
+fn[K : Compare, V] SplayTree::contains(Self[K, V], K) -> Bool
+fn[K : Compare, V] SplayTree::get(Self[K, V], K) -> V?
+fn[K : Compare, V] SplayTree::insert(Self[K, V], K, V) -> Unit
+fn[K, V] SplayTree::is_empty(Self[K, V]) -> Bool
+fn[K, V] SplayTree::len(Self[K, V]) -> Int
+fn[K, V] SplayTree::new() -> Self[K, V]
+fn[K : Compare, V] SplayTree::remove(Self[K, V], K) -> Bool
+impl[K, V] Default for SplayTree[K, V]
+
+// Type aliases
+
+// Traits
+

@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/avl"
+package "Lampese/Algorithms-Moonbit/data_structures/avl"
 
 // Values
 fn balance_factor(AVLTree) -> Int

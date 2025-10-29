@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/st"
+package "Lampese/Algorithms-Moonbit/data_structures/st"
 
 // Values
 fn[T : Default] from(Array[T], (T, T) -> T) -> ST[T]
