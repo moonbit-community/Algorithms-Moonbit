@@ -35,10 +35,7 @@ fn[K : Compare, V] split(
 }
 
 ///|
-fn[K : Compare, V] merge(
-  left_opt : Node[K, V]?,
-  right_opt : Node[K, V]?,
-) -> Node[K, V]? {
+fn[K, V] merge(left_opt : Node[K, V]?, right_opt : Node[K, V]?) -> Node[K, V]? {
   match (left_opt, right_opt) {
     (None, right_side) => right_side
     (left_side, None) => left_side
