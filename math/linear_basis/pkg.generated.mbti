@@ -1,0 +1,22 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/math/linear_basis"
+
+// Values
+
+// Errors
+
+// Types and methods
+type LinearBasis
+fn LinearBasis::contains(Self, Int64) -> Bool
+fn LinearBasis::dimension(Self) -> Int
+fn LinearBasis::insert(Self, Int64) -> Bool
+fn LinearBasis::kth_largest(Self, Int) -> Int64
+fn LinearBasis::max_xor(Self, Int64) -> Int64
+fn LinearBasis::new(Int) -> Self
+fn LinearBasis::reduce(Self, Int64) -> Int64
+fn LinearBasis::vectors(Self) -> Array[Int64]
+
+// Type aliases
+
+// Traits
+
