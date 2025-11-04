@@ -1,0 +1,17 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/math/fft"
+
+// Values
+fn convolution(Array[Int], Array[Int]) -> Array[Int]
+
+fn fft(Array[Complex], Bool) -> Array[Complex]
+
+// Errors
+
+// Types and methods
+type Complex
+
+// Type aliases
+
+// Traits
+

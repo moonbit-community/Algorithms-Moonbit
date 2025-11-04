@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/string/aho_corasick"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct ACAutomaton {
+  nodes : Array[ACNode]
+  alphabet_size : Int
+  pattern_lengths : Array[Int]
+  mut built : Bool
+}
+fn ACAutomaton::add_pattern(Self, String) -> Int
+fn ACAutomaton::build(Self) -> Unit
+fn ACAutomaton::clear(Self) -> Unit
+fn ACAutomaton::new(alphabet_size? : Int) -> Self
+fn ACAutomaton::pattern_count(Self) -> Int
+fn ACAutomaton::query(Self, String) -> Array[ACMatch]
+
+pub struct ACMatch {
+  start : Int
+  end : Int
+  pattern_index : Int
+}
+fn ACMatch::end(Self) -> Int
+fn ACMatch::pattern_index(Self) -> Int
+fn ACMatch::start(Self) -> Int
+
+type ACNode
+
+// Type aliases
+
+// Traits
+
