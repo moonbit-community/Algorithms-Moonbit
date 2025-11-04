@@ -107,17 +107,17 @@ pub fn[K, V] SplayTree::new() -> SplayTree[K, V] {
 }
 
 ///|
-pub fn[K, V] len(self : SplayTree[K, V]) -> Int {
+pub fn[K, V] SplayTree::len(self : SplayTree[K, V]) -> Int {
   self.size
 }
 
 ///|
-pub fn[K, V] is_empty(self : SplayTree[K, V]) -> Bool {
+pub fn[K, V] SplayTree::is_empty(self : SplayTree[K, V]) -> Bool {
   self.size == 0
 }
 
 ///|
-pub fn[K, V] clear(self : SplayTree[K, V]) -> Unit {
+pub fn[K, V] SplayTree::clear(self : SplayTree[K, V]) -> Unit {
   self.root = None
   self.size = 0
 }

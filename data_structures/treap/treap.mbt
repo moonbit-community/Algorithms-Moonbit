@@ -151,17 +151,17 @@ pub fn[K, V] Treap::new() -> Treap[K, V] {
 }
 
 ///|
-pub fn[K, V] len(self : Treap[K, V]) -> Int {
+pub fn[K, V] Treap::len(self : Treap[K, V]) -> Int {
   self.size
 }
 
 ///|
-pub fn[K, V] is_empty(self : Treap[K, V]) -> Bool {
+pub fn[K, V] Treap::is_empty(self : Treap[K, V]) -> Bool {
   self.size == 0
 }
 
 ///|
-pub fn[K, V] clear(self : Treap[K, V]) -> Unit {
+pub fn[K, V] Treap::clear(self : Treap[K, V]) -> Unit {
   self.root = None
   self.size = 0
 }

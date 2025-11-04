@@ -56,7 +56,7 @@ pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
 ///   inspect(st.query(1, 1), content="1")
 ///   inspect(st.query(2, 8), content="6")
 /// ```
-pub fn[T] query(self : ST[T], left : Int, right : Int) -> T {
+pub fn[T] ST::query(self : ST[T], left : Int, right : Int) -> T {
   if right < left {
     abort("Invalid range.")
   } else if left > self.n || right < 1 {

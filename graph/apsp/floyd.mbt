@@ -67,7 +67,7 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
 ///   let floyd = create_floyd(edge, 3)
 ///   inspect(floyd.query(1, 3), content="7")
 /// ```
-pub fn query(self : Floyd, u : Int, v : Int) -> Int {
+pub fn Floyd::query(self : Floyd, u : Int, v : Int) -> Int {
   if u < 1 || u > self.node || v < 1 || v > self.node {
     abort("Invalid node")
   }

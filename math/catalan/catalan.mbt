@@ -49,7 +49,7 @@ pub fn Catalan::new(max_n : Int) -> Catalan {
 /// let catalan = Catalan::new(10)
 /// inspect(catalan.nth(10), content="16796")
 /// ```
-pub fn nth(self : Catalan, n : Int) -> Int64 {
+pub fn Catalan::nth(self : Catalan, n : Int) -> Int64 {
   if n < 0 || n >= self.values.length() {
     abort("n is out of precomputed range")
   }
@@ -70,7 +70,7 @@ pub fn nth(self : Catalan, n : Int) -> Int64 {
 /// let catalan = Catalan::new(4)
 /// inspect(catalan.values(), content="[1, 1, 2, 5, 14]")
 /// ```
-pub fn values(self : Catalan) -> Array[Int64] {
+pub fn Catalan::values(self : Catalan) -> Array[Int64] {
   self.values
 }
 

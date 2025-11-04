@@ -16,7 +16,7 @@ pub struct LazySegmentTree[T, L] {
 } derive(Show)
 
 ///|
-fn[T, L] build(
+fn[T, L] LazySegmentTree::build(
   self : LazySegmentTree[T, L],
   arr : Array[T],
   node : Int,
@@ -36,7 +36,7 @@ fn[T, L] build(
 }
 
 ///|
-fn[T, L] push(
+fn[T, L] LazySegmentTree::push(
   self : LazySegmentTree[T, L],
   node : Int,
   start : Int,
@@ -60,7 +60,7 @@ fn[T, L] push(
 }
 
 ///|
-fn[T, L] range_update_internal(
+fn[T, L] LazySegmentTree::range_update_internal(
   self : LazySegmentTree[T, L],
   node : Int,
   start : Int,
@@ -88,7 +88,7 @@ fn[T, L] range_update_internal(
 }
 
 ///|
-fn[T, L] range_query_internal(
+fn[T, L] LazySegmentTree::range_query_internal(
   self : LazySegmentTree[T, L],
   node : Int,
   start : Int,

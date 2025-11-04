@@ -33,7 +33,7 @@ fn LCA::new(size : Int, root : Int) -> LCA {
 }
 
 ///|
-fn add(self : LCA, u : Int, v : Int) -> Unit {
+fn LCA::add(self : LCA, u : Int, v : Int) -> Unit {
   let idx = self.idx
   self.to[idx] = v
   self.next[idx] = self.head[u]
@@ -42,7 +42,7 @@ fn add(self : LCA, u : Int, v : Int) -> Unit {
 }
 
 ///|
-fn dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
+fn LCA::dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
   self.dep[u] = d
   for i = self.head[u]; i != -1; i = self.next[i] {
     let v = self.to[i]
@@ -55,7 +55,7 @@ fn dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
 }
 
 ///|
-fn _init(self : LCA) -> Unit {
+fn LCA::_init(self : LCA) -> Unit {
   for j = 1; j <= @math.log2(self.n.to_double()).to_int(); j = j + 1 {
     for i = 1; i <= self.n; i = i + 1 {
       self.fa[i][j] = self.fa[self.fa[i][j - 1]][j - 1]
@@ -117,7 +117,7 @@ pub fn create_Lca(data : Array[(Int, Int)], root? : Int = 1) -> LCA {
 ///   inspect(lca.lca(4, 5), content="2")
 ///   inspect(lca.lca(4, 3), content="1")
 /// ```
-pub fn lca(self : LCA, u : Int, v : Int) -> Int {
+pub fn LCA::lca(self : LCA, u : Int, v : Int) -> Int {
   let _ = self.root
   let mut u = u
   let mut v = v

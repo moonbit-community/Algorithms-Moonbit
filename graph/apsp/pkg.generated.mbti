@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/apsp"
+package "Lampese/Algorithms-Moonbit/graph/apsp"
 
 // Values
 fn create_floyd(Array[(Int, Int, Int)], Int) -> Floyd

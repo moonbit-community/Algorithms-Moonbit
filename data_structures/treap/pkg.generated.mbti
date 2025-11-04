@@ -15,6 +15,7 @@ pub struct Treap[K, V] {
 }
 fn[K, V] Treap::clear(Self[K, V]) -> Unit
 fn[K : Compare, V] Treap::contains(Self[K, V], K) -> Bool
+fn[K, V] Treap::default() -> Self[K, V] // from trait `Default`
 fn[K : Compare, V] Treap::get(Self[K, V], K) -> V?
 fn[K : Compare, V] Treap::insert(Self[K, V], K, V) -> Unit
 fn[K, V] Treap::is_empty(Self[K, V]) -> Bool

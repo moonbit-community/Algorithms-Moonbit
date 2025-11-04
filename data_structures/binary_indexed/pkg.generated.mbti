@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/binary_indexed"
+package "Lampese/Algorithms-Moonbit/data_structures/binary_indexed"
 
 // Values
 fn bitTree(Array[Int]) -> Tree[Int]

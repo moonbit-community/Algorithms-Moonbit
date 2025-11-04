@@ -42,7 +42,7 @@ pub fn LinearBasis::new(max_bits : Int) -> LinearBasis {
 /// inspect(basis.insert(3L), content="true")
 /// inspect(basis.insert(3L), content="false")
 /// ```
-pub fn insert(self : LinearBasis, value : Int64) -> Bool {
+pub fn LinearBasis::insert(self : LinearBasis, value : Int64) -> Bool {
   let mut x : Int64 = value
   for idx in 0..<self.max_bits {
     let bit = self.max_bits - 1 - idx
@@ -75,7 +75,7 @@ pub fn insert(self : LinearBasis, value : Int64) -> Bool {
 /// let _ = basis.insert(3L)
 /// inspect(basis.reduce(3L), content="0")
 /// ```
-pub fn reduce(self : LinearBasis, value : Int64) -> Int64 {
+pub fn LinearBasis::reduce(self : LinearBasis, value : Int64) -> Int64 {
   let mut x = value
   for idx in 0..<self.max_bits {
     let bit = self.max_bits - 1 - idx
@@ -107,7 +107,7 @@ pub fn reduce(self : LinearBasis, value : Int64) -> Int64 {
 /// let _ = basis.insert(6L)
 /// inspect(basis.max_xor(0L), content="6")
 /// ```
-pub fn max_xor(self : LinearBasis, seed : Int64) -> Int64 {
+pub fn LinearBasis::max_xor(self : LinearBasis, seed : Int64) -> Int64 {
   let mut result = seed
   for idx in 0..<self.max_bits {
     let bit = self.max_bits - 1 - idx
@@ -136,7 +136,7 @@ pub fn max_xor(self : LinearBasis, seed : Int64) -> Int64 {
 /// let _ = basis.insert(3L)
 /// inspect(basis.dimension(), content="2")
 /// ```
-pub fn dimension(self : LinearBasis) -> Int {
+pub fn LinearBasis::dimension(self : LinearBasis) -> Int {
   let mut count = 0
   for bit in 0..<self.max_bits {
     if self.basis[bit] != 0L {
@@ -163,7 +163,7 @@ pub fn dimension(self : LinearBasis) -> Int {
 /// let _ = basis.insert(10L)
 /// inspect(basis.contains(15L), content="true")
 /// ```
-pub fn contains(self : LinearBasis, value : Int64) -> Bool {
+pub fn LinearBasis::contains(self : LinearBasis, value : Int64) -> Bool {
   self.reduce(value) == 0L
 }
 
@@ -181,7 +181,7 @@ pub fn contains(self : LinearBasis, value : Int64) -> Bool {
 /// let basis = LinearBasis::new(4)
 /// inspect(basis.vectors().length(), content="4")
 /// ```
-pub fn vectors(self : LinearBasis) -> Array[Int64] {
+pub fn LinearBasis::vectors(self : LinearBasis) -> Array[Int64] {
   self.basis
 }
 
@@ -207,7 +207,7 @@ pub fn vectors(self : LinearBasis) -> Array[Int64] {
 /// inspect(basis.kth_largest(1), content="3")
 /// inspect(basis.kth_largest(3), content="1")
 /// ```
-pub fn kth_largest(self : LinearBasis, k : Int) -> Int64 {
+pub fn LinearBasis::kth_largest(self : LinearBasis, k : Int) -> Int64 {
   let vectors = LinearBasis::canonical_vectors(self)
   let rank = vectors.length()
   let shift = rank

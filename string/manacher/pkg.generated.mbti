@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/manacher"
+package "Lampese/Algorithms-Moonbit/string/manacher"
 
 // Values
 fn manacher(String) -> Int

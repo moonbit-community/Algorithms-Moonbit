@@ -52,7 +52,7 @@ pub fn DSU::new(n : Int) -> DSU {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn find(self : DSU, x : Int) -> Int {
+pub fn DSU::find(self : DSU, x : Int) -> Int {
   if self.parent[x] == x {
     return x
   }
@@ -81,7 +81,7 @@ pub fn find(self : DSU, x : Int) -> Int {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn merge(self : DSU, x : Int, y : Int) -> Bool {
+pub fn DSU::merge(self : DSU, x : Int, y : Int) -> Bool {
   let fx = self.find(x)
   let fy = self.find(y)
   if fx == fy {
@@ -117,7 +117,7 @@ pub fn merge(self : DSU, x : Int, y : Int) -> Bool {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn same(self : DSU, x : Int, y : Int) -> Bool {
+pub fn DSU::same(self : DSU, x : Int, y : Int) -> Bool {
   self.find(x) == self.find(y)
 }
 
@@ -140,6 +140,6 @@ pub fn same(self : DSU, x : Int, y : Int) -> Bool {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn size(self : DSU, x : Int) -> Int {
+pub fn DSU::size(self : DSU, x : Int) -> Int {
   self.siz[self.find(x)]
 }

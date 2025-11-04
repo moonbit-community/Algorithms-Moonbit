@@ -11,6 +11,7 @@ pub struct Trie[K, V] {
 }
 fn[K, V] Trie::clear(Self[K, V]) -> Unit
 fn[K : Eq, V] Trie::contains(Self[K, V], Array[K]) -> Bool
+fn[K, V] Trie::default() -> Self[K, V] // from trait `Default`
 fn[K : Eq, V] Trie::get(Self[K, V], Array[K]) -> V?
 fn[K : Eq, V] Trie::insert(Self[K, V], Array[K], V) -> Unit
 fn[K, V : Eq] Trie::is_empty(Self[K, V]) -> Bool

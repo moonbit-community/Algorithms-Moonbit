@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Lampese/Algorithms-Moonbit/kmp"
+package "Lampese/Algorithms-Moonbit/string/kmp"
 
 // Values
 fn kmp(String, String) -> Array[Int]

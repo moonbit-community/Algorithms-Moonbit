@@ -66,7 +66,7 @@ pub fn Comb::new(size : Int, mod : Int64) -> Comb {
 /// let comb = Comb::new(10, 1000000007)
 /// inspect(comb.c(3, 1), content="3")
 /// ```
-pub fn c(self : Comb, x : Int, y : Int) -> Int64 {
+pub fn Comb::c(self : Comb, x : Int, y : Int) -> Int64 {
   if x >= self.fact.length() || x < 0 || y >= self.fact.length() || y < 0 {
     abort("value out of range")
   }
@@ -95,7 +95,7 @@ pub fn c(self : Comb, x : Int, y : Int) -> Int64 {
 /// let ans = comb.a(4, 2)
 /// inspect(ans, content="12")
 /// ```
-pub fn a(self : Comb, x : Int, y : Int) -> Int64 {
+pub fn Comb::a(self : Comb, x : Int, y : Int) -> Int64 {
   if y == 0 {
     return 1L
   }

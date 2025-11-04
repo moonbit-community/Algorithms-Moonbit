@@ -16,14 +16,21 @@ pub struct LazySegmentTree[T, L] {
   identity : L
 }
 fn[T : Default, L] LazySegmentTree::from_array(Array[T], (T, T) -> T, (T, L, Int) -> T, (L, L) -> L, L) -> Self[T, L]
+fn[T : Show, L : Show] LazySegmentTree::output(Self[T, L], &Logger) -> Unit // from trait `Show`
 fn[T, L] LazySegmentTree::range_query(Self[T, L], Int, Int) -> Result[T?, LazySegmentTreeError]
 fn[T, L] LazySegmentTree::range_update(Self[T, L], Int, Int, L) -> Result[Unit, LazySegmentTreeError]
+fn[T : Show, L : Show] LazySegmentTree::to_string(Self[T, L]) -> String // from trait `Show`
 impl[T : Show, L : Show] Show for LazySegmentTree[T, L]
 
 pub enum LazySegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 }
+fn LazySegmentTreeError::equal(Self, Self) -> Bool // from trait `Eq`
+#deprecated
+fn LazySegmentTreeError::op_equal(Self, Self) -> Bool // from trait `Eq`
+fn LazySegmentTreeError::output(Self, &Logger) -> Unit // from trait `Show`
+fn LazySegmentTreeError::to_string(Self) -> String // from trait `Show`
 impl Eq for LazySegmentTreeError
 impl Show for LazySegmentTreeError
 

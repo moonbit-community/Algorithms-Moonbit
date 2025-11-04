@@ -9,27 +9,27 @@ pub fn[T] Stack::new() -> Stack[T] {
 }
 
 ///|
-pub fn[T] size(self : Stack[T]) -> Int {
+pub fn[T] Stack::size(self : Stack[T]) -> Int {
   self.stack.length()
 }
 
 ///|
-pub fn[T] is_empty(self : Stack[T]) -> Bool {
+pub fn[T] Stack::is_empty(self : Stack[T]) -> Bool {
   self.stack.length() == 0
 }
 
 ///|
-pub fn[T] push(self : Stack[T], num : T) -> Unit {
+pub fn[T] Stack::push(self : Stack[T], num : T) -> Unit {
   self.stack.push(num)
 }
 
 ///|
-pub fn[T] pop(self : Stack[T]) -> T? {
+pub fn[T] Stack::pop(self : Stack[T]) -> T? {
   self.stack.pop()
 }
 
 ///|
-pub fn[T] peek(self : Stack[T]) -> T? {
+pub fn[T] Stack::peek(self : Stack[T]) -> T? {
   if self.stack.length() == 0 {
     None
   } else {
@@ -38,6 +38,6 @@ pub fn[T] peek(self : Stack[T]) -> T? {
 }
 
 ///|
-pub fn[T] to_array(self : Stack[T]) -> Array[T] {
+pub fn[T] Stack::to_array(self : Stack[T]) -> Array[T] {
   self.stack.copy()
 }

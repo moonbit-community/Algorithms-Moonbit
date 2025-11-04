@@ -52,14 +52,14 @@ pub fn[T] Queue::back(self : Queue[T]) -> Ref[T]? {
 // Returns the number of elements in the queue
 
 ///|
-pub fn[T] len(self : Queue[T]) -> Int {
+pub fn[T] Queue::len(self : Queue[T]) -> Int {
   self.elements.length() - self.start
 }
 
 // Checks if the queue is empty
 
 ///|
-pub fn[T] is_empty(self : Queue[T]) -> Bool {
+pub fn[T] Queue::is_empty(self : Queue[T]) -> Bool {
   self.start > self.elements.length() - 1
 }
 
