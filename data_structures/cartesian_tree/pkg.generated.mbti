@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/cartesian_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct CartesianTree[T] {
+  values : Array[T]
+  left : Array[Int?]
+  right : Array[Int?]
+  parent : Array[Int?]
+  root : Int?
+}
+fn[T : Compare] CartesianTree::from_array(Array[T]) -> Self[T]
+fn[T] CartesianTree::inorder(Self[T]) -> Array[T]
+fn[T] CartesianTree::is_empty(Self[T]) -> Bool
+fn[T] CartesianTree::left_child(Self[T], Int) -> Int?
+fn[T] CartesianTree::len(Self[T]) -> Int
+fn[T] CartesianTree::parent_index(Self[T], Int) -> Int?
+fn[T] CartesianTree::right_child(Self[T], Int) -> Int?
+fn[T] CartesianTree::root_index(Self[T]) -> Int?
+fn[T] CartesianTree::value_at(Self[T], Int) -> T?
+
+// Type aliases
+
+// Traits
+

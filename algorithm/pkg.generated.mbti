@@ -39,8 +39,6 @@ pub(all) struct Point {
   x : Int
   y : Int
 }
-fn Point::output(Self, &Logger) -> Unit // from trait `Show`
-fn Point::to_string(Self) -> String // from trait `Show`
 impl Show for Point
 
 // Type aliases

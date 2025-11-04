@@ -8,16 +8,12 @@ package "Lampese/Algorithms-Moonbit/prefix_sum"
 // Types and methods
 type Prefix1d[T]
 fn[T : Add + Default] Prefix1d::from(Array[T]) -> Self[T]
-fn[T : Show] Prefix1d::output(Self[T], &Logger) -> Unit // from trait `Show`
 fn[T : Sub] Prefix1d::sum(Self[T], Int, Int) -> T
-fn[T : Show] Prefix1d::to_string(Self[T]) -> String // from trait `Show`
 impl[T : Show] Show for Prefix1d[T]
 
 type Prefix2d[T]
 fn[T : Add + Sub + Default] Prefix2d::from(Array[Array[T]]) -> Self[T]
-fn[T : Show] Prefix2d::output(Self[T], &Logger) -> Unit // from trait `Show`
 fn[T : Add + Sub] Prefix2d::sum(Self[T], Int, Int, Int, Int) -> T
-fn[T : Show] Prefix2d::to_string(Self[T]) -> String // from trait `Show`
 impl[T : Show] Show for Prefix2d[T]
 
 // Type aliases

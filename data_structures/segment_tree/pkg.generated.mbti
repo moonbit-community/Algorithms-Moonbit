@@ -12,9 +12,7 @@ pub struct SegmentTree[T] {
   merge : (T, T) -> T
 }
 fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
-fn[T : Show] SegmentTree::output(Self[T], &Logger) -> Unit // from trait `Show`
 fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
-fn[T : Show] SegmentTree::to_string(Self[T]) -> String // from trait `Show`
 fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
 impl[T : Show] Show for SegmentTree[T]
 
@@ -22,11 +20,6 @@ pub enum SegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 }
-fn SegmentTreeError::equal(Self, Self) -> Bool // from trait `Eq`
-#deprecated
-fn SegmentTreeError::op_equal(Self, Self) -> Bool // from trait `Eq`
-fn SegmentTreeError::output(Self, &Logger) -> Unit // from trait `Show`
-fn SegmentTreeError::to_string(Self) -> String // from trait `Show`
 impl Eq for SegmentTreeError
 impl Show for SegmentTreeError
 

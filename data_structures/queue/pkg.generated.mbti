@@ -12,7 +12,6 @@ pub struct Queue[T] {
 }
 fn[T] Queue::back(Self[T]) -> Ref[T]?
 fn[T] Queue::clear(Self[T]) -> Unit
-fn[T : Default] Queue::default() -> Self[T] // from trait `Default`
 fn[T] Queue::front(Self[T]) -> Ref[T]?
 fn[T] Queue::is_empty(Self[T]) -> Bool
 fn[T] Queue::len(Self[T]) -> Int
