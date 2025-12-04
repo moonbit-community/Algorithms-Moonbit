@@ -74,7 +74,7 @@ pub fn ACAutomaton::new(
 pub fn ACAutomaton::add_pattern(self : ACAutomaton, pattern : String) -> Int {
   let mut state = 0
   for i = 0; i < pattern.length(); i = i + 1 {
-    let idx = pattern[i].to_byte().to_int()
+    let idx = pattern.code_unit_at(i).to_byte().to_int()
     let node = self.nodes[state]
     if node.next[idx] == -1 {
       self.nodes.push(ACNode::new(self.alphabet_size))
@@ -166,7 +166,7 @@ pub fn ACAutomaton::query(self : ACAutomaton, text : String) -> Array[ACMatch] {
   let mut state = 0
   let matches : Array[ACMatch] = []
   for i = 0; i < text.length(); i = i + 1 {
-    let idx = text[i].to_byte().to_int()
+    let idx = text.code_unit_at(i).to_byte().to_int()
     let mut s = state
     while s > 0 && self.nodes[s].next[idx] == -1 {
       s = self.nodes[s].fail

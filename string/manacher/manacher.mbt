@@ -3,7 +3,7 @@ fn per_work(s : String) -> String {
   let mut res = "<"
   for i = 0; i < s.length(); i = i + 1 {
     res += "#"
-    res += s[i].to_char().to_string()
+    res += s.code_unit_at(i).to_char().to_string()
   }
   res += "#>"
   res
@@ -41,7 +41,7 @@ pub fn manacher(str : String) -> Int {
     } else {
       p[i] = 1
     }
-    while s[i - p[i]] == s[i + p[i]] {
+    while s.code_unit_at(i - p[i]) == s.code_unit_at(i + p[i]) {
       p[i] += 1
     }
     if i + p[i] > r {

@@ -121,7 +121,7 @@ fn naive_fill_matches(
     for i = 0; i <= text.length() - len; i = i + 1 {
       let mut matched = true
       for j = 0; j < len; j = j + 1 {
-        if text[i + j] != pattern[j] {
+        if text.code_unit_at(i + j) != pattern.code_unit_at(j) {
           matched = false
           break
         }

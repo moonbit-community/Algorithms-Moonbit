@@ -39,7 +39,8 @@ pub fn StringHash::new(
   h[0] = 1
   for i = 1; i <= n; i = i + 1 {
     p[i] = p[i - 1] * base % mod
-    h[i] = (h[i - 1] * base + (s[i - 1] - 'a' + 1).to_int64()) % mod
+    h[i] = (h[i - 1] * base + (s.code_unit_at(i - 1) - 'a' + 1).to_int64()) %
+      mod
   }
   StringHash::{ n, mod, base, hash: h, prework: Util(p~) }
 }
