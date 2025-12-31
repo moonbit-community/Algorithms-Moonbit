@@ -1,0 +1,39 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/chtholly_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct ChthollyTree {
+  size : Int
+  mut intervals : Array[Interval]
+}
+pub fn ChthollyTree::add(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
+pub fn ChthollyTree::assign(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
+pub fn ChthollyTree::from_array(Array[Int]) -> Self
+pub fn ChthollyTree::is_empty(Self) -> Bool
+pub fn ChthollyTree::len(Self) -> Int
+pub fn ChthollyTree::new(Int, Int) -> Self
+pub fn ChthollyTree::query_sum(Self, Int, Int) -> Result[Int, ChthollyTreeError]
+pub fn ChthollyTree::size(Self) -> Int
+pub fn ChthollyTree::value_at(Self, Int) -> Result[Int, ChthollyTreeError]
+pub impl Default for ChthollyTree
+pub impl Show for ChthollyTree
+
+pub enum ChthollyTreeError {
+  IndexOutOfBounds
+  InvalidRange
+}
+pub impl Eq for ChthollyTreeError
+pub impl Show for ChthollyTreeError
+
+type Interval
+pub impl Eq for Interval
+pub impl Show for Interval
+
+// Type aliases
+
+// Traits
+
