@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/scapegoat_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Node[K, V]
+
+pub struct ScapegoatTree[K, V] {
+  mut root : Node[K, V]?
+  mut size : Int
+  mut max_size : Int
+}
+pub fn[K, V] ScapegoatTree::clear(Self[K, V]) -> Unit
+pub fn[K : Compare, V] ScapegoatTree::contains(Self[K, V], K) -> Bool
+pub fn[K : Compare, V] ScapegoatTree::get(Self[K, V], K) -> V?
+pub fn[K : Compare, V] ScapegoatTree::insert(Self[K, V], K, V) -> Unit
+pub fn[K, V] ScapegoatTree::is_empty(Self[K, V]) -> Bool
+pub fn[K, V] ScapegoatTree::len(Self[K, V]) -> Int
+pub fn[K, V] ScapegoatTree::new() -> Self[K, V]
+pub fn[K : Compare, V] ScapegoatTree::remove(Self[K, V], K) -> Bool
+pub impl[K, V] Default for ScapegoatTree[K, V]
+
+// Type aliases
+
+// Traits
+
