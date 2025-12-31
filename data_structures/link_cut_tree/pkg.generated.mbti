@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/link_cut_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct LinkCutTree {
+  left : Array[Int]
+  right : Array[Int]
+  parent : Array[Int]
+  rev : Array[Bool]
+  value : Array[Int]
+  sum : Array[Int]
+}
+pub fn LinkCutTree::connected(Self, Int, Int) -> Bool
+pub fn LinkCutTree::cut(Self, Int, Int) -> Bool
+pub fn LinkCutTree::len(Self) -> Int
+pub fn LinkCutTree::link(Self, Int, Int) -> Bool
+pub fn LinkCutTree::new(Array[Int]) -> Self
+pub fn LinkCutTree::path_sum(Self, Int, Int) -> Int?
+pub fn LinkCutTree::set_value(Self, Int, Int) -> Unit
+
+// Type aliases
+
+// Traits
+
