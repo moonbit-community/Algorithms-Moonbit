@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/euler_tour_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+type EdgeRef
+
+pub struct EulerTourTree {
+  nodes : Array[Node]
+  adjacency : Array[Array[EdgeRef]]
+  mut rng_state : Int
+  mut next_id : Int
+}
+pub fn EulerTourTree::component_size(Self, Int) -> Int
+pub fn EulerTourTree::connected(Self, Int, Int) -> Bool
+pub fn EulerTourTree::cut(Self, Int, Int) -> Bool
+pub fn EulerTourTree::len(Self) -> Int
+pub fn EulerTourTree::link(Self, Int, Int) -> Bool
+pub fn EulerTourTree::new(Int) -> Self
+
+type Node
+
+// Type aliases
+
+// Traits
+
