@@ -1,0 +1,25 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/immutable_trie"
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct PersistentTrie[K, V] {
+  root : TrieNode[K, V]
+}
+pub fn[K, V] PersistentTrie::clear(Self[K, V]) -> Self[K, V]
+pub fn[K : Eq, V] PersistentTrie::contains(Self[K, V], Array[K]) -> Bool
+pub fn[K : Eq, V] PersistentTrie::get(Self[K, V], Array[K]) -> V?
+pub fn[K : Eq, V] PersistentTrie::insert(Self[K, V], Array[K], V) -> Self[K, V]
+pub fn[K, V : Eq] PersistentTrie::is_empty(Self[K, V]) -> Bool
+pub fn[K, V] PersistentTrie::new() -> Self[K, V]
+pub impl[K, V] Default for PersistentTrie[K, V]
+
+type TrieNode[K, V]
+
+// Type aliases
+
+// Traits
+
