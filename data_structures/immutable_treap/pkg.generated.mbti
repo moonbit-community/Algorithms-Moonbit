@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/immutable_treap"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Node[K, V]
+
+pub struct PersistentTreap[K, V] {
+  root : Node[K, V]?
+  size : Int
+  rng_state : Int
+}
+pub fn[K, V] PersistentTreap::clear(Self[K, V]) -> Self[K, V]
+pub fn[K : Compare, V] PersistentTreap::contains(Self[K, V], K) -> Bool
+pub fn[K : Compare, V] PersistentTreap::get(Self[K, V], K) -> V?
+pub fn[K : Compare, V] PersistentTreap::insert(Self[K, V], K, V) -> Self[K, V]
+pub fn[K, V] PersistentTreap::is_empty(Self[K, V]) -> Bool
+pub fn[K, V] PersistentTreap::len(Self[K, V]) -> Int
+pub fn[K, V] PersistentTreap::new() -> Self[K, V]
+pub fn[K : Compare, V] PersistentTreap::remove(Self[K, V], K) -> (Self[K, V], Bool)
+pub impl[K, V] Default for PersistentTreap[K, V]
+
+// Type aliases
+
+// Traits
+
