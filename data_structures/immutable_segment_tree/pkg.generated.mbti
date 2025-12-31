@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/data_structures/immutable_segment_tree"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Node[T]
+pub impl[T : Show] Show for Node[T]
+
+pub struct PersistentSegmentTree[T] {
+  size : Int
+  root : Node[T]?
+  merge : (T, T) -> T
+}
+pub fn[T] PersistentSegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
+pub fn[T] PersistentSegmentTree::query(Self[T], Int, Int) -> Result[T?, PersistentSegmentTreeError]
+pub fn[T] PersistentSegmentTree::update(Self[T], Int, T) -> Result[Self[T], PersistentSegmentTreeError]
+pub impl[T : Show] Show for PersistentSegmentTree[T]
+
+pub enum PersistentSegmentTreeError {
+  IndexOutOfBounds
+  InvalidRange
+}
+pub impl Eq for PersistentSegmentTreeError
+pub impl Show for PersistentSegmentTreeError
+
+// Type aliases
+
+// Traits
+
