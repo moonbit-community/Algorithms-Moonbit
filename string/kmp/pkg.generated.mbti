@@ -2,9 +2,9 @@
 package "Lampese/Algorithms-Moonbit/string/kmp"
 
 // Values
-fn kmp(String, String) -> Array[Int]
+pub fn kmp(String, String) -> Array[Int]
 
-fn z_func(String, t? : String) -> Array[Int]
+pub fn z_func(String, t? : String) -> Array[Int]
 
 // Errors
 

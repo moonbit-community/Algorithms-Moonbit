@@ -1,6 +1,10 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "Lampese/Algorithms-Moonbit/data_structures/lazy_segment_tree"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
 
 // Errors
@@ -14,18 +18,16 @@ pub struct LazySegmentTree[T, L] {
   apply : (T, L, Int) -> T
   compose : (L, L) -> L
   identity : L
-}
-fn[T : Default, L] LazySegmentTree::from_array(Array[T], (T, T) -> T, (T, L, Int) -> T, (L, L) -> L, L) -> Self[T, L]
-fn[T, L] LazySegmentTree::range_query(Self[T, L], Int, Int) -> Result[T?, LazySegmentTreeError]
-fn[T, L] LazySegmentTree::range_update(Self[T, L], Int, Int, L) -> Result[Unit, LazySegmentTreeError]
-impl[T : Show, L : Show] Show for LazySegmentTree[T, L]
+} derive(@debug.Debug)
+pub fn[T : Default, L] LazySegmentTree::from_array(Array[T], (T, T) -> T, (T, L, Int) -> T, (L, L) -> L, L) -> Self[T, L]
+pub fn[T, L] LazySegmentTree::range_query(Self[T, L], Int, Int) -> Result[T?, LazySegmentTreeError]
+pub fn[T, L] LazySegmentTree::range_update(Self[T, L], Int, Int, L) -> Result[Unit, LazySegmentTreeError]
 
 pub enum LazySegmentTreeError {
   IndexOutOfBounds
   InvalidRange
-}
-impl Eq for LazySegmentTreeError
-impl Show for LazySegmentTreeError
+} derive(Eq, @debug.Debug)
+pub impl Show for LazySegmentTreeError
 
 // Type aliases
 

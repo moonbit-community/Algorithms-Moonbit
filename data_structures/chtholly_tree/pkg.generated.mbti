@@ -1,6 +1,10 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "Lampese/Algorithms-Moonbit/data_structures/chtholly_tree"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
 
 // Errors
@@ -9,7 +13,7 @@ package "Lampese/Algorithms-Moonbit/data_structures/chtholly_tree"
 pub struct ChthollyTree {
   size : Int
   mut intervals : Array[Interval]
-}
+} derive(@debug.Debug)
 pub fn ChthollyTree::add(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
 pub fn ChthollyTree::assign(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
 pub fn ChthollyTree::from_array(Array[Int]) -> Self
@@ -20,18 +24,13 @@ pub fn ChthollyTree::query_sum(Self, Int, Int) -> Result[Int, ChthollyTreeError]
 pub fn ChthollyTree::size(Self) -> Int
 pub fn ChthollyTree::value_at(Self, Int) -> Result[Int, ChthollyTreeError]
 pub impl Default for ChthollyTree
-pub impl Show for ChthollyTree
 
 pub enum ChthollyTreeError {
   IndexOutOfBounds
   InvalidRange
-}
-pub impl Eq for ChthollyTreeError
-pub impl Show for ChthollyTreeError
+} derive(Eq, @debug.Debug)
 
-type Interval
-pub impl Eq for Interval
-pub impl Show for Interval
+type Interval derive(Eq, @debug.Debug)
 
 // Type aliases
 

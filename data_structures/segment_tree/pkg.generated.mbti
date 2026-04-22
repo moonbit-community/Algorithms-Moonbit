@@ -1,6 +1,10 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "Lampese/Algorithms-Moonbit/data_structures/segment_tree"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
 
 // Errors
@@ -10,18 +14,16 @@ pub struct SegmentTree[T] {
   size : Int
   nodes : Array[T]
   merge : (T, T) -> T
-}
-fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
-fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
-fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
-impl[T : Show] Show for SegmentTree[T]
+} derive(@debug.Debug)
+pub fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
+pub fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
+pub fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
 
 pub enum SegmentTreeError {
   IndexOutOfBounds
   InvalidRange
-}
-impl Eq for SegmentTreeError
-impl Show for SegmentTreeError
+} derive(Eq, @debug.Debug)
+pub impl Show for SegmentTreeError
 
 // Type aliases
 

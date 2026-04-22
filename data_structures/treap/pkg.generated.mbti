@@ -13,15 +13,15 @@ pub struct Treap[K, V] {
   mut size : Int
   mut rng_state : Int
 }
-fn[K, V] Treap::clear(Self[K, V]) -> Unit
-fn[K : Compare, V] Treap::contains(Self[K, V], K) -> Bool
-fn[K : Compare, V] Treap::get(Self[K, V], K) -> V?
-fn[K : Compare, V] Treap::insert(Self[K, V], K, V) -> Unit
-fn[K, V] Treap::is_empty(Self[K, V]) -> Bool
-fn[K, V] Treap::len(Self[K, V]) -> Int
-fn[K, V] Treap::new() -> Self[K, V]
-fn[K : Compare, V] Treap::remove(Self[K, V], K) -> Bool
-impl[K, V] Default for Treap[K, V]
+pub fn[K, V] Treap::clear(Self[K, V]) -> Unit
+pub fn[K : Compare, V] Treap::contains(Self[K, V], K) -> Bool
+pub fn[K : Compare, V] Treap::get(Self[K, V], K) -> V?
+pub fn[K : Compare, V] Treap::insert(Self[K, V], K, V) -> Unit
+pub fn[K, V] Treap::is_empty(Self[K, V]) -> Bool
+pub fn[K, V] Treap::len(Self[K, V]) -> Int
+pub fn[K, V] Treap::new() -> Self[K, V]
+pub fn[K : Compare, V] Treap::remove(Self[K, V], K) -> Bool
+pub impl[K, V] Default for Treap[K, V]
 
 // Type aliases
 

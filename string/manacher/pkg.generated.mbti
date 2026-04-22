@@ -2,7 +2,7 @@
 package "Lampese/Algorithms-Moonbit/string/manacher"
 
 // Values
-fn manacher(String) -> Int
+pub fn manacher(String) -> Int
 
 // Errors
 
