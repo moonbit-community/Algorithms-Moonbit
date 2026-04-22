@@ -31,7 +31,7 @@ fn[T : Compare] merge(a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
     j += 1
     idx += 1
   }
-  for i in l..=r {
+  for i in l..<=r {
     a[i] = b[i]
   }
   res

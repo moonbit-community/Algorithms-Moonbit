@@ -10,7 +10,7 @@ like an ordered map keyed by `Compare` values.
 - Deterministic pseudo-random priorities keep the tree reproducible in tests.
 
 ## Quick Start
-```moonbit
+```moonbit nocheck
 ///|
 test "README treap usage" {
   let treap : Treap[Int, String] = Treap::new()

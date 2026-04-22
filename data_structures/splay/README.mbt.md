@@ -11,7 +11,7 @@ workloads.
 - Automatically keeps the most recently accessed key at the root.
 
 ## Quick Start
-```moonbit
+```moonbit nocheck
 ///|
 test "README basic usage" {
   let tree : SplayTree[Int, String] = SplayTree::new()

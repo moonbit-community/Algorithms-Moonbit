@@ -143,7 +143,6 @@ fn assert_naive_equivalence(
   let automaton = ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let matches = automaton.query(text)
   let expected_start : Array[Int] = []
@@ -188,7 +187,6 @@ test "prefix patterns report all matches" {
   let patterns = ["a", "ab", "abc", "abcd"]
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let matches = automaton.query("abcd")
   assert_match_arrays(matches, [0, 0, 0, 0], [0, 1, 2, 3], [0, 1, 2, 3])
@@ -510,7 +508,6 @@ test "custom alphabet size with naive check" {
   let automaton = ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let matches = automaton.query(text)
   let expected_start : Array[Int] = []
@@ -567,7 +564,6 @@ test "clear and rebuild multiple rounds" {
     automaton.clear()
     for i = 0; i < rounds_patterns[round].length(); i = i + 1 {
       let _ = automaton.add_pattern(rounds_patterns[round][i])
-
     }
     let matches = automaton.query(rounds_texts[round])
     let expected_start : Array[Int] = []
@@ -641,12 +637,10 @@ test "repeated queries with interleaved insertions" {
         }
         if !exists {
           let _ = automaton.add_pattern(patterns[stage][i])
-
         }
       }
     } else {
       let _ = automaton.add_pattern("abra")
-
     }
     let matches = automaton.query(text)
     let expected_start : Array[Int] = []
@@ -699,7 +693,6 @@ test "large dictionary slices" {
       pattern += alphabet[j]
       patterns.push(pattern)
       let _ = automaton.add_pattern(pattern)
-
     }
   }
   for i = 0; i < alphabet.length(); i = i + 1 {
@@ -708,7 +701,6 @@ test "large dictionary slices" {
     pattern += alphabet[i]
     patterns.push(pattern)
     let _ = automaton.add_pattern(pattern)
-
   }
   let text = "abcdeedcbaabcdeedcba"
   let matches = automaton.query(text)
@@ -745,7 +737,6 @@ test "stress test with incremental alphabet expansion" {
   let automaton = ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let matches = automaton.query(text)
   let expected_start : Array[Int] = []
@@ -767,7 +758,6 @@ test "stress test repeated build and query cycles" {
     automaton.clear()
     for i = 0; i < patterns.length(); i = i + 1 {
       let _ = automaton.add_pattern(patterns[i])
-
     }
     automaton.build()
     let matches = automaton.query(text)
@@ -903,7 +893,6 @@ test "stress test with alternating build and clear" {
     automaton.clear()
     for i = 0; i < sequences[round].length(); i = i + 1 {
       let _ = automaton.add_pattern(sequences[round][i])
-
     }
     automaton.build()
     let matches = automaton.query(texts[round])
@@ -930,7 +919,6 @@ test "stress test verifying fail transitions" {
   let automaton = ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   automaton.build()
   let matches = automaton.query(text)
@@ -947,7 +935,6 @@ test "stress test large repeated query" {
   let patterns = ["test", "testing", "tested", "tester"]
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let text = "testing tester tested test"
   for iteration = 0; iteration < 20; iteration = iteration + 1 {
@@ -1025,7 +1012,6 @@ test "stress test verifying no false positives" {
   let automaton = ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
-
   }
   let matches = automaton.query(text)
   assert_eq(matches.length(), 0)
@@ -1040,7 +1026,6 @@ test "stress test with sequential clears" {
   automaton.clear()
   for i = 0; i < patterns_round1.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns_round1[i])
-
   }
   let matches1 = automaton.query("alpha beta gamma")
   let exp_start1 : Array[Int] = []
@@ -1053,7 +1038,6 @@ test "stress test with sequential clears" {
   automaton.clear()
   for i = 0; i < patterns_round2.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns_round2[i])
-
   }
   let matches2 = automaton.query("gamma delta epsilon")
   let exp_start2 : Array[Int] = []

@@ -18,7 +18,7 @@ test "scapegoat tree basic operations" {
 ///|
 test "scapegoat tree stays searchable after ordered inserts" {
   let tree : ScapegoatTree[Int, Int] = ScapegoatTree::new()
-  for i in 1..=15 {
+  for i in 1..<=15 {
     tree.insert(i, i * 10)
   }
   assert_eq(tree.len(), 15)
@@ -30,10 +30,10 @@ test "scapegoat tree stays searchable after ordered inserts" {
 ///|
 test "scapegoat tree rebuilds after removals" {
   let tree : ScapegoatTree[Int, Int] = ScapegoatTree::new()
-  for i in 1..=12 {
+  for i in 1..<=12 {
     tree.insert(i, i)
   }
-  for i in 1..=8 {
+  for i in 1..<=8 {
     assert_eq(tree.remove(i), true)
   }
   assert_eq(tree.len(), 4)
