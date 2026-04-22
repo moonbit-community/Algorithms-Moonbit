@@ -19,7 +19,7 @@ fn[T : Add + Default] prefix1d(data : Array[T]) -> Array[T] {
   if n > 0 {
     ret[1] = data[0]
     for i = 1; i < n; i = i + 1 {
-      ret[i + 1] = T::op_add(ret[i], data[i])
+      ret[i + 1] = ret[i] + data[i]
     }
   }
   ret
