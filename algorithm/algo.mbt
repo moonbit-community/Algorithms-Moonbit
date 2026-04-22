@@ -298,7 +298,7 @@ pub fn quick_pow(base : Int, exp : Int) -> Int64 {
 pub(all) struct Point {
   x : Int
   y : Int
-} derive(Show)
+} derive(Debug)
 
 ///|
 /// Calculate max manhattan distance

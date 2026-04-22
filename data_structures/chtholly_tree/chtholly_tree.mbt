@@ -2,14 +2,14 @@
 pub enum ChthollyTreeError {
   IndexOutOfBounds
   InvalidRange
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 struct Interval {
   l : Int
   mut r : Int
   mut value : Int
-} derive(Show, Eq)
+} derive(Debug, Eq)
 
 ///|
 fn Interval::new(l : Int, r : Int, value : Int) -> Interval {
@@ -20,7 +20,7 @@ fn Interval::new(l : Int, r : Int, value : Int) -> Interval {
 pub struct ChthollyTree {
   size : Int
   mut intervals : Array[Interval]
-} derive(Show)
+} derive(Debug)
 
 ///|
 ///Creates a Chtholly tree with a single interval `[0, length - 1]`.

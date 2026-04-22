@@ -46,10 +46,14 @@ pub fn StringHash::new(
 }
 
 ///|
-priv suberror Uninitialized String derive(Show)
+priv suberror Uninitialized {
+  Uninitialized(String)
+} derive(Debug)
 
 ///|
-priv suberror IndexOutOfBounds String derive(Show)
+priv suberror IndexOutOfBounds {
+  IndexOutOfBounds(String)
+} derive(Debug)
 
 ///|
 /// Get string hash value

@@ -2,13 +2,13 @@
 enum Prefix1d[T] {
   Nil
   Pre(Array[T], Int)
-} derive(Show)
+} derive(Debug)
 
 ///|
 enum Prefix2d[T] {
   Nil
   Pre(Array[Array[T]], Int, Int)
-} derive(Show)
+} derive(Debug)
 
 // make prefix for 1 dimension
 

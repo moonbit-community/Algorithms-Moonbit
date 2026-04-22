@@ -2,7 +2,15 @@
 pub enum LazySegmentTreeError {
   IndexOutOfBounds
   InvalidRange
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for LazySegmentTreeError with output(self, logger) {
+  match self {
+    IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
+    InvalidRange => logger.write_string("InvalidRange")
+  }
+}
 
 ///|
 pub struct LazySegmentTree[T, L] {
@@ -13,7 +21,7 @@ pub struct LazySegmentTree[T, L] {
   apply : (T, L, Int) -> T
   compose : (L, L) -> L
   identity : L
-} derive(Show)
+} derive(Debug)
 
 ///|
 fn[T, L] LazySegmentTree::build(

@@ -2,14 +2,22 @@
 pub enum SegmentTreeError {
   IndexOutOfBounds
   InvalidRange
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for SegmentTreeError with output(self, logger) {
+  match self {
+    IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
+    InvalidRange => logger.write_string("InvalidRange")
+  }
+}
 
 ///|
 pub struct SegmentTree[T] {
   size : Int
   nodes : Array[T]
   merge : (T, T) -> T
-} derive(Show)
+} derive(Debug)
 
 ///|
 ///Creates a new `SegmentTree` from the provided slice of elements.
