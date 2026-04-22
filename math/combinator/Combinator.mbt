@@ -16,7 +16,7 @@ fn qpow(base : Int64, exp : Int64, mod : Int64) -> Int64 {
     }
     a = a * a % mod
     b = b >> 1
-  } else {
+  } nobreak {
     return res
   }
   res

@@ -3,20 +3,33 @@ struct Node[T] {
   value : T
   left : Node[T]?
   right : Node[T]?
-} derive(Show)
+} derive(Debug)
 
 ///|
 pub enum PersistentSegmentTreeError {
   IndexOutOfBounds
   InvalidRange
-} derive(Show, Eq)
+} derive(Debug, Eq)
+
+///|
+pub impl Show for PersistentSegmentTreeError with output(self, logger) {
+  match self {
+    IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
+    InvalidRange => logger.write_string("InvalidRange")
+  }
+}
 
 ///|
 pub struct PersistentSegmentTree[T] {
   size : Int
   root : Node[T]?
   merge : (T, T) -> T
-} derive(Show)
+} derive(Debug)
+
+///|
+pub impl[T] Show for PersistentSegmentTree[T] with output(_self, logger) {
+  logger.write_string("PersistentSegmentTree")
+}
 
 ///|
 fn[T] PersistentSegmentTree::build(
