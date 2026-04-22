@@ -2,7 +2,7 @@
 package "Lampese/Algorithms-Moonbit/inverse_pair"
 
 // Values
-fn[T : Compare] inverse_pair(Array[T]) -> Int
+pub fn[T : Compare] inverse_pair(Array[T]) -> Int
 
 // Errors
 

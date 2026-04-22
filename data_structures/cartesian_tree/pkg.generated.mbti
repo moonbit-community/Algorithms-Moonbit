@@ -13,15 +13,15 @@ pub struct CartesianTree[T] {
   parent : Array[Int?]
   root : Int?
 }
-fn[T : Compare] CartesianTree::from_array(Array[T]) -> Self[T]
-fn[T] CartesianTree::inorder(Self[T]) -> Array[T]
-fn[T] CartesianTree::is_empty(Self[T]) -> Bool
-fn[T] CartesianTree::left_child(Self[T], Int) -> Int?
-fn[T] CartesianTree::len(Self[T]) -> Int
-fn[T] CartesianTree::parent_index(Self[T], Int) -> Int?
-fn[T] CartesianTree::right_child(Self[T], Int) -> Int?
-fn[T] CartesianTree::root_index(Self[T]) -> Int?
-fn[T] CartesianTree::value_at(Self[T], Int) -> T?
+pub fn[T : Compare] CartesianTree::from_array(Array[T]) -> Self[T]
+pub fn[T] CartesianTree::inorder(Self[T]) -> Array[T]
+pub fn[T] CartesianTree::is_empty(Self[T]) -> Bool
+pub fn[T] CartesianTree::left_child(Self[T], Int) -> Int?
+pub fn[T] CartesianTree::len(Self[T]) -> Int
+pub fn[T] CartesianTree::parent_index(Self[T], Int) -> Int?
+pub fn[T] CartesianTree::right_child(Self[T], Int) -> Int?
+pub fn[T] CartesianTree::root_index(Self[T]) -> Int?
+pub fn[T] CartesianTree::value_at(Self[T], Int) -> T?
 
 // Type aliases
 

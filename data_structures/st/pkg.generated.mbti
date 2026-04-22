@@ -2,13 +2,13 @@
 package "Lampese/Algorithms-Moonbit/data_structures/st"
 
 // Values
-fn[T : Default] from(Array[T], (T, T) -> T) -> ST[T]
+pub fn[T : Default] from(Array[T], (T, T) -> T) -> ST[T]
 
 // Errors
 
 // Types and methods
 type ST[T]
-fn[T] ST::query(Self[T], Int, Int) -> T
+pub fn[T] ST::query(Self[T], Int, Int) -> T
 
 // Type aliases
 

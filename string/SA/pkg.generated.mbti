@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Lampese/Algorithms-Moonbit/string/SA"
+
+// Values
+
+// Errors
+
+// Types and methods
+type SANode
+
+pub struct SuffixAutomaton {
+  nodes : Array[SANode]
+  alphabet_size : Int
+  mut last : Int
+}
+pub fn SuffixAutomaton::build(Self, String) -> Unit
+pub fn SuffixAutomaton::clear(Self) -> Unit
+pub fn SuffixAutomaton::contains(Self, String) -> Bool
+pub fn SuffixAutomaton::distinct_substring_count(Self) -> Int
+pub fn SuffixAutomaton::extend(Self, Char) -> Unit
+pub fn SuffixAutomaton::longest_common_substring_length(Self, String) -> Int
+pub fn SuffixAutomaton::new(alphabet_size? : Int) -> Self
+pub impl Default for SuffixAutomaton
+
+// Type aliases
+
+// Traits
+

@@ -9,13 +9,13 @@ package "Lampese/Algorithms-Moonbit/data_structures/stack"
 pub(all) struct Stack[T] {
   stack : Array[T]
 }
-fn[T] Stack::is_empty(Self[T]) -> Bool
-fn[T] Stack::new() -> Self[T]
-fn[T] Stack::peek(Self[T]) -> T?
-fn[T] Stack::pop(Self[T]) -> T?
-fn[T] Stack::push(Self[T], T) -> Unit
-fn[T] Stack::size(Self[T]) -> Int
-fn[T] Stack::to_array(Self[T]) -> Array[T]
+pub fn[T] Stack::is_empty(Self[T]) -> Bool
+pub fn[T] Stack::new() -> Self[T]
+pub fn[T] Stack::peek(Self[T]) -> T?
+pub fn[T] Stack::pop(Self[T]) -> T?
+pub fn[T] Stack::push(Self[T], T) -> Unit
+pub fn[T] Stack::size(Self[T]) -> Int
+pub fn[T] Stack::to_array(Self[T]) -> Array[T]
 
 // Type aliases
 

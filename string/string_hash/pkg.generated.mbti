@@ -15,8 +15,8 @@ pub(all) struct StringHash {
   hash : Array[Int64]
   prework : Prework
 }
-fn StringHash::get_hash(Self, left_idx? : Int, right_idx? : Int) -> Int64 raise
-fn StringHash::new(mod? : Int64, base? : Int64, String) -> Self
+pub fn StringHash::get_hash(Self, left_idx? : Int, right_idx? : Int) -> Int64 raise
+pub fn StringHash::new(mod? : Int64, base? : Int64, String) -> Self
 
 // Type aliases
 
