@@ -313,7 +313,6 @@ fn EulerTourTree::make_root(self : EulerTourTree, v : Int) -> Unit {
   let idx = node_index(node)
   let (left_part, right_part) = split(Some(root), idx)
   let _ = merge_root(right_part, left_part)
-
 }
 
 ///|
