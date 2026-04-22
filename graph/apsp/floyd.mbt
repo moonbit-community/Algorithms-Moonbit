@@ -31,7 +31,7 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
       }
     })
   })
-  map[0][0] = @int.max_value
+  map[0][0] = @int.MAX_VALUE
   for e in edge {
     let (u, v, d) = e
     map[u][v] = @cmp.minimum(map[u][v], d)
