@@ -317,10 +317,10 @@ pub(all) struct Point {
 ///     inspect(max_manhattan_distance(arr), content="2")
 /// ```
 pub fn max_manhattan_distance(points : Array[Point]) -> Int {
-  let mut a = @int.min_value
-  let mut b = @int.max_value
-  let mut c = @int.min_value
-  let mut d = @int.max_value
+  let mut a = @int.MIN_VALUE
+  let mut b = @int.MAX_VALUE
+  let mut c = @int.MIN_VALUE
+  let mut d = @int.MAX_VALUE
   for i = 0; i < points.length(); i = i + 1 {
     let x = points[i].x
     let y = points[i].y
