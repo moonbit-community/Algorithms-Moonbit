@@ -3,7 +3,7 @@ fn per_work(s : String) -> String {
   let mut res = "<"
   for i = 0; i < s.length(); i = i + 1 {
     res += "#"
-    res += s.code_unit_at(i).to_char().to_string()
+    res += s.code_unit_at(i).to_char().unwrap().to_string()
   }
   res += "#>"
   res
