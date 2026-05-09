@@ -18,12 +18,12 @@ test "lazy_segment_tree_range_add_sum" {
     compose_sum,
     0,
   )
-  inspect(seg.range_query(0, 5).unwrap(), content="Some(21)")
-  inspect(seg.range_update(1, 3, 2).unwrap(), content="()")
-  inspect(seg.range_query(0, 2).unwrap(), content="Some(10)")
-  inspect(seg.range_query(3, 5).unwrap(), content="Some(17)")
-  inspect(seg.range_update(0, 5, -1).unwrap(), content="()")
-  inspect(seg.range_query(0, 5).unwrap(), content="Some(21)")
+  debug_inspect(seg.range_query(0, 5).unwrap(), content="Some(21)")
+  debug_inspect(seg.range_update(1, 3, 2).unwrap(), content="()")
+  debug_inspect(seg.range_query(0, 2).unwrap(), content="Some(10)")
+  debug_inspect(seg.range_query(3, 5).unwrap(), content="Some(17)")
+  debug_inspect(seg.range_update(0, 5, -1).unwrap(), content="()")
+  debug_inspect(seg.range_query(0, 5).unwrap(), content="Some(21)")
 }
 
 ///|
@@ -36,9 +36,9 @@ test "lazy_segment_tree_invalid_operations" {
     compose_sum,
     0,
   )
-  inspect(seg.range_query(-1, 2), content="Err(IndexOutOfBounds)")
-  inspect(seg.range_query(0, 5), content="Err(IndexOutOfBounds)")
-  inspect(seg.range_update(2, 1, 3), content="Err(InvalidRange)")
-  inspect(seg.range_update(0, 4, 1), content="Err(IndexOutOfBounds)")
-  inspect(seg.range_query(2, 1).unwrap(), content="None")
+  debug_inspect(seg.range_query(-1, 2), content="Err(IndexOutOfBounds)")
+  debug_inspect(seg.range_query(0, 5), content="Err(IndexOutOfBounds)")
+  debug_inspect(seg.range_update(2, 1, 3), content="Err(InvalidRange)")
+  debug_inspect(seg.range_update(0, 4, 1), content="Err(IndexOutOfBounds)")
+  debug_inspect(seg.range_query(2, 1).unwrap(), content="None")
 }
