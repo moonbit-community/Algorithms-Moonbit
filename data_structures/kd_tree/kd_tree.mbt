@@ -151,8 +151,8 @@ fn build(points : Array[Array[Double]], depth : Int, dimension : Int) -> Node? {
   let sorted = sort_by_axis(points, axis)
   let median = sorted.length() / 2
   let point = sorted[median]
-  let left = build(sorted[:median].to_array(), depth + 1, dimension)
-  let right = build(sorted[median + 1:].to_array(), depth + 1, dimension)
+  let left = build(sorted[:median].to_owned(), depth + 1, dimension)
+  let right = build(sorted[median + 1:].to_owned(), depth + 1, dimension)
   Some(Node::{ point, axis, left, right })
 }
 
@@ -165,8 +165,8 @@ fn sort_by_axis(
     return points
   }
   let mid = points.length() / 2
-  let left = sort_by_axis(points[:mid].to_array(), axis)
-  let right = sort_by_axis(points[mid:].to_array(), axis)
+  let left = sort_by_axis(points[:mid].to_owned(), axis)
+  let right = sort_by_axis(points[mid:].to_owned(), axis)
   merge_by_axis(left, right, axis)
 }
 
