@@ -1,7 +1,7 @@
 ///|
 test "foreach" {
   let list : List[Int] = Cons(1, Cons(2, Cons(3, Nil)))
-  inspect(
+  debug_inspect(
     for current = list, arr = [] {
       match current {
         Nil => break arr
