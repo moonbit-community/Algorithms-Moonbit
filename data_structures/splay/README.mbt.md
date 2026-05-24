@@ -11,13 +11,13 @@ workloads.
 - Automatically keeps the most recently accessed key at the root.
 
 ## Quick Start
-```moonbit nocheck
+```mbt check
 ///|
 test "README basic usage" {
   let tree : SplayTree[Int, String] = SplayTree::new()
   tree.insert(42, "answer")
   tree.insert(7, "lucky")
-  assert_eq(tree.get(7), Some("lucky"))
+  @debug.assert_eq(tree.get(7), Some("lucky"))
   tree.insert(15, "middle")
   assert_eq(tree.remove(42), true)
   assert_eq(tree.contains(42), false)
