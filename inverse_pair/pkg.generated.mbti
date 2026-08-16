@@ -11,4 +11,3 @@ pub fn[T : Compare] inverse_pair(Array[T]) -> Int
 // Type aliases
 
 // Traits
-

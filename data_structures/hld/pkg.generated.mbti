@@ -22,4 +22,3 @@ pub fn HeavyLightDecomposition::subtree_range(Self, Int) -> (Int, Int)
 // Type aliases
 
 // Traits
-

@@ -155,6 +155,6 @@ pub fn[K, V : Eq] PersistentTrie::is_empty(self : PersistentTrie[K, V]) -> Bool 
 }
 
 ///|
-pub impl[K, V] Default for PersistentTrie[K, V] with default() {
+pub impl[K, V] Default for PersistentTrie[K, V] with fn default() {
   PersistentTrie::new()
 }

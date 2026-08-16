@@ -218,6 +218,6 @@ pub fn[K : Compare, V] Treap::remove(self : Treap[K, V], key : K) -> Bool {
 }
 
 ///|
-pub impl[K, V] Default for Treap[K, V] with default() {
+pub impl[K, V] Default for Treap[K, V] with fn default() {
   Treap::new()
 }

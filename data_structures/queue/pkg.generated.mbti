@@ -16,6 +16,7 @@ pub struct Queue[T] {
 }
 pub fn[T] Queue::back(Self[T]) -> @ref.Ref[T]?
 pub fn[T] Queue::clear(Self[T]) -> Unit
+pub fn[T : Default] Queue::default() -> Self[T]
 pub fn[T] Queue::front(Self[T]) -> @ref.Ref[T]?
 pub fn[T] Queue::is_empty(Self[T]) -> Bool
 pub fn[T] Queue::len(Self[T]) -> Int
@@ -27,4 +28,3 @@ pub impl[T : Default] Default for Queue[T]
 // Type aliases
 
 // Traits
-

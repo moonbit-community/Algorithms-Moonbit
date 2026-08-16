@@ -11,6 +11,7 @@ import {
 
 // Types and methods
 type Node[T] derive(@debug.Debug)
+pub fn[T : @debug.Debug] Node::to_repr(Self[T]) -> @debug.Repr
 
 pub struct PersistentSegmentTree[T] {
   size : Int
@@ -18,7 +19,10 @@ pub struct PersistentSegmentTree[T] {
   merge : (T, T) -> T
 } derive(@debug.Debug)
 pub fn[T] PersistentSegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
+pub fn[T] PersistentSegmentTree::output(Self[T], &Logger) -> Unit
 pub fn[T] PersistentSegmentTree::query(Self[T], Int, Int) -> Result[T?, PersistentSegmentTreeError]
+pub fn[T : @debug.Debug] PersistentSegmentTree::to_repr(Self[T]) -> @debug.Repr
+pub fn[T] PersistentSegmentTree::to_string(Self[T]) -> String
 pub fn[T] PersistentSegmentTree::update(Self[T], Int, T) -> Result[Self[T], PersistentSegmentTreeError]
 pub impl[T] Show for PersistentSegmentTree[T]
 
@@ -26,9 +30,13 @@ pub enum PersistentSegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 } derive(Eq, @debug.Debug)
+pub fn PersistentSegmentTreeError::equal(Self, Self) -> Bool
+pub fn PersistentSegmentTreeError::not_equal(Self, Self) -> Bool
+pub fn PersistentSegmentTreeError::output(Self, &Logger) -> Unit
+pub fn PersistentSegmentTreeError::to_repr(Self) -> @debug.Repr
+pub fn PersistentSegmentTreeError::to_string(Self) -> String
 pub impl Show for PersistentSegmentTreeError
 
 // Type aliases
 
 // Traits
-

@@ -40,7 +40,8 @@ pub fn SuffixAutomaton::clear(self : SuffixAutomaton) -> Unit {
 
 ///|
 /// Extend the automaton with a single character.
-pub fn SuffixAutomaton::extend(self : SuffixAutomaton, ch : Char) -> Unit {
+#alias(extend, deprecated)
+pub fn SuffixAutomaton::add_char(self : SuffixAutomaton, ch : Char) -> Unit {
   let c = ch.to_int()
   let cur_index = self.nodes.length()
   let cur_node = SANode::new(self.alphabet_size)
@@ -78,7 +79,7 @@ pub fn SuffixAutomaton::extend(self : SuffixAutomaton, ch : Char) -> Unit {
 pub fn SuffixAutomaton::build(self : SuffixAutomaton, s : String) -> Unit {
   self.clear()
   for i = 0; i < s.length(); i = i + 1 {
-    self.extend(s.code_unit_at(i).to_char().unwrap())
+    self.add_char(s.code_unit_at(i).to_char().unwrap())
   }
 }
 
@@ -146,6 +147,6 @@ pub fn SuffixAutomaton::longest_common_substring_length(
 }
 
 ///|
-pub impl Default for SuffixAutomaton with default() {
+pub impl Default for SuffixAutomaton with fn default() {
   SuffixAutomaton::new()
 }

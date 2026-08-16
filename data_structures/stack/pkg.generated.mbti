@@ -20,4 +20,3 @@ pub fn[T] Stack::to_array(Self[T]) -> Array[T]
 // Type aliases
 
 // Traits
-

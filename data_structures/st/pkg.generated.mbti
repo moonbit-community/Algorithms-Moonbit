@@ -13,4 +13,3 @@ pub fn[T] ST::query(Self[T], Int, Int) -> T
 // Type aliases
 
 // Traits
-

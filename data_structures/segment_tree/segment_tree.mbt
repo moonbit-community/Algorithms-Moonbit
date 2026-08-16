@@ -5,7 +5,7 @@ pub enum SegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for SegmentTreeError with output(self, logger) {
+pub impl Show for SegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")

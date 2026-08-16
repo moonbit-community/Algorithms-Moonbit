@@ -26,4 +26,3 @@ pub fn[T] CartesianTree::value_at(Self[T], Int) -> T?
 // Type aliases
 
 // Traits
-

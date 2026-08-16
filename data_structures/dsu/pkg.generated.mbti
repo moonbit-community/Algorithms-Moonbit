@@ -16,4 +16,3 @@ pub fn DSU::size(Self, Int) -> Int
 // Type aliases
 
 // Traits
-

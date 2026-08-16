@@ -15,6 +15,7 @@ pub struct Treap[K, V] {
 }
 pub fn[K, V] Treap::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] Treap::contains(Self[K, V], K) -> Bool
+pub fn[K, V] Treap::default() -> Self[K, V]
 pub fn[K : Compare, V] Treap::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] Treap::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] Treap::is_empty(Self[K, V]) -> Bool
@@ -26,4 +27,3 @@ pub impl[K, V] Default for Treap[K, V]
 // Type aliases
 
 // Traits
-

@@ -17,15 +17,20 @@ pub struct SegmentTree[T] {
 } derive(@debug.Debug)
 pub fn[T : Default] SegmentTree::from_array(Array[T], (T, T) -> T) -> Self[T]
 pub fn[T] SegmentTree::query(Self[T], Int, Int) -> Result[T?, SegmentTreeError]
+pub fn[T : @debug.Debug] SegmentTree::to_repr(Self[T]) -> @debug.Repr
 pub fn[T : Eq] SegmentTree::update(Self[T], Int, T) -> Result[Unit, SegmentTreeError]
 
 pub enum SegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 } derive(Eq, @debug.Debug)
+pub fn SegmentTreeError::equal(Self, Self) -> Bool
+pub fn SegmentTreeError::not_equal(Self, Self) -> Bool
+pub fn SegmentTreeError::output(Self, &Logger) -> Unit
+pub fn SegmentTreeError::to_repr(Self) -> @debug.Repr
+pub fn SegmentTreeError::to_string(Self) -> String
 pub impl Show for SegmentTreeError
 
 // Type aliases
 
 // Traits
-

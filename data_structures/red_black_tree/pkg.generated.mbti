@@ -7,8 +7,12 @@ package "Lampese/Algorithms-Moonbit/data_structures/red_black_tree"
 
 // Types and methods
 type Color derive(Eq)
+pub fn Color::equal(Self, Self) -> Bool
+pub fn Color::not_equal(Self, Self) -> Bool
 
 type Node[K, V] derive(Eq)
+pub fn[K : Eq, V : Eq] Node::equal(Self[K, V], Self[K, V]) -> Bool
+pub fn[K : Eq, V : Eq] Node::not_equal(Self[K, V], Self[K, V]) -> Bool
 
 pub struct RedBlackTree[K, V] {
   mut root : Node[K, V]?
@@ -16,6 +20,7 @@ pub struct RedBlackTree[K, V] {
 }
 pub fn[K, V] RedBlackTree::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] RedBlackTree::contains(Self[K, V], K) -> Bool
+pub fn[K, V] RedBlackTree::default() -> Self[K, V]
 pub fn[K : Compare, V] RedBlackTree::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] RedBlackTree::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] RedBlackTree::is_empty(Self[K, V]) -> Bool
@@ -27,4 +32,3 @@ pub impl[K, V] Default for RedBlackTree[K, V]
 // Type aliases
 
 // Traits
-

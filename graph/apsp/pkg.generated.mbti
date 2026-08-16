@@ -13,4 +13,3 @@ pub fn Floyd::query(Self, Int, Int) -> Int
 // Type aliases
 
 // Traits
-

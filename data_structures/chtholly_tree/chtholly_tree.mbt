@@ -270,6 +270,6 @@ fn ChthollyTree::split(self : ChthollyTree, pos : Int) -> Int {
 }
 
 ///|
-pub impl Default for ChthollyTree with default() {
+pub impl Default for ChthollyTree with fn default() {
   ChthollyTree::new(0, 0)
 }

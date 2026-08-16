@@ -22,14 +22,19 @@ pub struct LazySegmentTree[T, L] {
 pub fn[T : Default, L] LazySegmentTree::from_array(Array[T], (T, T) -> T, (T, L, Int) -> T, (L, L) -> L, L) -> Self[T, L]
 pub fn[T, L] LazySegmentTree::range_query(Self[T, L], Int, Int) -> Result[T?, LazySegmentTreeError]
 pub fn[T, L] LazySegmentTree::range_update(Self[T, L], Int, Int, L) -> Result[Unit, LazySegmentTreeError]
+pub fn[T : @debug.Debug, L : @debug.Debug] LazySegmentTree::to_repr(Self[T, L]) -> @debug.Repr
 
 pub enum LazySegmentTreeError {
   IndexOutOfBounds
   InvalidRange
 } derive(Eq, @debug.Debug)
+pub fn LazySegmentTreeError::equal(Self, Self) -> Bool
+pub fn LazySegmentTreeError::not_equal(Self, Self) -> Bool
+pub fn LazySegmentTreeError::output(Self, &Logger) -> Unit
+pub fn LazySegmentTreeError::to_repr(Self) -> @debug.Repr
+pub fn LazySegmentTreeError::to_string(Self) -> String
 pub impl Show for LazySegmentTreeError
 
 // Type aliases
 
 // Traits
-

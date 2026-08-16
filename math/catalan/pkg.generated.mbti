@@ -15,4 +15,3 @@ pub fn Catalan::values(Self) -> Array[Int64]
 // Type aliases
 
 // Traits
-

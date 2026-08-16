@@ -14,6 +14,7 @@ pub struct SplayTree[K, V] {
 }
 pub fn[K, V] SplayTree::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] SplayTree::contains(Self[K, V], K) -> Bool
+pub fn[K, V] SplayTree::default() -> Self[K, V]
 pub fn[K : Compare, V] SplayTree::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] SplayTree::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] SplayTree::is_empty(Self[K, V]) -> Bool
@@ -25,4 +26,3 @@ pub impl[K, V] Default for SplayTree[K, V]
 // Type aliases
 
 // Traits
-

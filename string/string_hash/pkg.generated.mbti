@@ -21,4 +21,3 @@ pub fn StringHash::new(mod? : Int64, base? : Int64, String) -> Self
 // Type aliases
 
 // Traits
-
