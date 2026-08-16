@@ -13,12 +13,13 @@ import {
 type Prefix1d[T] derive(@debug.Debug)
 pub fn[T : Add + Default] Prefix1d::from(Array[T]) -> Self[T]
 pub fn[T : Sub] Prefix1d::sum(Self[T], Int, Int) -> T
+pub fn[T : @debug.Debug] Prefix1d::to_repr(Self[T]) -> @debug.Repr
 
 type Prefix2d[T] derive(@debug.Debug)
 pub fn[T : Add + Sub + Default] Prefix2d::from(Array[Array[T]]) -> Self[T]
 pub fn[T : Add + Sub] Prefix2d::sum(Self[T], Int, Int, Int, Int) -> T
+pub fn[T : @debug.Debug] Prefix2d::to_repr(Self[T]) -> @debug.Repr
 
 // Type aliases
 
 // Traits
-

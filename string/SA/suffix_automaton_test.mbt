@@ -24,7 +24,7 @@ test "incremental extension matches build" {
   let sam_extend = SuffixAutomaton::new()
   let text = "banana"
   for i = 0; i < text.length(); i = i + 1 {
-    sam_extend.extend(text.code_unit_at(i).to_char().unwrap())
+    sam_extend.add_char(text.code_unit_at(i).to_char().unwrap())
   }
   assert_eq(true, sam_extend.contains("nan"))
   assert_eq(true, sam_extend.contains("banana"))

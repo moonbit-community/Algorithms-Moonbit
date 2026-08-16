@@ -11,6 +11,7 @@ pub struct Trie[K, V] {
 }
 pub fn[K, V] Trie::clear(Self[K, V]) -> Unit
 pub fn[K : Eq, V] Trie::contains(Self[K, V], Array[K]) -> Bool
+pub fn[K, V] Trie::default() -> Self[K, V]
 pub fn[K : Eq, V] Trie::get(Self[K, V], Array[K]) -> V?
 pub fn[K : Eq, V] Trie::insert(Self[K, V], Array[K], V) -> Unit
 pub fn[K, V : Eq] Trie::is_empty(Self[K, V]) -> Bool
@@ -22,4 +23,3 @@ type TrieNode[K, V]
 // Type aliases
 
 // Traits
-

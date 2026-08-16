@@ -14,4 +14,3 @@ pub fn Comb::new(Int, Int64) -> Self
 // Type aliases
 
 // Traits
-

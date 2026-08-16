@@ -12,7 +12,7 @@ A mutable automaton storing states built from a source string. It can be extende
 ### SuffixAutomaton::new
 Creates an empty automaton. Accepts an optional alphabet size (default `512`, suitable for ASCII inputs).
 
-### SuffixAutomaton::extend
+### SuffixAutomaton::add_char
 Extends the automaton with a single character while maintaining suffix links and transitions.
 
 ### SuffixAutomaton::build

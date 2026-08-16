@@ -294,6 +294,6 @@ pub fn[K : Compare, V] ScapegoatTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for ScapegoatTree[K, V] with default() {
+pub impl[K, V] Default for ScapegoatTree[K, V] with fn default() {
   ScapegoatTree::new()
 }

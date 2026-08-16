@@ -5,7 +5,7 @@ pub enum LazySegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for LazySegmentTreeError with output(self, logger) {
+pub impl Show for LazySegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")

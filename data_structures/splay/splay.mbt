@@ -225,6 +225,6 @@ pub fn[K : Compare, V] SplayTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for SplayTree[K, V] with default() {
+pub impl[K, V] Default for SplayTree[K, V] with fn default() {
   SplayTree::new()
 }

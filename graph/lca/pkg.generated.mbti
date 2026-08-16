@@ -14,4 +14,3 @@ pub fn LCA::lca(Self, Int, Int) -> Int
 // Type aliases
 
 // Traits
-

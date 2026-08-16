@@ -15,7 +15,7 @@ enum Prefix2d[T] {
 ///|
 fn[T : Add + Default] prefix1d(data : Array[T]) -> Array[T] {
   let n = data.length()
-  let ret : Array[T] = Array::make(n + 1, T::default())
+  let ret : Array[T] = Array::make(n + 1, Default::default())
   if n > 0 {
     ret[1] = data[0]
     for i = 1; i < n; i = i + 1 {
@@ -35,7 +35,7 @@ fn[T : Add + Sub + Default] prefix2d(data : Array[Array[T]]) -> Array[Array[T]] 
   }
   let m = data[0].length()
   let ret : Array[Array[T]] = Array::makei(n + 1, fn(_row : Int) {
-    Array::make(m + 1, T::default())
+    Array::make(m + 1, Default::default())
   })
   for i = 1; i <= n; i = i + 1 {
     for j = 1; j <= m; j = j + 1 {

@@ -383,6 +383,6 @@ pub fn[K : Compare, V : Eq] RedBlackTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for RedBlackTree[K, V] with default() {
+pub impl[K, V] Default for RedBlackTree[K, V] with fn default() {
   RedBlackTree::new()
 }

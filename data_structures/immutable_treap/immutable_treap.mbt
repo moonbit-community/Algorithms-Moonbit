@@ -270,6 +270,6 @@ pub fn[K : Compare, V] PersistentTreap::remove(
 }
 
 ///|
-pub impl[K, V] Default for PersistentTreap[K, V] with default() {
+pub impl[K, V] Default for PersistentTreap[K, V] with fn default() {
   PersistentTreap::new()
 }

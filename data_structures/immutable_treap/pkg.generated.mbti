@@ -15,6 +15,7 @@ pub struct PersistentTreap[K, V] {
 }
 pub fn[K, V] PersistentTreap::clear(Self[K, V]) -> Self[K, V]
 pub fn[K : Compare, V] PersistentTreap::contains(Self[K, V], K) -> Bool
+pub fn[K, V] PersistentTreap::default() -> Self[K, V]
 pub fn[K : Compare, V] PersistentTreap::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] PersistentTreap::insert(Self[K, V], K, V) -> Self[K, V]
 pub fn[K, V] PersistentTreap::is_empty(Self[K, V]) -> Bool
@@ -26,4 +27,3 @@ pub impl[K, V] Default for PersistentTreap[K, V]
 // Type aliases
 
 // Traits
-

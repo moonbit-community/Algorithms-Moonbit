@@ -11,4 +11,3 @@ pub fn manacher(String) -> Int
 // Type aliases
 
 // Traits
-

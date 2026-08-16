@@ -12,7 +12,7 @@ pub enum PersistentSegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for PersistentSegmentTreeError with output(self, logger) {
+pub impl Show for PersistentSegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")
@@ -27,7 +27,7 @@ pub struct PersistentSegmentTree[T] {
 } derive(Debug)
 
 ///|
-pub impl[T] Show for PersistentSegmentTree[T] with output(_self, logger) {
+pub impl[T] Show for PersistentSegmentTree[T] with fn output(_self, logger) {
   logger.write_string("PersistentSegmentTree")
 }
 

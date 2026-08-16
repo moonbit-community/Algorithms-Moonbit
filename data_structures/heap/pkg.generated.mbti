@@ -22,4 +22,3 @@ pub fn[T] Heap::pop(Self[T]) -> T?
 // Type aliases
 
 // Traits
-

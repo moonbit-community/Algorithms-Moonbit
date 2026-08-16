@@ -15,6 +15,7 @@ pub struct ScapegoatTree[K, V] {
 }
 pub fn[K, V] ScapegoatTree::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] ScapegoatTree::contains(Self[K, V], K) -> Bool
+pub fn[K, V] ScapegoatTree::default() -> Self[K, V]
 pub fn[K : Compare, V] ScapegoatTree::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] ScapegoatTree::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] ScapegoatTree::is_empty(Self[K, V]) -> Bool
@@ -26,4 +27,3 @@ pub impl[K, V] Default for ScapegoatTree[K, V]
 // Type aliases
 
 // Traits
-

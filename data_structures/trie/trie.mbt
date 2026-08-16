@@ -136,6 +136,6 @@ pub fn[K, V : Eq] Trie::is_empty(self : Trie[K, V]) -> Bool {
 }
 
 ///|
-pub impl[K, V] Default for Trie[K, V] with default() {
+pub impl[K, V] Default for Trie[K, V] with fn default() {
   Trie::new()
 }

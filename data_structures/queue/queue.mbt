@@ -74,6 +74,6 @@ pub fn[T] Queue::clear(self : Queue[T]) -> Unit {
 // Implementing the Default trait for Queue
 
 ///|
-pub impl[T : Default] Default for Queue[T] with default() {
+pub impl[T : Default] Default for Queue[T] with fn default() {
   Queue::new()
 }

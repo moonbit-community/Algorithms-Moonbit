@@ -43,8 +43,8 @@ pub(all) struct Point {
   x : Int
   y : Int
 } derive(@debug.Debug)
+pub fn Point::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
 // Traits
-
