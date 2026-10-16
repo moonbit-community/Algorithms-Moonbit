@@ -1,0 +1,7 @@
+import {
+  "Pzl-love/shell_sort/lib",
+}
+
+options(
+  "is-main": true,
+)
