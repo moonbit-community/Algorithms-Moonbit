@@ -4,20 +4,20 @@
 ///flattened array order.
 ///
 struct HeavyLightDecomposition {
-  adj_head : Array[Int]
-  adj_to : Array[Int]
-  adj_next : Array[Int]
-  mut edge_idx : Int
-  parent : Array[Int]
-  depth : Array[Int]
-  heavy : Array[Int]
-  chain_head : Array[Int]
-  pos : Array[Int]
-  order : Array[Int]
-  size : Array[Int]
-  mut current_pos : Int
-  n : Int
-  root : Int
+  adj_head : Array[Int32]
+  adj_to : Array[Int32]
+  adj_next : Array[Int32]
+  mut edge_idx : Int32
+  parent : Array[Int32]
+  depth : Array[Int32]
+  heavy : Array[Int32]
+  chain_head : Array[Int32]
+  pos : Array[Int32]
+  order : Array[Int32]
+  size : Array[Int32]
+  mut current_pos : Int32
+  n : Int32
+  root : Int32
 }
 
 ///|
@@ -36,9 +36,9 @@ struct HeavyLightDecomposition {
 ///```
 ///
 pub fn HeavyLightDecomposition::new(
-  n : Int,
-  edges : Array[(Int, Int)],
-  root? : Int = 0,
+  n : Int32,
+  edges : Array[(Int32, Int32)],
+  root~ : Int32 = 0,
 ) -> HeavyLightDecomposition {
   if n <= 0 {
     abort("Tree must contain at least one node")
@@ -80,14 +80,16 @@ pub fn HeavyLightDecomposition::new(
 ///|
 ///Returns the number of nodes in the tree.
 ///
-pub fn HeavyLightDecomposition::len(self : HeavyLightDecomposition) -> Int {
+pub fn HeavyLightDecomposition::len(self : HeavyLightDecomposition) -> Int32 {
   self.n
 }
 
 ///|
 ///Returns the root node used for the decomposition.
 ///
-pub fn HeavyLightDecomposition::get_root(self : HeavyLightDecomposition) -> Int {
+pub fn HeavyLightDecomposition::get_root(
+  self : HeavyLightDecomposition,
+) -> Int32 {
   self.root
 }
 
@@ -96,8 +98,8 @@ pub fn HeavyLightDecomposition::get_root(self : HeavyLightDecomposition) -> Int 
 ///
 pub fn HeavyLightDecomposition::get_parent(
   self : HeavyLightDecomposition,
-  node : Int,
-) -> Int {
+  node : Int32,
+) -> Int32 {
   self.parent[node]
 }
 
@@ -106,8 +108,8 @@ pub fn HeavyLightDecomposition::get_parent(
 ///
 pub fn HeavyLightDecomposition::get_depth(
   self : HeavyLightDecomposition,
-  node : Int,
-) -> Int {
+  node : Int32,
+) -> Int32 {
   self.depth[node]
 }
 
@@ -116,8 +118,8 @@ pub fn HeavyLightDecomposition::get_depth(
 ///
 pub fn HeavyLightDecomposition::position(
   self : HeavyLightDecomposition,
-  node : Int,
-) -> Int {
+  node : Int32,
+) -> Int32 {
   self.pos[node]
 }
 
@@ -126,8 +128,8 @@ pub fn HeavyLightDecomposition::position(
 ///
 pub fn HeavyLightDecomposition::node_at(
   self : HeavyLightDecomposition,
-  position : Int,
-) -> Int {
+  position : Int32,
+) -> Int32 {
   self.order[position]
 }
 
@@ -136,8 +138,8 @@ pub fn HeavyLightDecomposition::node_at(
 ///
 pub fn HeavyLightDecomposition::subtree_range(
   self : HeavyLightDecomposition,
-  node : Int,
-) -> (Int, Int) {
+  node : Int32,
+) -> (Int32, Int32) {
   let left = self.pos[node]
   let right = left + self.size[node] - 1
   (left, right)
@@ -148,9 +150,9 @@ pub fn HeavyLightDecomposition::subtree_range(
 ///
 pub fn HeavyLightDecomposition::lca(
   self : HeavyLightDecomposition,
-  u : Int,
-  v : Int,
-) -> Int {
+  u : Int32,
+  v : Int32,
+) -> Int32 {
   let mut u = u
   let mut v = v
   while self.chain_head[u] != self.chain_head[v] {
@@ -182,12 +184,12 @@ pub fn HeavyLightDecomposition::lca(
 ///
 pub fn HeavyLightDecomposition::path_segments(
   self : HeavyLightDecomposition,
-  u : Int,
-  v : Int,
-) -> Array[(Int, Int)] {
+  u : Int32,
+  v : Int32,
+) -> Array[(Int32, Int32)] {
   let mut u = u
   let mut v = v
-  let segments : Array[(Int, Int)] = []
+  let segments : Array[(Int32, Int32)] = []
   while self.chain_head[u] != self.chain_head[v] {
     if self.depth[self.chain_head[u]] < self.depth[self.chain_head[v]] {
       let tmp = u
@@ -237,8 +239,8 @@ pub fn[T] HeavyLightDecomposition::reorder(
 ///|
 fn HeavyLightDecomposition::add_edge(
   self : HeavyLightDecomposition,
-  u : Int,
-  v : Int,
+  u : Int32,
+  v : Int32,
 ) -> Unit {
   let idx = self.edge_idx
   self.adj_to[idx] = v
@@ -250,9 +252,9 @@ fn HeavyLightDecomposition::add_edge(
 ///|
 fn HeavyLightDecomposition::dfs_size(
   self : HeavyLightDecomposition,
-  node : Int,
-  parent : Int,
-) -> Int {
+  node : Int32,
+  parent : Int32,
+) -> Int32 {
   self.parent[node] = parent
   self.size[node] = 1
   self.heavy[node] = -1
@@ -276,8 +278,8 @@ fn HeavyLightDecomposition::dfs_size(
 ///|
 fn HeavyLightDecomposition::dfs_decompose(
   self : HeavyLightDecomposition,
-  node : Int,
-  head : Int,
+  node : Int32,
+  head : Int32,
 ) -> Unit {
   self.chain_head[node] = head
   let position = self.current_pos

@@ -1,5 +1,10 @@
 ///|
-fn[T : Compare] merge(a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
+fn[T : Compare] merge(
+  a : Array[T],
+  b : Array[T],
+  l : Int32,
+  r : Int32,
+) -> Int32 {
   if l >= r {
     return 0
   }
@@ -55,6 +60,6 @@ fn[T : Compare] merge(a : Array[T], b : Array[T], l : Int, r : Int) -> Int {
 ///   let arr2 = [5, 4, 3, 2, 1]
 ///   inspect(inverse_pair(arr2), content="10")
 /// ```
-pub fn[T : Compare] inverse_pair(arr : Array[T]) -> Int {
+pub fn[T : Compare] inverse_pair(arr : Array[T]) -> Int32 {
   merge(arr, Array::make(arr.length(), arr[0]), 0, arr.length() - 1)
 }

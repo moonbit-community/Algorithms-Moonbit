@@ -9,14 +9,14 @@ struct TrieNode[K, V] {
 
 ///|
 fn[K, V] TrieNode::new() -> TrieNode[K, V] {
-  TrieNode::{ keys: Array::new(), children: Array::new(), value: None }
+  TrieNode::{ keys: Array(), children: Array(), value: None, }
 }
 
 ///|
 fn[K : Eq, V] TrieNode::find_child_index(
   self : TrieNode[K, V],
   key : K,
-) -> Int? {
+) -> Int32? {
   for idx in 0..<self.keys.length() {
     if self.keys[idx] == key {
       return Some(idx)
@@ -29,7 +29,7 @@ fn[K : Eq, V] TrieNode::find_child_index(
 fn[K : Eq, V] TrieNode::insert_at(
   self : TrieNode[K, V],
   key : Array[K],
-  depth : Int,
+  depth : Int32,
   value : V,
 ) -> Unit {
   if depth == key.length() {
@@ -54,7 +54,7 @@ fn[K : Eq, V] TrieNode::insert_at(
 fn[K : Eq, V] TrieNode::get_at(
   self : TrieNode[K, V],
   key : Array[K],
-  depth : Int,
+  depth : Int32,
 ) -> V? {
   if depth == key.length() {
     return match self.value {
@@ -91,7 +91,7 @@ pub struct Trie[K, V] {
 
 ///|
 pub fn[K, V] Trie::new() -> Trie[K, V] {
-  Trie::{ root: TrieNode::new() }
+  Trie::{ root: TrieNode::new(), }
 }
 
 ///|
@@ -136,6 +136,6 @@ pub fn[K, V : Eq] Trie::is_empty(self : Trie[K, V]) -> Bool {
 }
 
 ///|
-pub impl[K, V] Default for Trie[K, V] with default() {
+pub impl[K, V] Default for Trie[K, V] with fn default() {
   Trie::new()
 }

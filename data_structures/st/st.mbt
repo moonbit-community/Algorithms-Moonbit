@@ -1,6 +1,6 @@
 ///|
 struct ST[T] {
-  n : Int
+  n : Int32
   f : Array[Array[T]]
   op : (T, T) -> T
 }
@@ -23,9 +23,9 @@ struct ST[T] {
 /// ```
 pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
   let n = data.length()
-  let range : Int = @math.log2(n.to_double()).to_int() + 1
-  let f : Array[Array[T]] = Array::makei(n + 1, fn(_row : Int) {
-    Array::make(range, T::default())
+  let range : Int32 = @math.log2(n.to_double()).to_int() + 1
+  let f : Array[Array[T]] = Array::makei(n + 1, fn(_row : Int32) {
+    Array::make(range, Default::default())
   })
   for i = 0; i < n; i = i + 1 {
     f[i + 1][0] = data[i]
@@ -35,7 +35,7 @@ pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
       f[i][j] = op(f[i][j - 1], f[i + (1 << (j - 1))][j - 1])
     }
   }
-  ST::{ n, f, op }
+  ST::{ n, f, op, }
 }
 
 ///|
@@ -56,7 +56,7 @@ pub fn[T : Default] from(data : Array[T], op : (T, T) -> T) -> ST[T] {
 ///   inspect(st.query(1, 1), content="1")
 ///   inspect(st.query(2, 8), content="6")
 /// ```
-pub fn[T] ST::query(self : ST[T], left : Int, right : Int) -> T {
+pub fn[T] ST::query(self : ST[T], left : Int32, right : Int32) -> T {
   if right < left {
     abort("Invalid range.")
   } else if left > self.n || right < 1 {

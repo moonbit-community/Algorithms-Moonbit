@@ -10,14 +10,15 @@ type Node[K, V]
 
 pub struct SplayTree[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
+  mut size : Int32
 }
 pub fn[K, V] SplayTree::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] SplayTree::contains(Self[K, V], K) -> Bool
+pub fn[K, V] SplayTree::default() -> Self[K, V]
 pub fn[K : Compare, V] SplayTree::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] SplayTree::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] SplayTree::is_empty(Self[K, V]) -> Bool
-pub fn[K, V] SplayTree::len(Self[K, V]) -> Int
+pub fn[K, V] SplayTree::len(Self[K, V]) -> Int32
 pub fn[K, V] SplayTree::new() -> Self[K, V]
 pub fn[K : Compare, V] SplayTree::remove(Self[K, V], K) -> Bool
 pub impl[K, V] Default for SplayTree[K, V]
@@ -25,4 +26,3 @@ pub impl[K, V] Default for SplayTree[K, V]
 // Type aliases
 
 // Traits
-

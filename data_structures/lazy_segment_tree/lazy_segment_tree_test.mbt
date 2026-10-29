@@ -1,17 +1,17 @@
 ///|
-fn apply_sum(value : Int, tag : Int, length : Int) -> Int {
+fn apply_sum(value : Int32, tag : Int32, length : Int32) -> Int32 {
   value + tag * length
 }
 
 ///|
-fn compose_sum(old : Int, new_val : Int) -> Int {
+fn compose_sum(old : Int32, new_val : Int32) -> Int32 {
   old + new_val
 }
 
 ///|
 test "lazy_segment_tree_range_add_sum" {
   let arr = [1, 2, 3, 4, 5, 6]
-  let seg = LazySegmentTree::from_array(
+  let seg = @lazy_segment_tree.LazySegmentTree::from_array(
     arr,
     fn(a, b) { a + b },
     apply_sum,
@@ -29,7 +29,7 @@ test "lazy_segment_tree_range_add_sum" {
 ///|
 test "lazy_segment_tree_invalid_operations" {
   let arr = [1, 2, 3]
-  let seg = LazySegmentTree::from_array(
+  let seg = @lazy_segment_tree.LazySegmentTree::from_array(
     arr,
     fn(a, b) { a + b },
     apply_sum,

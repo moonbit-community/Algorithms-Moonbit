@@ -1,6 +1,6 @@
 ///|
 test "red-black tree basic operations" {
-  let tree : RedBlackTree[Int, Int] = RedBlackTree::new()
+  let tree : @red_black_tree.RedBlackTree[Int32, Int32] = @red_black_tree.RedBlackTree::new()
   @debug.assert_eq(tree.is_empty(), true)
   tree.insert(10, 100)
   tree.insert(5, 50)
@@ -15,7 +15,7 @@ test "red-black tree basic operations" {
 
 ///|
 test "red-black tree duplicate update preserves size" {
-  let tree : RedBlackTree[Int, String] = RedBlackTree::new()
+  let tree : @red_black_tree.RedBlackTree[Int32, String] = @red_black_tree.RedBlackTree::new()
   tree.insert(1, "one")
   tree.insert(2, "two")
   tree.insert(3, "three")
@@ -27,7 +27,7 @@ test "red-black tree duplicate update preserves size" {
 
 ///|
 test "red-black tree removal cases" {
-  let tree : RedBlackTree[Int, Int] = RedBlackTree::new()
+  let tree : @red_black_tree.RedBlackTree[Int32, Int32] = @red_black_tree.RedBlackTree::new()
   let values = [7, 3, 10, 1, 5, 9, 12]
   for value in values {
     tree.insert(value, value * 2)
@@ -45,7 +45,7 @@ test "red-black tree removal cases" {
 
 ///|
 test "red-black tree clear resets structure" {
-  let tree : RedBlackTree[Int, Int] = RedBlackTree::default()
+  let tree : @red_black_tree.RedBlackTree[Int32, Int32] = @red_black_tree.RedBlackTree::default()
   for value in [1, 2, 3, 4, 5] {
     tree.insert(value, value)
   }
@@ -59,7 +59,7 @@ test "red-black tree clear resets structure" {
 
 ///|
 test "red-black tree handles larger sequence" {
-  let tree : RedBlackTree[Int, Int] = RedBlackTree::new()
+  let tree : @red_black_tree.RedBlackTree[Int32, Int32] = @red_black_tree.RedBlackTree::new()
   for value in 0..<100 {
     tree.insert(value, value)
   }

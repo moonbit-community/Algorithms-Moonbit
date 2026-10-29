@@ -7,22 +7,21 @@ package "Lampese/Algorithms-Moonbit/data_structures/link_cut_tree"
 
 // Types and methods
 pub struct LinkCutTree {
-  left : Array[Int]
-  right : Array[Int]
-  parent : Array[Int]
+  left : Array[Int32]
+  right : Array[Int32]
+  parent : Array[Int32]
   rev : Array[Bool]
-  value : Array[Int]
-  sum : Array[Int]
+  value : Array[Int32]
+  sum : Array[Int32]
 }
-pub fn LinkCutTree::connected(Self, Int, Int) -> Bool
-pub fn LinkCutTree::cut(Self, Int, Int) -> Bool
-pub fn LinkCutTree::len(Self) -> Int
-pub fn LinkCutTree::link(Self, Int, Int) -> Bool
-pub fn LinkCutTree::new(Array[Int]) -> Self
-pub fn LinkCutTree::path_sum(Self, Int, Int) -> Int?
-pub fn LinkCutTree::set_value(Self, Int, Int) -> Unit
+pub fn LinkCutTree::connected(Self, Int32, Int32) -> Bool
+pub fn LinkCutTree::cut(Self, Int32, Int32) -> Bool
+pub fn LinkCutTree::len(Self) -> Int32
+pub fn LinkCutTree::link(Self, Int32, Int32) -> Bool
+pub fn LinkCutTree::new(Array[Int32]) -> Self
+pub fn LinkCutTree::path_sum(Self, Int32, Int32) -> Int32?
+pub fn LinkCutTree::set_value(Self, Int32, Int32) -> Unit
 
 // Type aliases
 
 // Traits
-

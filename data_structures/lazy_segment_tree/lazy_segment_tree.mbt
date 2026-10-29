@@ -5,7 +5,7 @@ pub enum LazySegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for LazySegmentTreeError with output(self, logger) {
+pub impl Show for LazySegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")
@@ -14,11 +14,11 @@ pub impl Show for LazySegmentTreeError with output(self, logger) {
 
 ///|
 pub struct LazySegmentTree[T, L] {
-  size : Int
+  size : Int32
   tree : Array[T]
   tag : Array[L]
   merge : (T, T) -> T
-  apply : (T, L, Int) -> T
+  apply : (T, L, Int32) -> T
   compose : (L, L) -> L
   identity : L
 } derive(Debug)
@@ -27,9 +27,9 @@ pub struct LazySegmentTree[T, L] {
 fn[T, L] LazySegmentTree::build(
   self : LazySegmentTree[T, L],
   arr : Array[T],
-  node : Int,
-  start : Int,
-  end : Int,
+  node : Int32,
+  start : Int32,
+  end : Int32,
 ) -> Unit {
   if start == end {
     self.tree[node] = arr[start]
@@ -46,9 +46,9 @@ fn[T, L] LazySegmentTree::build(
 ///|
 fn[T, L] LazySegmentTree::push(
   self : LazySegmentTree[T, L],
-  node : Int,
-  start : Int,
-  end : Int,
+  node : Int32,
+  start : Int32,
+  end : Int32,
 ) -> Unit {
   if start == end {
     self.tag[node] = self.identity
@@ -70,11 +70,11 @@ fn[T, L] LazySegmentTree::push(
 ///|
 fn[T, L] LazySegmentTree::range_update_internal(
   self : LazySegmentTree[T, L],
-  node : Int,
-  start : Int,
-  end : Int,
-  left : Int,
-  right : Int,
+  node : Int32,
+  start : Int32,
+  end : Int32,
+  left : Int32,
+  right : Int32,
   value : L,
 ) -> Unit {
   if left > end || right < start {
@@ -98,11 +98,11 @@ fn[T, L] LazySegmentTree::range_update_internal(
 ///|
 fn[T, L] LazySegmentTree::range_query_internal(
   self : LazySegmentTree[T, L],
-  node : Int,
-  start : Int,
-  end : Int,
-  left : Int,
-  right : Int,
+  node : Int32,
+  start : Int32,
+  end : Int32,
+  left : Int32,
+  right : Int32,
 ) -> T? {
   if left > end || right < start {
     return None
@@ -159,13 +159,13 @@ fn[T, L] LazySegmentTree::range_query_internal(
 pub fn[T : Default, L] LazySegmentTree::from_array(
   arr : Array[T],
   merge : (T, T) -> T,
-  apply : (T, L, Int) -> T,
+  apply : (T, L, Int32) -> T,
   compose : (L, L) -> L,
   identity : L,
 ) -> LazySegmentTree[T, L] {
   let size = arr.length()
   let capacity = if size == 0 { 1 } else { 4 * size }
-  let tree = Array::make(capacity, T::default())
+  let tree = Array::make(capacity, Default::default())
   let tag = Array::make(capacity, identity)
   let seg = LazySegmentTree::{
     size,
@@ -212,8 +212,8 @@ pub fn[T : Default, L] LazySegmentTree::from_array(
 /// ```
 pub fn[T, L] LazySegmentTree::range_update(
   self : LazySegmentTree[T, L],
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
   value : L,
 ) -> Result[Unit, LazySegmentTreeError] {
   if left < 0 || right < 0 {
@@ -261,8 +261,8 @@ pub fn[T, L] LazySegmentTree::range_update(
 /// ```
 pub fn[T, L] LazySegmentTree::range_query(
   self : LazySegmentTree[T, L],
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
 ) -> Result[T?, LazySegmentTreeError] {
   if left < 0 || right < 0 {
     return Err(LazySegmentTreeError::IndexOutOfBounds)

@@ -1,6 +1,6 @@
 ///|
 test "stack operations" {
-  let s = Stack::new()
+  let s = @stack.Stack::new()
   s.push(1)
   s.push(2)
   s.push(3)

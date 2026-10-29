@@ -7,11 +7,10 @@ package "Lampese/Algorithms-Moonbit/math/combinator"
 
 // Types and methods
 type Comb
-pub fn Comb::a(Self, Int, Int) -> Int64
-pub fn Comb::c(Self, Int, Int) -> Int64
-pub fn Comb::new(Int, Int64) -> Self
+pub fn Comb::a(Self, Int32, Int32) -> Int64
+pub fn Comb::c(Self, Int32, Int32) -> Int64
+pub fn Comb::new(Int32, Int64) -> Self
 
 // Type aliases
 
 // Traits
-

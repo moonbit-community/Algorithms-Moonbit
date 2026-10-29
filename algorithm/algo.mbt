@@ -119,7 +119,7 @@ pub fn[T : Compare] min_element(data : Array[T]) -> T {
 ///   let arr = [1.1, 2.0, 3.5, 9.0]
 ///   inspect(lower_bound(arr, 1.2), content="1")
 /// ```
-pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int {
+pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int32 {
   let mut count = data.length()
   let mut first = 0
   while count > 0 {
@@ -153,7 +153,7 @@ pub fn[T : Compare] lower_bound(data : Array[T], value : T) -> Int {
 ///   inspect(upper_bound(arr, -1), content="0")
 ///   inspect(upper_bound(arr, 7), content="5")
 /// ```
-pub fn[T : Compare] upper_bound(data : Array[T], value : T) -> Int {
+pub fn[T : Compare] upper_bound(data : Array[T], value : T) -> Int32 {
   let mut count = data.length()
   let mut first = 0
   while count > 0 {
@@ -210,7 +210,7 @@ pub fn[T : Compare] binary_search(data : Array[T], value : T) -> Bool {
 ///   inspect(equal_range(arr, 2), content="(1, 3)")
 ///   inspect(equal_range(arr, 7), content="(-1, -1)")
 /// ```
-pub fn[T : Compare] equal_range(data : Array[T], value : T) -> (Int, Int) {
+pub fn[T : Compare] equal_range(data : Array[T], value : T) -> (Int32, Int32) {
   let l = lower_bound(data, value)
   let r = upper_bound(data, value)
   if l > r - 1 {
@@ -279,7 +279,7 @@ pub fn[T : Compare] merge(data1 : Array[T], data2 : Array[T]) -> Array[T] {
 /// ```
 /// assert_eq(quick_pow(2, 10), 1024)
 /// ```
-pub fn quick_pow(base : Int, exp : Int) -> Int64 {
+pub fn quick_pow(base : Int32, exp : Int32) -> Int64 {
   let base_int64 = base.to_int64()
   if exp == 0 {
     1
@@ -296,8 +296,8 @@ pub fn quick_pow(base : Int, exp : Int) -> Int64 {
 
 ///|
 pub(all) struct Point {
-  x : Int
-  y : Int
+  x : Int32
+  y : Int32
 } derive(Debug)
 
 ///|
@@ -316,7 +316,7 @@ pub(all) struct Point {
 ///     let arr = [Point::{x:0,y:0}, Point::{x:1,y:0}, Point::{x:1,y:1}]
 ///     inspect(max_manhattan_distance(arr), content="2")
 /// ```
-pub fn max_manhattan_distance(points : Array[Point]) -> Int {
+pub fn max_manhattan_distance(points : Array[Point]) -> Int32 {
   let mut a = @int.MIN_VALUE
   let mut b = @int.MAX_VALUE
   let mut c = @int.MIN_VALUE
@@ -351,7 +351,7 @@ pub fn max_manhattan_distance(points : Array[Point]) -> Int {
 ///inspect(@algorithm.gcd(17, 23), content="1")
 /// 
 /// ```
-pub fn gcd(a : Int, b : Int) -> Int {
+pub fn gcd(a : Int32, b : Int32) -> Int32 {
   if b == 0 {
     a
   } else {
@@ -377,7 +377,7 @@ pub fn gcd(a : Int, b : Int) -> Int {
 ///inspect(@algorithm.lcm(17, 20), content="340")
 /// 
 /// ```
-pub fn lcm(a : Int, b : Int) -> Int {
+pub fn lcm(a : Int32, b : Int32) -> Int32 {
   a * b / gcd(a, b)
 }
 
@@ -401,7 +401,7 @@ pub fn lcm(a : Int, b : Int) -> Int {
 /// ```
 /// inspect(ext_euc(5, 7), content="(1, 3, -2)")
 /// ```
-pub fn ext_euc(a : Int, b : Int) -> (Int, Int, Int) {
+pub fn ext_euc(a : Int32, b : Int32) -> (Int32, Int32, Int32) {
   if b == 0 {
     (a, 1, 0)
   } else {
@@ -430,7 +430,7 @@ pub fn ext_euc(a : Int, b : Int) -> (Int, Int, Int) {
 /// assert_eq(mod_inverse(3, 26), 9)
 /// 
 /// ```
-pub fn mod_inverse(a : Int, mod : Int) -> Int {
+pub fn mod_inverse(a : Int32, mod : Int32) -> Int32 {
   let (_, x, _) = ext_euc(a, mod)
   if x < 0 {
     (1 - x) % mod

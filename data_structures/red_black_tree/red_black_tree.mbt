@@ -15,7 +15,7 @@ struct Node[K, V] {
 
 ///|
 fn[K, V] Node::new(key : K, value : V) -> Node[K, V] {
-  Node::{ key, value, color: Color::Red, left: None, right: None }
+  Node::{ key, value, color: Color::Red, left: None, right: None, }
 }
 
 ///|
@@ -296,16 +296,16 @@ fn[K : Compare, V] find_node(node_opt : Node[K, V]?, key : K) -> V? {
 ///|
 pub struct RedBlackTree[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
+  mut size : Int32
 }
 
 ///|
 pub fn[K, V] RedBlackTree::new() -> RedBlackTree[K, V] {
-  RedBlackTree::{ root: None, size: 0 }
+  RedBlackTree::{ root: None, size: 0, }
 }
 
 ///|
-pub fn[K, V] RedBlackTree::len(self : RedBlackTree[K, V]) -> Int {
+pub fn[K, V] RedBlackTree::len(self : RedBlackTree[K, V]) -> Int32 {
   self.size
 }
 
@@ -383,6 +383,6 @@ pub fn[K : Compare, V : Eq] RedBlackTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for RedBlackTree[K, V] with default() {
+pub impl[K, V] Default for RedBlackTree[K, V] with fn default() {
   RedBlackTree::new()
 }

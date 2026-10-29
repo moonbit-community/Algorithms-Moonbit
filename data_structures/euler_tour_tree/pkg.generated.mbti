@@ -11,19 +11,18 @@ type EdgeRef
 pub struct EulerTourTree {
   nodes : Array[Node]
   adjacency : Array[Array[EdgeRef]]
-  mut rng_state : Int
-  mut next_id : Int
+  mut rng_state : Int32
+  mut next_id : Int32
 }
-pub fn EulerTourTree::component_size(Self, Int) -> Int
-pub fn EulerTourTree::connected(Self, Int, Int) -> Bool
-pub fn EulerTourTree::cut(Self, Int, Int) -> Bool
-pub fn EulerTourTree::len(Self) -> Int
-pub fn EulerTourTree::link(Self, Int, Int) -> Bool
-pub fn EulerTourTree::new(Int) -> Self
+pub fn EulerTourTree::component_size(Self, Int32) -> Int32
+pub fn EulerTourTree::connected(Self, Int32, Int32) -> Bool
+pub fn EulerTourTree::cut(Self, Int32, Int32) -> Bool
+pub fn EulerTourTree::len(Self) -> Int32
+pub fn EulerTourTree::link(Self, Int32, Int32) -> Bool
+pub fn EulerTourTree::new(Int32) -> Self
 
 type Node
 
 // Type aliases
 
 // Traits
-

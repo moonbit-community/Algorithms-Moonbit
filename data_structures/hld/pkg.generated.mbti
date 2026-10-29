@@ -7,19 +7,18 @@ package "Lampese/Algorithms-Moonbit/data_structures/hld"
 
 // Types and methods
 type HeavyLightDecomposition
-pub fn HeavyLightDecomposition::get_depth(Self, Int) -> Int
-pub fn HeavyLightDecomposition::get_parent(Self, Int) -> Int
-pub fn HeavyLightDecomposition::get_root(Self) -> Int
-pub fn HeavyLightDecomposition::lca(Self, Int, Int) -> Int
-pub fn HeavyLightDecomposition::len(Self) -> Int
-pub fn HeavyLightDecomposition::new(Int, Array[(Int, Int)], root? : Int) -> Self
-pub fn HeavyLightDecomposition::node_at(Self, Int) -> Int
-pub fn HeavyLightDecomposition::path_segments(Self, Int, Int) -> Array[(Int, Int)]
-pub fn HeavyLightDecomposition::position(Self, Int) -> Int
+pub fn HeavyLightDecomposition::get_depth(Self, Int32) -> Int32
+pub fn HeavyLightDecomposition::get_parent(Self, Int32) -> Int32
+pub fn HeavyLightDecomposition::get_root(Self) -> Int32
+pub fn HeavyLightDecomposition::lca(Self, Int32, Int32) -> Int32
+pub fn HeavyLightDecomposition::len(Self) -> Int32
+pub fn HeavyLightDecomposition::new(Int32, Array[(Int32, Int32)], root? : Int32) -> Self
+pub fn HeavyLightDecomposition::node_at(Self, Int32) -> Int32
+pub fn HeavyLightDecomposition::path_segments(Self, Int32, Int32) -> Array[(Int32, Int32)]
+pub fn HeavyLightDecomposition::position(Self, Int32) -> Int32
 pub fn[T] HeavyLightDecomposition::reorder(Self, Array[T]) -> Array[T]
-pub fn HeavyLightDecomposition::subtree_range(Self, Int) -> (Int, Int)
+pub fn HeavyLightDecomposition::subtree_range(Self, Int32) -> (Int32, Int32)
 
 // Type aliases
 
 // Traits
-

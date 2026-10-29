@@ -11,28 +11,35 @@ import {
 
 // Types and methods
 pub struct ChthollyTree {
-  size : Int
+  size : Int32
   mut intervals : Array[Interval]
 } derive(@debug.Debug)
-pub fn ChthollyTree::add(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
-pub fn ChthollyTree::assign(Self, Int, Int, Int) -> Result[Unit, ChthollyTreeError]
-pub fn ChthollyTree::from_array(Array[Int]) -> Self
+pub fn ChthollyTree::add(Self, Int32, Int32, Int32) -> Result[Unit, ChthollyTreeError]
+pub fn ChthollyTree::assign(Self, Int32, Int32, Int32) -> Result[Unit, ChthollyTreeError]
+pub fn ChthollyTree::default() -> Self
+pub fn ChthollyTree::from_array(Array[Int32]) -> Self
 pub fn ChthollyTree::is_empty(Self) -> Bool
-pub fn ChthollyTree::len(Self) -> Int
-pub fn ChthollyTree::new(Int, Int) -> Self
-pub fn ChthollyTree::query_sum(Self, Int, Int) -> Result[Int, ChthollyTreeError]
-pub fn ChthollyTree::size(Self) -> Int
-pub fn ChthollyTree::value_at(Self, Int) -> Result[Int, ChthollyTreeError]
+pub fn ChthollyTree::len(Self) -> Int32
+pub fn ChthollyTree::new(Int32, Int32) -> Self
+pub fn ChthollyTree::query_sum(Self, Int32, Int32) -> Result[Int32, ChthollyTreeError]
+pub fn ChthollyTree::size(Self) -> Int32
+pub fn ChthollyTree::to_repr(Self) -> @debug.Repr
+pub fn ChthollyTree::value_at(Self, Int32) -> Result[Int32, ChthollyTreeError]
 pub impl Default for ChthollyTree
 
 pub enum ChthollyTreeError {
   IndexOutOfBounds
   InvalidRange
 } derive(Eq, @debug.Debug)
+pub fn ChthollyTreeError::equal(Self, Self) -> Bool
+pub fn ChthollyTreeError::not_equal(Self, Self) -> Bool
+pub fn ChthollyTreeError::to_repr(Self) -> @debug.Repr
 
 type Interval derive(Eq, @debug.Debug)
+pub fn Interval::equal(Self, Self) -> Bool
+pub fn Interval::not_equal(Self, Self) -> Bool
+pub fn Interval::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
 // Traits
-

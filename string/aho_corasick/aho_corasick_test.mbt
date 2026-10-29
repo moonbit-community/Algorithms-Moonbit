@@ -1,5 +1,10 @@
 ///|
-fn assert_match(mat : ACMatch, start : Int, end : Int, idx : Int) -> Unit raise {
+fn assert_match(
+  mat : @aho_corasick.ACMatch,
+  start : Int32,
+  end : Int32,
+  idx : Int32,
+) -> Unit raise {
   assert_eq(mat.start(), start)
   assert_eq(mat.end(), end)
   assert_eq(mat.pattern_index(), idx)
@@ -7,10 +12,10 @@ fn assert_match(mat : ACMatch, start : Int, end : Int, idx : Int) -> Unit raise 
 
 ///|
 fn assert_match_arrays(
-  matches : Array[ACMatch],
-  expected_start : Array[Int],
-  expected_end : Array[Int],
-  expected_idx : Array[Int],
+  matches : Array[@aho_corasick.ACMatch],
+  expected_start : Array[Int32],
+  expected_end : Array[Int32],
+  expected_idx : Array[Int32],
 ) -> Unit raise {
   assert_eq(matches.length(), expected_start.length())
   assert_eq(matches.length(), expected_end.length())
@@ -26,8 +31,8 @@ fn assert_match_arrays(
 }
 
 ///|
-fn clone_int_array(arr : Array[Int]) -> Array[Int] {
-  let copy : Array[Int] = []
+fn clone_int_array(arr : Array[Int32]) -> Array[Int32] {
+  let copy : Array[Int32] = []
   for i = 0; i < arr.length(); i = i + 1 {
     copy.push(arr[i])
   }
@@ -36,9 +41,9 @@ fn clone_int_array(arr : Array[Int]) -> Array[Int] {
 
 ///|
 fn sort_match_triples(
-  start : Array[Int],
-  end : Array[Int],
-  idx : Array[Int],
+  start : Array[Int32],
+  end : Array[Int32],
+  idx : Array[Int32],
 ) -> Unit {
   let n = start.length()
   for i = 0; i < n; i = i + 1 {
@@ -73,17 +78,17 @@ fn sort_match_triples(
 
 ///|
 fn assert_matches_unordered(
-  matches : Array[ACMatch],
-  expected_start : Array[Int],
-  expected_end : Array[Int],
-  expected_idx : Array[Int],
+  matches : Array[@aho_corasick.ACMatch],
+  expected_start : Array[Int32],
+  expected_end : Array[Int32],
+  expected_idx : Array[Int32],
 ) -> Unit raise {
   assert_eq(matches.length(), expected_start.length())
   assert_eq(matches.length(), expected_end.length())
   assert_eq(matches.length(), expected_idx.length())
-  let actual_start : Array[Int] = []
-  let actual_end : Array[Int] = []
-  let actual_idx : Array[Int] = []
+  let actual_start : Array[Int32] = []
+  let actual_end : Array[Int32] = []
+  let actual_idx : Array[Int32] = []
   for i = 0; i < matches.length(); i = i + 1 {
     actual_start.push(matches[i].start())
     actual_end.push(matches[i].end())
@@ -105,9 +110,9 @@ fn assert_matches_unordered(
 fn naive_fill_matches(
   patterns : Array[String],
   text : String,
-  start : Array[Int],
-  end : Array[Int],
-  idx : Array[Int],
+  start : Array[Int32],
+  end : Array[Int32],
+  idx : Array[Int32],
 ) -> Unit {
   for p = 0; p < patterns.length(); p = p + 1 {
     let pattern = patterns[p]
@@ -140,21 +145,21 @@ fn assert_naive_equivalence(
   patterns : Array[String],
   text : String,
 ) -> Unit raise {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
   }
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
 
 ///|
 test "single pattern basic match" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   assert_eq(automaton.pattern_count(), 0)
   let id = automaton.add_pattern("he")
   assert_eq(id, 0)
@@ -165,7 +170,7 @@ test "single pattern basic match" {
 
 ///|
 test "no matches in text" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("world")
   let matches = automaton.query("hello")
   assert_eq(matches.length(), 0)
@@ -173,7 +178,7 @@ test "no matches in text" {
 
 ///|
 test "overlapping patterns" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("he")
   let _ = automaton.add_pattern("she")
   let _ = automaton.add_pattern("hers")
@@ -183,7 +188,7 @@ test "overlapping patterns" {
 
 ///|
 test "prefix patterns report all matches" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns = ["a", "ab", "abc", "abcd"]
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
@@ -194,7 +199,7 @@ test "prefix patterns report all matches" {
 
 ///|
 test "multiple occurrences of same pattern" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let idx = automaton.add_pattern("aba")
   assert_eq(idx, 0)
   let matches = automaton.query("ababa")
@@ -203,7 +208,7 @@ test "multiple occurrences of same pattern" {
 
 ///|
 test "clear resets automaton" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("foo")
   assert_eq(automaton.pattern_count(), 1)
   automaton.clear()
@@ -218,7 +223,7 @@ test "clear resets automaton" {
 
 ///|
 test "query empty text" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("test")
   let matches = automaton.query("")
   assert_eq(matches.length(), 0)
@@ -226,7 +231,7 @@ test "query empty text" {
 
 ///|
 test "duplicate patterns produce separate matches" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let id1 = automaton.add_pattern("aba")
   let id2 = automaton.add_pattern("aba")
   assert_eq(id1, 0)
@@ -240,7 +245,7 @@ test "duplicate patterns produce separate matches" {
 
 ///|
 test "matches sharing end index preserve output order" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let id_a = automaton.add_pattern("a")
   let id_ba = automaton.add_pattern("ba")
   assert_eq(id_a, 0)
@@ -252,7 +257,7 @@ test "matches sharing end index preserve output order" {
 
 ///|
 test "punctuation and symbol patterns" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("@@")
   let _ = automaton.add_pattern("#$")
   let _ = automaton.add_pattern("$@")
@@ -266,7 +271,7 @@ test "punctuation and symbol patterns" {
 
 ///|
 test "clear and reuse multiple cycles" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("abc")
   let first = automaton.query("abcabc")
   assert_match_arrays(first, [0, 3], [2, 5], [0, 0])
@@ -282,7 +287,7 @@ test "clear and reuse multiple cycles" {
 
 ///|
 test "repeated queries maintain state" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("aba")
   let _ = automaton.add_pattern("bab")
   let text = "ababab"
@@ -297,7 +302,7 @@ test "repeated queries maintain state" {
 
 ///|
 test "build without patterns" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   automaton.build()
   let matches = automaton.query("any text")
   assert_eq(matches.length(), 0)
@@ -505,14 +510,14 @@ test "naive cross check for multilingual snippets" {
 test "custom alphabet size with naive check" {
   let patterns = ["abc", "bcd", "cde", "def"]
   let text = "abcdefghi"
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
   }
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
@@ -526,16 +531,16 @@ test "custom alphabet handles high byte characters" {
 
 ///|
 test "rebuild after every insertion" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns = ["cat", "cater", "caterpillar", "dog", "dodge", "dot"]
   let text = "the caterpillar dodged the dog"
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
     automaton.build()
     let matches = automaton.query(text)
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     let subset : Array[String] = []
     for j = 0; j <= i; j = j + 1 {
       subset.push(patterns[j])
@@ -559,16 +564,16 @@ test "clear and rebuild multiple rounds" {
     "red green blue green", "circle square circle triangle", "dog and cat and fish and bird",
     "north east south west north",
   ]
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for round = 0; round < rounds_patterns.length(); round = round + 1 {
     automaton.clear()
     for i = 0; i < rounds_patterns[round].length(); i = i + 1 {
       let _ = automaton.add_pattern(rounds_patterns[round][i])
     }
     let matches = automaton.query(rounds_texts[round])
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(
       rounds_patterns[round],
       rounds_texts[round],
@@ -584,7 +589,7 @@ test "clear and rebuild multiple rounds" {
 
 ///|
 test "pattern count growth to triple digits" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns : Array[String] = []
   for i = 0; i < 120; i = i + 1 {
     let mut word = "p"
@@ -599,9 +604,9 @@ test "pattern count growth to triple digits" {
   }
   let text = "p0 p1 pq2 pqq3 pqqq4 pqqqq5 p0p1p2p3p4"
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
@@ -617,7 +622,7 @@ test "alphabet full byte coverage" {
 
 ///|
 test "repeated queries with interleaved insertions" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let text = "abracadabra abracadabra"
   let patterns = [
     ["abra"],
@@ -643,9 +648,9 @@ test "repeated queries with interleaved insertions" {
       let _ = automaton.add_pattern("abra")
     }
     let matches = automaton.query(text)
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(
       patterns[stage],
       text,
@@ -684,7 +689,7 @@ test "query after partial match reset" {
 
 ///|
 test "large dictionary slices" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns : Array[String] = []
   let alphabet = ["a", "b", "c", "d", "e"]
   for i = 0; i < alphabet.length(); i = i + 1 {
@@ -704,9 +709,9 @@ test "large dictionary slices" {
   }
   let text = "abcdeedcbaabcdeedcba"
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
@@ -734,21 +739,21 @@ test "stress test with incremental alphabet expansion" {
     text += letters[i]
     patterns.push(text)
   }
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
   }
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
 
 ///|
 test "stress test repeated build and query cycles" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns = [
     "alpha", "beta", "gamma", "delta", "epsilon", "zeta", "eta", "theta", "iota",
     "kappa",
@@ -761,9 +766,9 @@ test "stress test repeated build and query cycles" {
     }
     automaton.build()
     let matches = automaton.query(text)
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(
       patterns, text, expected_start, expected_end, expected_idx,
     )
@@ -842,7 +847,7 @@ test "stress test with hierarchical prefixes" {
 
 ///|
 test "stress test large repeated dictionary" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns : Array[String] = []
   for i = 0; i < 50; i = i + 1 {
     let mut pattern = "pattern"
@@ -852,9 +857,9 @@ test "stress test large repeated dictionary" {
   }
   let text = "pattern0 pattern1 pattern2 pattern3 pattern4 pattern5 pattern6 pattern7 pattern8 pattern9"
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
@@ -878,7 +883,7 @@ test "stress test interleaved numbers and letters" {
 
 ///|
 test "stress test with alternating build and clear" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let sequences = [
     ["one", "two", "three"],
     ["alpha", "beta"],
@@ -896,9 +901,9 @@ test "stress test with alternating build and clear" {
     }
     automaton.build()
     let matches = automaton.query(texts[round])
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(
       sequences[round],
       texts[round],
@@ -916,22 +921,22 @@ test "stress test with alternating build and clear" {
 test "stress test verifying fail transitions" {
   let patterns = ["ab", "bab", "bc", "bca", "caa", "aab"]
   let text = "abccab"
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
   }
   automaton.build()
   let matches = automaton.query(text)
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(patterns, text, expected_start, expected_end, expected_idx)
   assert_matches_unordered(matches, expected_start, expected_end, expected_idx)
 }
 
 ///|
 test "stress test large repeated query" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns = ["test", "testing", "tested", "tester"]
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
@@ -939,9 +944,9 @@ test "stress test large repeated query" {
   let text = "testing tester tested test"
   for iteration = 0; iteration < 20; iteration = iteration + 1 {
     let matches = automaton.query(text)
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(
       patterns, text, expected_start, expected_end, expected_idx,
     )
@@ -953,7 +958,7 @@ test "stress test large repeated query" {
 
 ///|
 test "stress test alternating insertions and queries" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns = [
     "alpha", "beta", "gamma", "delta", "epsilon", "zeta", "eta", "theta", "iota",
     "kappa",
@@ -966,9 +971,9 @@ test "stress test alternating insertions and queries" {
       subset.push(patterns[j])
     }
     let matches = automaton.query(text)
-    let expected_start : Array[Int] = []
-    let expected_end : Array[Int] = []
-    let expected_idx : Array[Int] = []
+    let expected_start : Array[Int32] = []
+    let expected_end : Array[Int32] = []
+    let expected_idx : Array[Int32] = []
     naive_fill_matches(subset, text, expected_start, expected_end, expected_idx)
     assert_matches_unordered(
       matches, expected_start, expected_end, expected_idx,
@@ -1009,7 +1014,7 @@ test "stress test mixture of digits and words" {
 test "stress test verifying no false positives" {
   let patterns = ["xyz", "uvw", "rst", "mnop"]
   let text = "abcdefghijkl"
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   for i = 0; i < patterns.length(); i = i + 1 {
     let _ = automaton.add_pattern(patterns[i])
   }
@@ -1019,7 +1024,7 @@ test "stress test verifying no false positives" {
 
 ///|
 test "stress test with sequential clears" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let patterns_round1 = ["alpha", "beta"]
   let patterns_round2 = ["gamma", "delta", "epsilon"]
   let _ = automaton.add_pattern("placeholder")
@@ -1028,9 +1033,9 @@ test "stress test with sequential clears" {
     let _ = automaton.add_pattern(patterns_round1[i])
   }
   let matches1 = automaton.query("alpha beta gamma")
-  let exp_start1 : Array[Int] = []
-  let exp_end1 : Array[Int] = []
-  let exp_idx1 : Array[Int] = []
+  let exp_start1 : Array[Int32] = []
+  let exp_end1 : Array[Int32] = []
+  let exp_idx1 : Array[Int32] = []
   naive_fill_matches(
     patterns_round1, "alpha beta gamma", exp_start1, exp_end1, exp_idx1,
   )
@@ -1040,9 +1045,9 @@ test "stress test with sequential clears" {
     let _ = automaton.add_pattern(patterns_round2[i])
   }
   let matches2 = automaton.query("gamma delta epsilon")
-  let exp_start2 : Array[Int] = []
-  let exp_end2 : Array[Int] = []
-  let exp_idx2 : Array[Int] = []
+  let exp_start2 : Array[Int32] = []
+  let exp_end2 : Array[Int32] = []
+  let exp_idx2 : Array[Int32] = []
   naive_fill_matches(
     patterns_round2, "gamma delta epsilon", exp_start2, exp_end2, exp_idx2,
   )
@@ -1051,14 +1056,14 @@ test "stress test with sequential clears" {
 
 ///|
 test "stress test verifying single character alphabet" {
-  let automaton = ACAutomaton::new()
+  let automaton = @aho_corasick.ACAutomaton::new()
   let _ = automaton.add_pattern("0")
   let _ = automaton.add_pattern("00")
   let _ = automaton.add_pattern("000")
   let matches = automaton.query("000000")
-  let expected_start : Array[Int] = []
-  let expected_end : Array[Int] = []
-  let expected_idx : Array[Int] = []
+  let expected_start : Array[Int32] = []
+  let expected_end : Array[Int32] = []
+  let expected_idx : Array[Int32] = []
   naive_fill_matches(
     ["0", "00", "000"],
     "000000",

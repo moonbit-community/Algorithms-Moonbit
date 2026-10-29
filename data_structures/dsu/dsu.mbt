@@ -1,7 +1,7 @@
 ///|
 struct DSU {
-  parent : Array[Int]
-  siz : Array[Int]
+  parent : Array[Int32]
+  siz : Array[Int32]
 }
 
 ///|
@@ -24,13 +24,13 @@ struct DSU {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn DSU::new(n : Int) -> DSU {
+pub fn DSU::new(n : Int32) -> DSU {
   let parent = Array::make(n, 0)
   let siz = Array::make(n, 1)
   for i = 0; i < n; i = i + 1 {
     parent[i] = i
   }
-  { parent, siz }
+  { parent, siz, }
 }
 
 ///|
@@ -52,7 +52,7 @@ pub fn DSU::new(n : Int) -> DSU {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn DSU::find(self : DSU, x : Int) -> Int {
+pub fn DSU::find(self : DSU, x : Int32) -> Int32 {
   if self.parent[x] == x {
     return x
   }
@@ -81,7 +81,7 @@ pub fn DSU::find(self : DSU, x : Int) -> Int {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn DSU::merge(self : DSU, x : Int, y : Int) -> Bool {
+pub fn DSU::merge(self : DSU, x : Int32, y : Int32) -> Bool {
   let fx = self.find(x)
   let fy = self.find(y)
   if fx == fy {
@@ -117,7 +117,7 @@ pub fn DSU::merge(self : DSU, x : Int, y : Int) -> Bool {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn DSU::same(self : DSU, x : Int, y : Int) -> Bool {
+pub fn DSU::same(self : DSU, x : Int32, y : Int32) -> Bool {
   self.find(x) == self.find(y)
 }
 
@@ -140,6 +140,6 @@ pub fn DSU::same(self : DSU, x : Int, y : Int) -> Bool {
 ///   assert_eq(dsu.find(1), dsu.find(2))
 ///   inspect(flag, content="true")
 /// ```
-pub fn DSU::size(self : DSU, x : Int) -> Int {
+pub fn DSU::size(self : DSU, x : Int32) -> Int32 {
   self.siz[self.find(x)]
 }

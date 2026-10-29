@@ -28,7 +28,7 @@ fn per_work(s : String) -> String {
 // /   let s2 = "cbbd"
 // /   inspect(manacher(s2), content="2") // "bb"
 // / ```
-pub fn manacher(str : String) -> Int {
+pub fn manacher(str : String) -> Int32 {
   let s = per_work(str)
   let n = s.length()
   let mut c = 0

@@ -2,7 +2,7 @@
 package "Lampese/Algorithms-Moonbit/math/fft"
 
 // Values
-pub fn convolution(Array[Int], Array[Int]) -> Array[Int]
+pub fn convolution(Array[Int32], Array[Int32]) -> Array[Int32]
 
 pub fn fft(Array[Complex], Bool) -> Array[Complex]
 
@@ -14,4 +14,3 @@ type Complex
 // Type aliases
 
 // Traits
-

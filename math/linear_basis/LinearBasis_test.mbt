@@ -1,6 +1,6 @@
 ///|
 test "insertion and dimension" {
-  let basis = LinearBasis::new(60)
+  let basis = @linear_basis.LinearBasis::new(60)
   inspect(basis.insert(1L), content="true")
   inspect(basis.insert(2L), content="true")
   inspect(basis.insert(3L), content="false")
@@ -9,7 +9,7 @@ test "insertion and dimension" {
 
 ///|
 test "reduction and containment" {
-  let basis = LinearBasis::new(60)
+  let basis = @linear_basis.LinearBasis::new(60)
   let _ = basis.insert(7L)
   let _ = basis.insert(10L)
   inspect(basis.contains(13L), content="true")
@@ -20,7 +20,7 @@ test "reduction and containment" {
 
 ///|
 test "maximum xor queries" {
-  let basis = LinearBasis::new(60)
+  let basis = @linear_basis.LinearBasis::new(60)
   let _ = basis.insert(3L)
   let _ = basis.insert(10L)
   let _ = basis.insert(5L)
@@ -31,7 +31,7 @@ test "maximum xor queries" {
 
 ///|
 test "kth largest enumeration" {
-  let basis = LinearBasis::new(10)
+  let basis = @linear_basis.LinearBasis::new(10)
   let _ = basis.insert(1L)
   let _ = basis.insert(2L)
   let _ = basis.insert(4L)

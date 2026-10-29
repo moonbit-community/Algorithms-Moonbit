@@ -2,17 +2,16 @@
 package "Lampese/Algorithms-Moonbit/math/catalan"
 
 // Values
-pub fn catalan_number(Int) -> Int64
+pub fn catalan_number(Int32) -> Int64
 
 // Errors
 
 // Types and methods
 type Catalan
-pub fn Catalan::new(Int) -> Self
-pub fn Catalan::nth(Self, Int) -> Int64
+pub fn Catalan::new(Int32) -> Self
+pub fn Catalan::nth(Self, Int32) -> Int64
 pub fn Catalan::values(Self) -> Array[Int64]
 
 // Type aliases
 
 // Traits
-

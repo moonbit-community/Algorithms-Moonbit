@@ -8,7 +8,7 @@ struct Node[K, V] {
 
 ///|
 fn[K, V] Node::new(key : K, value : V) -> Node[K, V] {
-  Node::{ key, value, left: None, right: None }
+  Node::{ key, value, left: None, right: None, }
 }
 
 ///|
@@ -98,16 +98,16 @@ fn[K : Compare, V] splay(root : Node[K, V]?, key : K) -> Node[K, V]? {
 ///|
 pub struct SplayTree[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
+  mut size : Int32
 }
 
 ///|
 pub fn[K, V] SplayTree::new() -> SplayTree[K, V] {
-  SplayTree::{ root: None, size: 0 }
+  SplayTree::{ root: None, size: 0, }
 }
 
 ///|
-pub fn[K, V] SplayTree::len(self : SplayTree[K, V]) -> Int {
+pub fn[K, V] SplayTree::len(self : SplayTree[K, V]) -> Int32 {
   self.size
 }
 
@@ -143,13 +143,13 @@ pub fn[K : Compare, V] SplayTree::insert(
       } else if cmp < 0 {
         let left_sub = root.left
         root.left = None
-        let new_root = Node::{ key, value, left: left_sub, right: Some(root) }
+        let new_root = Node::{ key, value, left: left_sub, right: Some(root), }
         self.root = Some(new_root)
         self.size = self.size + 1
       } else {
         let right_sub = root.right
         root.right = None
-        let new_root = Node::{ key, value, left: Some(root), right: right_sub }
+        let new_root = Node::{ key, value, left: Some(root), right: right_sub, }
         self.root = Some(new_root)
         self.size = self.size + 1
       }
@@ -225,6 +225,6 @@ pub fn[K : Compare, V] SplayTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for SplayTree[K, V] with default() {
+pub impl[K, V] Default for SplayTree[K, V] with fn default() {
   SplayTree::new()
 }

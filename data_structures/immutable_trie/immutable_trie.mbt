@@ -9,12 +9,12 @@ struct TrieNode[K, V] {
 
 ///|
 fn[K, V] TrieNode::new() -> TrieNode[K, V] {
-  TrieNode::{ keys: Array::new(), children: Array::new(), value: None }
+  TrieNode::{ keys: Array(), children: Array(), value: None, }
 }
 
 ///|
 fn[T] clone_array(source : Array[T]) -> Array[T] {
-  let result = Array::new()
+  let result = Array()
   for idx in 0..<source.length() {
     result.push(source[idx])
   }
@@ -25,7 +25,7 @@ fn[T] clone_array(source : Array[T]) -> Array[T] {
 fn[K : Eq, V] TrieNode::find_child_index(
   self : TrieNode[K, V],
   key : K,
-) -> Int? {
+) -> Int32? {
   for idx in 0..<self.keys.length() {
     if self.keys[idx] == key {
       return Some(idx)
@@ -38,7 +38,7 @@ fn[K : Eq, V] TrieNode::find_child_index(
 fn[K : Eq, V] TrieNode::insert_at(
   self : TrieNode[K, V],
   key : Array[K],
-  depth : Int,
+  depth : Int32,
   value : V,
 ) -> TrieNode[K, V] {
   if depth == key.length() {
@@ -55,7 +55,7 @@ fn[K : Eq, V] TrieNode::insert_at(
       let new_child = child.insert_at(key, depth + 1, value)
       let new_children = clone_array(self.children)
       new_children[idx] = new_child
-      TrieNode::{ keys: self.keys, children: new_children, value: self.value }
+      TrieNode::{ keys: self.keys, children: new_children, value: self.value, }
     }
     None => {
       let new_keys = clone_array(self.keys)
@@ -63,7 +63,7 @@ fn[K : Eq, V] TrieNode::insert_at(
       let new_children = clone_array(self.children)
       let child = TrieNode::new().insert_at(key, depth + 1, value)
       new_children.push(child)
-      TrieNode::{ keys: new_keys, children: new_children, value: self.value }
+      TrieNode::{ keys: new_keys, children: new_children, value: self.value, }
     }
   }
 }
@@ -72,7 +72,7 @@ fn[K : Eq, V] TrieNode::insert_at(
 fn[K : Eq, V] TrieNode::get_at(
   self : TrieNode[K, V],
   key : Array[K],
-  depth : Int,
+  depth : Int32,
 ) -> V? {
   if depth == key.length() {
     return self.value
@@ -100,7 +100,7 @@ pub struct PersistentTrie[K, V] {
 
 ///|
 pub fn[K, V] PersistentTrie::new() -> PersistentTrie[K, V] {
-  PersistentTrie::{ root: TrieNode::new() }
+  PersistentTrie::{ root: TrieNode::new(), }
 }
 
 ///|
@@ -155,6 +155,6 @@ pub fn[K, V : Eq] PersistentTrie::is_empty(self : PersistentTrie[K, V]) -> Bool 
 }
 
 ///|
-pub impl[K, V] Default for PersistentTrie[K, V] with default() {
+pub impl[K, V] Default for PersistentTrie[K, V] with fn default() {
   PersistentTrie::new()
 }

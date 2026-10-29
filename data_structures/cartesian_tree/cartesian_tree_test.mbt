@@ -1,7 +1,7 @@
 ///|
 test "cartesian_tree_structure" {
   let arr = [5, 2, 6, 3, 4]
-  let tree = CartesianTree::from_array(arr.copy())
+  let tree = @cartesian_tree.CartesianTree::from_array(arr.copy())
   @debug.assert_eq(tree.len(), arr.length())
   @debug.assert_eq(tree.is_empty(), false)
   @debug.assert_eq(tree.root_index(), Some(1))
@@ -19,7 +19,7 @@ test "cartesian_tree_structure" {
 ///|
 test "cartesian_tree_heap_property_and_empty" {
   let arr = [5, 2, 6, 3, 4, 1]
-  let tree = CartesianTree::from_array(arr.copy())
+  let tree = @cartesian_tree.CartesianTree::from_array(arr.copy())
   @debug.assert_eq(tree.len(), arr.length())
   let root_idx = tree.root_index().unwrap()
   @debug.assert_eq(tree.value_at(root_idx), Some(1))
@@ -41,7 +41,7 @@ test "cartesian_tree_heap_property_and_empty" {
     }
   }
   let empty_arr = Array::make(0, 0)
-  let empty_tree = CartesianTree::from_array(empty_arr)
+  let empty_tree = @cartesian_tree.CartesianTree::from_array(empty_arr)
   @debug.assert_eq(empty_tree.is_empty(), true)
   @debug.assert_eq(empty_tree.root_index(), None)
   @debug.assert_eq(empty_tree.inorder().length(), 0)
@@ -50,7 +50,7 @@ test "cartesian_tree_heap_property_and_empty" {
 ///|
 test "cartesian_tree_handles_duplicates" {
   let arr = [4, 4, 4]
-  let tree = CartesianTree::from_array(arr.copy())
+  let tree = @cartesian_tree.CartesianTree::from_array(arr.copy())
   @debug.assert_eq(tree.root_index(), Some(0))
   @debug.assert_eq(tree.left_child(0), None)
   @debug.assert_eq(tree.right_child(0), Some(1))

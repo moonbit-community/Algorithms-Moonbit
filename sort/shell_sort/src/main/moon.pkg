@@ -1,0 +1,5 @@
+import {
+  "Pzl-love/shell_sort/lib",
+}
+
+pkgtype(kind: "executable")

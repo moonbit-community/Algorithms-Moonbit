@@ -2,7 +2,7 @@
 struct Node[K, V] {
   key : K
   value : V
-  priority : Int
+  priority : Int32
   left : Node[K, V]?
   right : Node[K, V]?
 }
@@ -11,11 +11,11 @@ struct Node[K, V] {
 fn[K, V] Node::new(
   key : K,
   value : V,
-  priority : Int,
+  priority : Int32,
   left : Node[K, V]?,
   right : Node[K, V]?,
 ) -> Node[K, V] {
-  Node::{ key, value, priority, left, right }
+  Node::{ key, value, priority, left, right, }
 }
 
 ///|
@@ -58,7 +58,7 @@ fn[K : Compare, V] insert_node(
   node_opt : Node[K, V]?,
   key : K,
   value : V,
-  priority : Int,
+  priority : Int32,
 ) -> (Node[K, V]?, Bool) {
   match node_opt {
     None => (Some(Node::new(key, value, priority, None, None)), true)
@@ -186,17 +186,17 @@ fn[K : Compare, V] remove_node(
 ///|
 pub struct PersistentTreap[K, V] {
   root : Node[K, V]?
-  size : Int
-  rng_state : Int
+  size : Int32
+  rng_state : Int32
 }
 
 ///|
 pub fn[K, V] PersistentTreap::new() -> PersistentTreap[K, V] {
-  PersistentTreap::{ root: None, size: 0, rng_state: 123_456_789 }
+  PersistentTreap::{ root: None, size: 0, rng_state: 123_456_789, }
 }
 
 ///|
-pub fn[K, V] PersistentTreap::len(self : PersistentTreap[K, V]) -> Int {
+pub fn[K, V] PersistentTreap::len(self : PersistentTreap[K, V]) -> Int32 {
   self.size
 }
 
@@ -209,11 +209,11 @@ pub fn[K, V] PersistentTreap::is_empty(self : PersistentTreap[K, V]) -> Bool {
 pub fn[K, V] PersistentTreap::clear(
   self : PersistentTreap[K, V],
 ) -> PersistentTreap[K, V] {
-  PersistentTreap::{ root: None, size: 0, rng_state: self.rng_state }
+  PersistentTreap::{ root: None, size: 0, rng_state: self.rng_state, }
 }
 
 ///|
-fn next_priority(state : Int) -> (Int, Int) {
+fn next_priority(state : Int32) -> (Int32, Int32) {
   let modulus = 2_147_483_647
   let mut next_state = (state * 1_103_515_245 + 12_345) % modulus
   if next_state < 0 {
@@ -234,7 +234,7 @@ pub fn[K : Compare, V] PersistentTreap::insert(
   let (priority, next_state) = next_priority(self.rng_state)
   let (new_root, inserted) = insert_node(self.root, key, value, priority)
   let size = if inserted { self.size + 1 } else { self.size }
-  PersistentTreap::{ root: new_root, size, rng_state: next_state }
+  PersistentTreap::{ root: new_root, size, rng_state: next_state, }
 }
 
 ///|
@@ -264,12 +264,12 @@ pub fn[K : Compare, V] PersistentTreap::remove(
   let (new_root, removed) = remove_node(self.root, key)
   let size = if removed { self.size - 1 } else { self.size }
   (
-    PersistentTreap::{ root: new_root, size, rng_state: self.rng_state },
+    PersistentTreap::{ root: new_root, size, rng_state: self.rng_state, },
     removed,
   )
 }
 
 ///|
-pub impl[K, V] Default for PersistentTreap[K, V] with default() {
+pub impl[K, V] Default for PersistentTreap[K, V] with fn default() {
   PersistentTreap::new()
 }

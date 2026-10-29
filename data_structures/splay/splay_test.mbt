@@ -1,6 +1,6 @@
 ///|
 test "splay basic operations" {
-  let tree : SplayTree[Int, Int] = SplayTree::new()
+  let tree : @splay.SplayTree[Int32, Int32] = @splay.SplayTree::new()
   @debug.assert_eq(tree.is_empty(), true)
   tree.insert(10, 100)
   tree.insert(20, 200)
@@ -17,7 +17,7 @@ test "splay basic operations" {
 
 ///|
 test "splay repeated access stays consistent" {
-  let tree : SplayTree[Int, Int] = SplayTree::new()
+  let tree : @splay.SplayTree[Int32, Int32] = @splay.SplayTree::new()
   tree.insert(30, 300)
   tree.insert(40, 400)
   tree.insert(10, 100)
@@ -33,7 +33,7 @@ test "splay repeated access stays consistent" {
 
 ///|
 test "splay removes and re-links subtrees" {
-  let tree : SplayTree[Int, Int] = SplayTree::new()
+  let tree : @splay.SplayTree[Int32, Int32] = @splay.SplayTree::new()
   tree.insert(25, 1)
   tree.insert(15, 2)
   tree.insert(35, 3)
@@ -49,7 +49,7 @@ test "splay removes and re-links subtrees" {
 
 ///|
 test "splay clear and replace value" {
-  let tree : SplayTree[Int, Int] = SplayTree::new()
+  let tree : @splay.SplayTree[Int32, Int32] = @splay.SplayTree::new()
   tree.insert(1, 10)
   tree.insert(1, 20)
   @debug.assert_eq(tree.len(), 1)

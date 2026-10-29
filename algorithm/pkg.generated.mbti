@@ -8,21 +8,21 @@ import {
 // Values
 pub fn[T : Compare] binary_search(Array[T], T) -> Bool
 
-pub fn[T : Compare] equal_range(Array[T], T) -> (Int, Int)
+pub fn[T : Compare] equal_range(Array[T], T) -> (Int32, Int32)
 
-pub fn ext_euc(Int, Int) -> (Int, Int, Int)
+pub fn ext_euc(Int32, Int32) -> (Int32, Int32, Int32)
 
-pub fn gcd(Int, Int) -> Int
+pub fn gcd(Int32, Int32) -> Int32
 
-pub fn lcm(Int, Int) -> Int
+pub fn lcm(Int32, Int32) -> Int32
 
-pub fn[T : Compare] lower_bound(Array[T], T) -> Int
+pub fn[T : Compare] lower_bound(Array[T], T) -> Int32
 
 pub fn[T : Compare] max(T, T) -> T
 
 pub fn[T : Compare] max_element(Array[T]) -> T
 
-pub fn max_manhattan_distance(Array[Point]) -> Int
+pub fn max_manhattan_distance(Array[Point]) -> Int32
 
 pub fn[T : Compare] merge(Array[T], Array[T]) -> Array[T]
 
@@ -30,21 +30,21 @@ pub fn[T : Compare] min(T, T) -> T
 
 pub fn[T : Compare] min_element(Array[T]) -> T
 
-pub fn mod_inverse(Int, Int) -> Int
+pub fn mod_inverse(Int32, Int32) -> Int32
 
-pub fn quick_pow(Int, Int) -> Int64
+pub fn quick_pow(Int32, Int32) -> Int64
 
-pub fn[T : Compare] upper_bound(Array[T], T) -> Int
+pub fn[T : Compare] upper_bound(Array[T], T) -> Int32
 
 // Errors
 
 // Types and methods
 pub(all) struct Point {
-  x : Int
-  y : Int
+  x : Int32
+  y : Int32
 } derive(@debug.Debug)
+pub fn Point::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
 // Traits
-

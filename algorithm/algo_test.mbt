@@ -78,9 +78,9 @@ test "quick_pow" {
 ///|
 test "max_manhattan_distance" {
   let arr = [
-    @algorithm.Point::{ x: 0, y: 0 },
-    @algorithm.Point::{ x: 1, y: 0 },
-    @algorithm.Point::{ x: 1, y: 1 },
+    @algorithm.Point::{ x: 0, y: 0, },
+    @algorithm.Point::{ x: 1, y: 0, },
+    @algorithm.Point::{ x: 1, y: 1, },
   ]
   debug_inspect(@algorithm.max_manhattan_distance(arr), content="2")
 }
@@ -93,11 +93,11 @@ test "gcd" {
 
 ///|
 test "ext_euclidean" {
-  debug_inspect(ext_euc(5, 7), content="(1, 3, -2)")
+  debug_inspect(@algorithm.ext_euc(5, 7), content="(1, 3, -2)")
 }
 
 ///|
 test "mod_inverse" {
-  assert_eq(mod_inverse(2, 1000_000_007), 500000004)
-  assert_eq(mod_inverse(3, 26), 9)
+  assert_eq(@algorithm.mod_inverse(2, 1000_000_007), 500000004)
+  assert_eq(@algorithm.mod_inverse(3, 26), 9)
 }

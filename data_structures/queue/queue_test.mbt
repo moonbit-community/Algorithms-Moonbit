@@ -1,6 +1,6 @@
 ///|
 test "queue_test" {
-  let queue : Queue[Int] = Queue::default()
+  let queue : @queue.Queue[Int32] = @queue.Queue::default()
   debug_inspect(queue.is_empty(), content="true")
   queue.push(8)
   queue.push(16)

@@ -34,7 +34,7 @@ test "kd-tree nearest neighbor" {
     [8.0, 1.0],
     [7.0, 2.0],
   ]
-  let tree = KDTree::from_points(points)
+  let tree = @kd_tree.KDTree::from_points(points)
   @debug.assert_eq(tree.len(), 6)
   let nearest = tree.nearest([9.0, 2.0])
   @debug.assert_eq(nearest, Some([8.0, 1.0]))
@@ -50,7 +50,7 @@ test "kd-tree range search" {
     [8.0, 1.0],
     [7.0, 2.0],
   ]
-  let tree = KDTree::from_points(points)
+  let tree = @kd_tree.KDTree::from_points(points)
   let hits = tree.range_search([4.0, 2.0], [9.0, 6.0])
   @debug.assert_eq(hits.length(), 3)
   @debug.assert_eq(contains_point(hits, [5.0, 4.0]), true)
@@ -60,7 +60,7 @@ test "kd-tree range search" {
 
 ///|
 test "kd-tree empty queries" {
-  let tree = KDTree::from_points([])
+  let tree = @kd_tree.KDTree::from_points([])
   @debug.assert_eq(tree.is_empty(), true)
   @debug.assert_eq(tree.nearest([1.0, 2.0]), None)
   @debug.assert_eq(tree.range_search([0.0, 0.0], [1.0, 1.0]).length(), 0)

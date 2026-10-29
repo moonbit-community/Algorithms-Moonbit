@@ -6,7 +6,7 @@ enum Prework {
 
 ///|
 pub(all) struct StringHash {
-  n : Int
+  n : Int32
   mod : Int64
   base : Int64
   hash : Array[Int64]
@@ -25,8 +25,8 @@ let empty_hash : StringHash = StringHash::{
 ///|
 /// Create a new StringHash object.
 pub fn StringHash::new(
-  mod? : Int64 = 998244353,
-  base? : Int64 = 131,
+  mod~ : Int64 = 998244353,
+  base~ : Int64 = 131,
   s : String,
 ) -> StringHash {
   let n = s.length()
@@ -42,7 +42,7 @@ pub fn StringHash::new(
     h[i] = (h[i - 1] * base + (s.code_unit_at(i - 1) - 'a' + 1).to_int64()) %
       mod
   }
-  StringHash::{ n, mod, base, hash: h, prework: Util(p~) }
+  StringHash::{ n, mod, base, hash: h, prework: Util(p~), }
 }
 
 ///|
@@ -79,8 +79,8 @@ priv suberror IndexOutOfBounds {
 /// ```
 pub fn StringHash::get_hash(
   self : StringHash,
-  left_idx? : Int,
-  right_idx? : Int,
+  left_idx? : Int32,
+  right_idx? : Int32,
 ) -> Int64 raise Error {
   let left = match left_idx {
     Some(l) => l

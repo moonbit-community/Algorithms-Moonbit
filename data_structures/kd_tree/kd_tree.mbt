@@ -10,15 +10,15 @@
 
 ///|
 pub struct KDTree {
-  dimension : Int
-  size : Int
+  dimension : Int32
+  size : Int32
   root : Node?
 }
 
 ///|
 struct Node {
   point : Array[Double]
-  axis : Int
+  axis : Int32
   left : Node?
   right : Node?
 }
@@ -35,11 +35,11 @@ struct Node {
 /// # Panics
 /// Panics if `dimension <= 0`.
 ///
-pub fn KDTree::new(dimension : Int) -> KDTree {
+pub fn KDTree::new(dimension : Int32) -> KDTree {
   if dimension <= 0 {
     abort("KDTree dimension must be positive")
   }
-  KDTree::{ dimension, size: 0, root: None }
+  KDTree::{ dimension, size: 0, root: None, }
 }
 
 ///|
@@ -59,7 +59,7 @@ pub fn KDTree::new(dimension : Int) -> KDTree {
 ///
 pub fn KDTree::from_points(points : Array[Array[Double]]) -> KDTree {
   if points.length() == 0 {
-    return KDTree::{ dimension: 0, size: 0, root: None }
+    return KDTree::{ dimension: 0, size: 0, root: None, }
   }
   let dimension = points[0].length()
   if dimension == 0 {
@@ -69,13 +69,13 @@ pub fn KDTree::from_points(points : Array[Array[Double]]) -> KDTree {
     ensure_dimension(point, dimension)
   }
   let root = build(points, 0, dimension)
-  KDTree::{ dimension, size: points.length(), root }
+  KDTree::{ dimension, size: points.length(), root, }
 }
 
 ///|
 /// Returns the number of stored points.
 ///
-pub fn KDTree::len(self : KDTree) -> Int {
+pub fn KDTree::len(self : KDTree) -> Int32 {
   self.size
 }
 
@@ -136,14 +136,18 @@ pub fn KDTree::range_search(
 }
 
 ///|
-fn ensure_dimension(point : Array[Double], dimension : Int) -> Unit {
+fn ensure_dimension(point : Array[Double], dimension : Int32) -> Unit {
   if point.length() != dimension {
     abort("Point dimension mismatch")
   }
 }
 
 ///|
-fn build(points : Array[Array[Double]], depth : Int, dimension : Int) -> Node? {
+fn build(
+  points : Array[Array[Double]],
+  depth : Int32,
+  dimension : Int32,
+) -> Node? {
   if points.length() == 0 {
     return None
   }
@@ -153,13 +157,13 @@ fn build(points : Array[Array[Double]], depth : Int, dimension : Int) -> Node? {
   let point = sorted[median]
   let left = build(sorted[:median].to_owned(), depth + 1, dimension)
   let right = build(sorted[median + 1:].to_owned(), depth + 1, dimension)
-  Some(Node::{ point, axis, left, right })
+  Some(Node::{ point, axis, left, right, })
 }
 
 ///|
 fn sort_by_axis(
   points : Array[Array[Double]],
-  axis : Int,
+  axis : Int32,
 ) -> Array[Array[Double]] {
   if points.length() <= 1 {
     return points
@@ -174,7 +178,7 @@ fn sort_by_axis(
 fn merge_by_axis(
   left : Array[Array[Double]],
   right : Array[Array[Double]],
-  axis : Int,
+  axis : Int32,
 ) -> Array[Array[Double]] {
   let merged : Array[Array[Double]] = []
   let mut i = 0

@@ -1,22 +1,22 @@
 ///|
 struct LCA {
-  head : Array[Int]
-  to : Array[Int]
-  next : Array[Int]
-  mut idx : Int
-  dep : Array[Int]
-  fa : Array[Array[Int]]
-  n : Int
-  root : Int
+  head : Array[Int32]
+  to : Array[Int32]
+  next : Array[Int32]
+  mut idx : Int32
+  dep : Array[Int32]
+  fa : Array[Array[Int32]]
+  n : Int32
+  root : Int32
 }
 
 ///|
-pub fn LCA::get_root(self : LCA) -> Int {
+pub fn LCA::get_root(self : LCA) -> Int32 {
   self.root
 }
 
 ///|
-fn LCA::new(size : Int, root : Int) -> LCA {
+fn LCA::new(size : Int32, root : Int32) -> LCA {
   let size = size + 2
   LCA::{
     head: Array::make(size, -1),
@@ -24,7 +24,7 @@ fn LCA::new(size : Int, root : Int) -> LCA {
     next: Array::make(size * 2, 0),
     idx: 0,
     dep: Array::make(size, 0),
-    fa: Array::makei(size, fn(_row : Int) -> Array[Int] {
+    fa: Array::makei(size, fn(_row : Int32) -> Array[Int32] {
       Array::make(@math.log2(size.to_double()).to_int() + 1, 0)
     }),
     n: size - 1,
@@ -33,7 +33,7 @@ fn LCA::new(size : Int, root : Int) -> LCA {
 }
 
 ///|
-fn LCA::add(self : LCA, u : Int, v : Int) -> Unit {
+fn LCA::add(self : LCA, u : Int32, v : Int32) -> Unit {
   let idx = self.idx
   self.to[idx] = v
   self.next[idx] = self.head[u]
@@ -42,7 +42,7 @@ fn LCA::add(self : LCA, u : Int, v : Int) -> Unit {
 }
 
 ///|
-fn LCA::dfs0(self : LCA, u : Int, f : Int, d : Int) -> Unit {
+fn LCA::dfs0(self : LCA, u : Int32, f : Int32, d : Int32) -> Unit {
   self.dep[u] = d
   for i = self.head[u]; i != -1; i = self.next[i] {
     let v = self.to[i]
@@ -81,7 +81,7 @@ fn LCA::_init(self : LCA) -> Unit {
 ///   let lca = create_Lca(data, root = 1)
 ///   inspect(lca.get_root(), content="1")
 /// ```
-pub fn create_Lca(data : Array[(Int, Int)], root? : Int = 1) -> LCA {
+pub fn create_Lca(data : Array[(Int32, Int32)], root~ : Int32 = 1) -> LCA {
   if data.length() == 0 {
     abort("Data is empty")
   } else if root < 1 || root > data.length() {
@@ -117,7 +117,7 @@ pub fn create_Lca(data : Array[(Int, Int)], root? : Int = 1) -> LCA {
 ///   inspect(lca.lca(4, 5), content="2")
 ///   inspect(lca.lca(4, 3), content="1")
 /// ```
-pub fn LCA::lca(self : LCA, u : Int, v : Int) -> Int {
+pub fn LCA::lca(self : LCA, u : Int32, v : Int32) -> Int32 {
   let _ = self.root
   let mut u = u
   let mut v = v

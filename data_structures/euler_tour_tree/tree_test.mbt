@@ -1,6 +1,6 @@
 ///|
 test "euler tour tree link, cut, and component size" {
-  let ett = EulerTourTree::new(4)
+  let ett = @euler_tour_tree.EulerTourTree::new(4)
   assert_eq(ett.component_size(0), 1)
   assert_eq(ett.link(0, 1), true)
   assert_eq(ett.link(1, 2), true)
@@ -18,7 +18,7 @@ test "euler tour tree link, cut, and component size" {
 
 ///|
 test "euler tour tree rejects redundant operations" {
-  let ett = EulerTourTree::new(2)
+  let ett = @euler_tour_tree.EulerTourTree::new(2)
   assert_eq(ett.link(0, 1), true)
   assert_eq(ett.link(0, 1), false)
   assert_eq(ett.cut(0, 1), true)

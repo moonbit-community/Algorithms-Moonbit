@@ -2,14 +2,14 @@
 struct Node[K, V] {
   key : K
   mut value : V
-  priority : Int
+  priority : Int32
   mut left : Node[K, V]?
   mut right : Node[K, V]?
 }
 
 ///|
-fn[K, V] Node::new(key : K, value : V, priority : Int) -> Node[K, V] {
-  Node::{ key, value, priority, left: None, right: None }
+fn[K, V] Node::new(key : K, value : V, priority : Int32) -> Node[K, V] {
+  Node::{ key, value, priority, left: None, right: None, }
 }
 
 ///|
@@ -60,7 +60,7 @@ fn[K : Compare, V] insert_node(
   node_opt : Node[K, V]?,
   key : K,
   value : V,
-  priority : Int,
+  priority : Int32,
 ) -> (Node[K, V]?, Bool) {
   match node_opt {
     None => (Some(Node::new(key, value, priority)), true)
@@ -141,17 +141,17 @@ fn[K : Compare, V] find_node(node_opt : Node[K, V]?, key : K) -> V? {
 ///|
 pub struct Treap[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
-  mut rng_state : Int
+  mut size : Int32
+  mut rng_state : Int32
 }
 
 ///|
 pub fn[K, V] Treap::new() -> Treap[K, V] {
-  Treap::{ root: None, size: 0, rng_state: 123_456_789 }
+  Treap::{ root: None, size: 0, rng_state: 123_456_789, }
 }
 
 ///|
-pub fn[K, V] Treap::len(self : Treap[K, V]) -> Int {
+pub fn[K, V] Treap::len(self : Treap[K, V]) -> Int32 {
   self.size
 }
 
@@ -167,7 +167,7 @@ pub fn[K, V] Treap::clear(self : Treap[K, V]) -> Unit {
 }
 
 ///|
-fn[K, V] Treap::next_priority(self : Treap[K, V]) -> Int {
+fn[K, V] Treap::next_priority(self : Treap[K, V]) -> Int32 {
   let modulus = 2_147_483_647
   let mut state = (self.rng_state * 1_103_515_245 + 12_345) % modulus
   if state < 0 {
@@ -218,6 +218,6 @@ pub fn[K : Compare, V] Treap::remove(self : Treap[K, V], key : K) -> Bool {
 }
 
 ///|
-pub impl[K, V] Default for Treap[K, V] with default() {
+pub impl[K, V] Default for Treap[K, V] with fn default() {
   Treap::new()
 }

@@ -2,14 +2,14 @@
 struct Node[K, V] {
   key : K
   mut value : V
-  mut size : Int
+  mut size : Int32
   mut left : Node[K, V]?
   mut right : Node[K, V]?
 }
 
 ///|
 fn[K, V] Node::new(key : K, value : V) -> Node[K, V] {
-  Node::{ key, value, size: 1, left: None, right: None }
+  Node::{ key, value, size: 1, left: None, right: None, }
 }
 
 ///|
@@ -19,7 +19,7 @@ priv struct Entry[K, V] {
 }
 
 ///|
-fn[K, V] node_size(node_opt : Node[K, V]?) -> Int {
+fn[K, V] node_size(node_opt : Node[K, V]?) -> Int32 {
   match node_opt {
     None => 0
     Some(node) => node.size
@@ -45,7 +45,7 @@ fn[K, V] collect_entries(
       let left_subtree = node.left
       let right_subtree = node.right
       collect_entries(left_subtree, entries)
-      entries.push(Entry::{ key: node.key, value: node.value })
+      entries.push(Entry::{ key: node.key, value: node.value, })
       collect_entries(right_subtree, entries)
     }
   }
@@ -54,8 +54,8 @@ fn[K, V] collect_entries(
 ///|
 fn[K, V] build_balanced(
   entries : Array[Entry[K, V]],
-  start : Int,
-  end : Int,
+  start : Int32,
+  end : Int32,
 ) -> Node[K, V]? {
   if start >= end {
     None
@@ -212,17 +212,17 @@ fn[K : Compare, V] find_node(node_opt : Node[K, V]?, key : K) -> V? {
 ///|
 pub struct ScapegoatTree[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
-  mut max_size : Int
+  mut size : Int32
+  mut max_size : Int32
 }
 
 ///|
 pub fn[K, V] ScapegoatTree::new() -> ScapegoatTree[K, V] {
-  ScapegoatTree::{ root: None, size: 0, max_size: 0 }
+  ScapegoatTree::{ root: None, size: 0, max_size: 0, }
 }
 
 ///|
-pub fn[K, V] ScapegoatTree::len(self : ScapegoatTree[K, V]) -> Int {
+pub fn[K, V] ScapegoatTree::len(self : ScapegoatTree[K, V]) -> Int32 {
   self.size
 }
 
@@ -294,6 +294,6 @@ pub fn[K : Compare, V] ScapegoatTree::remove(
 }
 
 ///|
-pub impl[K, V] Default for ScapegoatTree[K, V] with default() {
+pub impl[K, V] Default for ScapegoatTree[K, V] with fn default() {
   ScapegoatTree::new()
 }

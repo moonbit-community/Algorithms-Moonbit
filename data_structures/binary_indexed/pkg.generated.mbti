@@ -2,16 +2,15 @@
 package "Lampese/Algorithms-Moonbit/data_structures/binary_indexed"
 
 // Values
-pub fn bitTree(Array[Int]) -> Tree[Int]
+pub fn bitTree(Array[Int32]) -> Tree[Int32]
 
 // Errors
 
 // Types and methods
-type Tree[Int]
-pub fn Tree::query(Self[Int], Int) -> Int
-pub fn Tree::update(Self[Int], Int, Int, Int) -> Unit
+type Tree[T]
+pub fn Tree::query(Self[Int32], Int32) -> Int32
+pub fn Tree::update(Self[Int32], Int32, Int32, Int32) -> Unit
 
 // Type aliases
 
 // Traits
-

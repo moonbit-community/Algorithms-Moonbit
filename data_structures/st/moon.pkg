@@ -1,4 +1,7 @@
 import {
-  "moonbitlang/core/cmp",
   "moonbitlang/core/math",
 }
+
+import {
+  "moonbitlang/core/cmp",
+} for "test"

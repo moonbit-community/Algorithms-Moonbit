@@ -1,6 +1,6 @@
 ///|
 test "scapegoat tree basic operations" {
-  let tree : ScapegoatTree[Int, String] = ScapegoatTree::new()
+  let tree : @scapegoat_tree.ScapegoatTree[Int32, String] = @scapegoat_tree.ScapegoatTree::new()
   @debug.assert_eq(tree.is_empty(), true)
   tree.insert(10, "ten")
   tree.insert(20, "twenty")
@@ -17,7 +17,7 @@ test "scapegoat tree basic operations" {
 
 ///|
 test "scapegoat tree stays searchable after ordered inserts" {
-  let tree : ScapegoatTree[Int, Int] = ScapegoatTree::new()
+  let tree : @scapegoat_tree.ScapegoatTree[Int32, Int32] = @scapegoat_tree.ScapegoatTree::new()
   for i in 1..<=15 {
     tree.insert(i, i * 10)
   }
@@ -29,7 +29,7 @@ test "scapegoat tree stays searchable after ordered inserts" {
 
 ///|
 test "scapegoat tree rebuilds after removals" {
-  let tree : ScapegoatTree[Int, Int] = ScapegoatTree::new()
+  let tree : @scapegoat_tree.ScapegoatTree[Int32, Int32] = @scapegoat_tree.ScapegoatTree::new()
   for i in 1..<=12 {
     tree.insert(i, i)
   }

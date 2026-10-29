@@ -13,7 +13,7 @@ pub struct Heap[T] {
 /// # Returns
 /// A new `Heap` instance.
 pub fn[T] Heap::new(comparator : (T, T) -> Bool) -> Heap[T] {
-  Heap::{ items: Array::new(), comparator }
+  Heap::{ items: Array(), comparator, }
 }
 
 ///|
@@ -29,7 +29,7 @@ pub fn[T] Heap::from_vec(
   items : Array[T],
   comparator : (T, T) -> Bool,
 ) -> Heap[T] {
-  let heap = Heap::{ items, comparator }
+  let heap = Heap::{ items, comparator, }
   heap.build_heap()
   heap
 }
@@ -56,7 +56,7 @@ pub fn[T] Heap::build_heap(self : Heap[T]) -> Unit {
 ///
 /// # Returns
 /// The number of elements in the heap.
-pub fn[T] Heap::len(self : Heap[T]) -> Int {
+pub fn[T] Heap::len(self : Heap[T]) -> Int32 {
   self.items.length()
 }
 
@@ -118,7 +118,7 @@ pub fn[T] Heap::iter(self : Heap[T]) -> Iter[T] {
 ///
 /// # Parameters
 /// - `idx`: The index of the element to heapify up.
-fn[T] Heap::heapify_up(self : Heap[T], idx : Int) -> Unit {
+fn[T] Heap::heapify_up(self : Heap[T], idx : Int32) -> Unit {
   let mut idx0 = idx
   while self.parent_idx(idx0) is Some(pdx) { // while-let 等价写法
     if (self.comparator)(self.items[idx0], self.items[pdx]) {
@@ -137,7 +137,7 @@ fn[T] Heap::heapify_up(self : Heap[T], idx : Int) -> Unit {
 ///
 /// # Parameters
 /// - `idx`: The index of the element to heapify down.
-fn[T] Heap::heapify_down(self : Heap[T], idx : Int) -> Unit {
+fn[T] Heap::heapify_down(self : Heap[T], idx : Int32) -> Unit {
   let mut idx0 = idx
   while self.children_present(idx0) {
     let cdx = if self.right_child_idx(idx0) >= self.len() {
@@ -168,7 +168,7 @@ fn[T] Heap::heapify_down(self : Heap[T], idx : Int) -> Unit {
 ///
 /// # Returns
 /// The index of the parent element if it exists, otherwise `None`.
-fn[T] Heap::parent_idx(_self : Heap[T], idx : Int) -> Int? {
+fn[T] Heap::parent_idx(_self : Heap[T], idx : Int32) -> Int32? {
   if idx > 0 {
     Some((idx - 1) / 2)
   } else {
@@ -184,7 +184,7 @@ fn[T] Heap::parent_idx(_self : Heap[T], idx : Int) -> Int? {
 ///
 /// # Returns
 /// `true` if the element has children, `false` otherwise.
-fn[T] Heap::children_present(self : Heap[T], idx : Int) -> Bool {
+fn[T] Heap::children_present(self : Heap[T], idx : Int32) -> Bool {
   self.left_child_idx(idx) < self.len()
 }
 
@@ -196,7 +196,7 @@ fn[T] Heap::children_present(self : Heap[T], idx : Int) -> Bool {
 ///
 /// # Returns
 /// The index of the left child.
-fn[T] Heap::left_child_idx(_self : Heap[T], idx : Int) -> Int {
+fn[T] Heap::left_child_idx(_self : Heap[T], idx : Int32) -> Int32 {
   idx * 2 + 1
 }
 
@@ -208,6 +208,6 @@ fn[T] Heap::left_child_idx(_self : Heap[T], idx : Int) -> Int {
 ///
 /// # Returns
 /// The index of the right child.
-fn[T] Heap::right_child_idx(self : Heap[T], idx : Int) -> Int {
+fn[T] Heap::right_child_idx(self : Heap[T], idx : Int32) -> Int32 {
   self.left_child_idx(idx) + 1
 }

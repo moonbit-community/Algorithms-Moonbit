@@ -12,7 +12,7 @@ pub enum PersistentSegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for PersistentSegmentTreeError with output(self, logger) {
+pub impl Show for PersistentSegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")
@@ -21,40 +21,40 @@ pub impl Show for PersistentSegmentTreeError with output(self, logger) {
 
 ///|
 pub struct PersistentSegmentTree[T] {
-  size : Int
+  size : Int32
   root : Node[T]?
   merge : (T, T) -> T
 } derive(Debug)
 
 ///|
-pub impl[T] Show for PersistentSegmentTree[T] with output(_self, logger) {
+pub impl[T] Show for PersistentSegmentTree[T] with fn output(_self, logger) {
   logger.write_string("PersistentSegmentTree")
 }
 
 ///|
 fn[T] PersistentSegmentTree::build(
   arr : Array[T],
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
   merge : (T, T) -> T,
 ) -> Node[T] {
   if left == right {
-    return Node::{ value: arr[left], left: None, right: None }
+    return Node::{ value: arr[left], left: None, right: None, }
   }
   let mid = (left + right) / 2
   let left_node = PersistentSegmentTree::build(arr, left, mid, merge)
   let right_node = PersistentSegmentTree::build(arr, mid + 1, right, merge)
   let value = merge(left_node.value, right_node.value)
-  Node::{ value, left: Some(left_node), right: Some(right_node) }
+  Node::{ value, left: Some(left_node), right: Some(right_node), }
 }
 
 ///|
 fn[T] PersistentSegmentTree::query_internal(
   node_opt : Node[T]?,
-  start : Int,
-  end : Int,
-  left : Int,
-  right : Int,
+  start : Int32,
+  end : Int32,
+  left : Int32,
+  right : Int32,
   merge : (T, T) -> T,
 ) -> T? {
   if left > end || right < start {
@@ -97,14 +97,14 @@ fn[T] PersistentSegmentTree::query_internal(
 ///|
 fn[T] PersistentSegmentTree::update_internal(
   node_opt : Node[T]?,
-  start : Int,
-  end : Int,
-  idx : Int,
+  start : Int32,
+  end : Int32,
+  idx : Int32,
   value : T,
   merge : (T, T) -> T,
 ) -> Node[T]? {
   if start == end {
-    return Some(Node::{ value, left: None, right: None })
+    return Some(Node::{ value, left: None, right: None, })
   }
   match node_opt {
     None => None
@@ -128,7 +128,7 @@ fn[T] PersistentSegmentTree::update_internal(
           Some(right_node) => right_node.value
         }
         let merged = merge(left_value, right_value)
-        return Some(Node::{ value: merged, left: new_left, right: node.right })
+        return Some(Node::{ value: merged, left: new_left, right: node.right, })
       }
       let new_right = PersistentSegmentTree::update_internal(
         node.right,
@@ -147,7 +147,7 @@ fn[T] PersistentSegmentTree::update_internal(
         Some(right_node) => right_node.value
       }
       let merged = merge(left_value, right_value)
-      Some(Node::{ value: merged, left: node.left, right: new_right })
+      Some(Node::{ value: merged, left: node.left, right: new_right, })
     }
   }
 }
@@ -175,10 +175,10 @@ pub fn[T] PersistentSegmentTree::from_array(
 ) -> PersistentSegmentTree[T] {
   let size = arr.length()
   if size == 0 {
-    return PersistentSegmentTree::{ size, root: None, merge }
+    return PersistentSegmentTree::{ size, root: None, merge, }
   }
   let root = PersistentSegmentTree::build(arr, 0, size - 1, merge)
-  PersistentSegmentTree::{ size, root: Some(root), merge }
+  PersistentSegmentTree::{ size, root: Some(root), merge, }
 }
 
 ///|
@@ -204,8 +204,8 @@ pub fn[T] PersistentSegmentTree::from_array(
 /// ```
 pub fn[T] PersistentSegmentTree::query(
   self : PersistentSegmentTree[T],
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
 ) -> Result[T?, PersistentSegmentTreeError] {
   if left < 0 ||
     right < 0 ||
@@ -248,7 +248,7 @@ pub fn[T] PersistentSegmentTree::query(
 /// ```
 pub fn[T] PersistentSegmentTree::update(
   self : PersistentSegmentTree[T],
-  idx : Int,
+  idx : Int32,
   val : T,
 ) -> Result[PersistentSegmentTree[T], PersistentSegmentTreeError] {
   if idx < 0 || idx >= self.size {
@@ -262,5 +262,5 @@ pub fn[T] PersistentSegmentTree::update(
     val,
     self.merge,
   )
-  Ok(PersistentSegmentTree::{ size: self.size, root, merge: self.merge })
+  Ok(PersistentSegmentTree::{ size: self.size, root, merge: self.merge, })
 }

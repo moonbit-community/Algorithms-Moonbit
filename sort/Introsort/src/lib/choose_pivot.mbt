@@ -1,6 +1,7 @@
-///| The three numbers are taken in the middle method to select the pivot element index
+///|
+/// The three numbers are taken in the middle method to select the pivot element index
 ///
-fn[T:Compare] choose_pivot(arr : ArrayView[T]) -> Int {
+fn[T : Compare] choose_pivot(arr : MutArrayView[T]) -> Int32 {
   let mid = 0 + (arr.length() - 0) / 2
   let a = arr[0]
   let b = arr[mid]

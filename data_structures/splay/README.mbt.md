@@ -14,7 +14,7 @@ workloads.
 ```moonbit nocheck
 ///|
 test "README basic usage" {
-  let tree : SplayTree[Int, String] = SplayTree::new()
+  let tree : SplayTree[Int32, String] = SplayTree::new()
   tree.insert(42, "answer")
   tree.insert(7, "lucky")
   assert_eq(tree.get(7), Some("lucky"))
