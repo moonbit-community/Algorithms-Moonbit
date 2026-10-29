@@ -2,15 +2,14 @@
 package "Lampese/Algorithms-Moonbit/graph/apsp"
 
 // Values
-pub fn create_floyd(Array[(Int, Int, Int)], Int) -> Floyd
+pub fn create_floyd(Array[(Int32, Int32, Int32)], Int32) -> Floyd
 
 // Errors
 
 // Types and methods
 type Floyd
-pub fn Floyd::query(Self, Int, Int) -> Int
+pub fn Floyd::query(Self, Int32, Int32) -> Int32
 
 // Type aliases
 
 // Traits
-

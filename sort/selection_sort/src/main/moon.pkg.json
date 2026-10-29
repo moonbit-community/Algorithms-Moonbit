@@ -1,6 +1,0 @@
-{
-  "is-main": true,
-  "import": [
-    "Pzl-love/selection_sort/lib"
-  ]
-}

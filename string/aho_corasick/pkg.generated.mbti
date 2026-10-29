@@ -8,29 +8,28 @@ package "Lampese/Algorithms-Moonbit/string/aho_corasick"
 // Types and methods
 pub struct ACAutomaton {
   nodes : Array[ACNode]
-  alphabet_size : Int
-  pattern_lengths : Array[Int]
+  alphabet_size : Int32
+  pattern_lengths : Array[Int32]
   mut built : Bool
 }
-pub fn ACAutomaton::add_pattern(Self, String) -> Int
+pub fn ACAutomaton::add_pattern(Self, String) -> Int32
 pub fn ACAutomaton::build(Self) -> Unit
 pub fn ACAutomaton::clear(Self) -> Unit
-pub fn ACAutomaton::new(alphabet_size? : Int) -> Self
-pub fn ACAutomaton::pattern_count(Self) -> Int
+pub fn ACAutomaton::new(alphabet_size? : Int32) -> Self
+pub fn ACAutomaton::pattern_count(Self) -> Int32
 pub fn ACAutomaton::query(Self, String) -> Array[ACMatch]
 
 pub struct ACMatch {
-  start : Int
-  end : Int
-  pattern_index : Int
+  start : Int32
+  end : Int32
+  pattern_index : Int32
 }
-pub fn ACMatch::end(Self) -> Int
-pub fn ACMatch::pattern_index(Self) -> Int
-pub fn ACMatch::start(Self) -> Int
+pub fn ACMatch::end(Self) -> Int32
+pub fn ACMatch::pattern_index(Self) -> Int32
+pub fn ACMatch::start(Self) -> Int32
 
 type ACNode
 
 // Type aliases
 
 // Traits
-

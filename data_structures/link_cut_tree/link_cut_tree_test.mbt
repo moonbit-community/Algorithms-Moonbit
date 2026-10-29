@@ -1,6 +1,6 @@
 ///|
 test "link-cut tree basic connectivity and path sum" {
-  let lct = LinkCutTree::new([1, 2, 3, 4])
+  let lct = @link_cut_tree.LinkCutTree::new([1, 2, 3, 4])
   @debug.assert_eq(lct.connected(0, 1), false)
   @debug.assert_eq(lct.link(0, 1), true)
   @debug.assert_eq(lct.link(1, 2), true)
@@ -13,7 +13,7 @@ test "link-cut tree basic connectivity and path sum" {
 
 ///|
 test "link-cut tree cut and relink" {
-  let lct = LinkCutTree::new([5, 6, 7])
+  let lct = @link_cut_tree.LinkCutTree::new([5, 6, 7])
   @debug.assert_eq(lct.link(0, 1), true)
   @debug.assert_eq(lct.link(1, 2), true)
   @debug.assert_eq(lct.path_sum(0, 2), Some(18))
@@ -26,7 +26,7 @@ test "link-cut tree cut and relink" {
 
 ///|
 test "link-cut tree rejects redundant operations" {
-  let lct = LinkCutTree::new([2, 4])
+  let lct = @link_cut_tree.LinkCutTree::new([2, 4])
   @debug.assert_eq(lct.link(0, 1), true)
   @debug.assert_eq(lct.link(0, 1), false)
   @debug.assert_eq(lct.cut(0, 1), true)

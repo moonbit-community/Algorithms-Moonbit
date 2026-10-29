@@ -1,6 +1,6 @@
 ///|
 test "persistent treap versions are immutable" {
-  let t0 : PersistentTreap[Int, Int] = PersistentTreap::new()
+  let t0 : @immutable_treap.PersistentTreap[Int32, Int32] = @immutable_treap.PersistentTreap::new()
   let t1 = t0.insert(10, 100)
   let t2 = t1.insert(5, 50)
   let t3 = t2.insert(20, 200)
@@ -16,7 +16,7 @@ test "persistent treap versions are immutable" {
 
 ///|
 test "persistent treap updates preserve size" {
-  let t0 : PersistentTreap[Int, String] = PersistentTreap::new()
+  let t0 : @immutable_treap.PersistentTreap[Int32, String] = @immutable_treap.PersistentTreap::new()
   let t1 = t0.insert(1, "one")
   let t2 = t1.insert(2, "two")
   let t3 = t2.insert(2, "TWO")
@@ -28,7 +28,7 @@ test "persistent treap updates preserve size" {
 
 ///|
 test "persistent treap removal returns new version" {
-  let t0 : PersistentTreap[Int, Int] = PersistentTreap::new()
+  let t0 : @immutable_treap.PersistentTreap[Int32, Int32] = @immutable_treap.PersistentTreap::new()
   let mut current = t0
   for value in [7, 3, 10, 1, 5, 9, 12] {
     current = current.insert(value, value * 2)
@@ -44,7 +44,7 @@ test "persistent treap removal returns new version" {
 
 ///|
 test "persistent treap clear keeps snapshots" {
-  let t0 : PersistentTreap[Int, Int] = PersistentTreap::new()
+  let t0 : @immutable_treap.PersistentTreap[Int32, Int32] = @immutable_treap.PersistentTreap::new()
   let t1 = t0.insert(1, 1).insert(2, 2).insert(3, 3)
   let t2 = t1.clear()
   @debug.assert_eq(t1.len(), 3)
@@ -55,7 +55,7 @@ test "persistent treap clear keeps snapshots" {
 
 ///|
 test "persistent treap handles larger sequence" {
-  let mut treap : PersistentTreap[Int, Int] = PersistentTreap::new()
+  let mut treap : @immutable_treap.PersistentTreap[Int32, Int32] = @immutable_treap.PersistentTreap::new()
   for value in 0..<100 {
     treap = treap.insert(value, value)
   }

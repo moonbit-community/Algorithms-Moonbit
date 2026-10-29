@@ -6,19 +6,19 @@ pub enum ChthollyTreeError {
 
 ///|
 struct Interval {
-  l : Int
-  mut r : Int
-  mut value : Int
+  l : Int32
+  mut r : Int32
+  mut value : Int32
 } derive(Debug, Eq)
 
 ///|
-fn Interval::new(l : Int, r : Int, value : Int) -> Interval {
-  Interval::{ l, r, value }
+fn Interval::new(l : Int32, r : Int32, value : Int32) -> Interval {
+  Interval::{ l, r, value, }
 }
 
 ///|
 pub struct ChthollyTree {
-  size : Int
+  size : Int32
   mut intervals : Array[Interval]
 } derive(Debug)
 
@@ -27,9 +27,9 @@ pub struct ChthollyTree {
 ///
 ///- `length` : length of the indexed range (0-based)
 ///- `value` : initial value to fill the range
-pub fn ChthollyTree::new(length : Int, value : Int) -> ChthollyTree {
+pub fn ChthollyTree::new(length : Int32, value : Int32) -> ChthollyTree {
   if length <= 0 {
-    return ChthollyTree::{ size: 0, intervals: [] }
+    return ChthollyTree::{ size: 0, intervals: [], }
   }
   ChthollyTree::{
     size: length,
@@ -41,10 +41,10 @@ pub fn ChthollyTree::new(length : Int, value : Int) -> ChthollyTree {
 ///Builds a Chtholly tree by compressing consecutive equal values.
 ///
 ///- `arr` : initial values for each position (0-based)
-pub fn ChthollyTree::from_array(arr : Array[Int]) -> ChthollyTree {
+pub fn ChthollyTree::from_array(arr : Array[Int32]) -> ChthollyTree {
   let size = arr.length()
   if size == 0 {
-    return ChthollyTree::{ size: 0, intervals: [] }
+    return ChthollyTree::{ size: 0, intervals: [], }
   }
   let intervals : Array[Interval] = []
   let mut start = 0
@@ -57,18 +57,18 @@ pub fn ChthollyTree::from_array(arr : Array[Int]) -> ChthollyTree {
     }
   }
   intervals.push(Interval::new(start, size - 1, current))
-  ChthollyTree::{ size, intervals }
+  ChthollyTree::{ size, intervals, }
 }
 
 ///|
 ///Returns the length of the indexed range.
-pub fn ChthollyTree::size(self : ChthollyTree) -> Int {
+pub fn ChthollyTree::size(self : ChthollyTree) -> Int32 {
   self.size
 }
 
 ///|
 ///Returns the number of stored intervals.
-pub fn ChthollyTree::len(self : ChthollyTree) -> Int {
+pub fn ChthollyTree::len(self : ChthollyTree) -> Int32 {
   self.intervals.length()
 }
 
@@ -82,8 +82,8 @@ pub fn ChthollyTree::is_empty(self : ChthollyTree) -> Bool {
 ///Gets the value at the given position.
 pub fn ChthollyTree::value_at(
   self : ChthollyTree,
-  pos : Int,
-) -> Result[Int, ChthollyTreeError] {
+  pos : Int32,
+) -> Result[Int32, ChthollyTreeError] {
   if pos < 0 || pos >= self.size {
     return Err(ChthollyTreeError::IndexOutOfBounds)
   }
@@ -95,9 +95,9 @@ pub fn ChthollyTree::value_at(
 ///Assigns all values in `[left, right]` to `value`.
 pub fn ChthollyTree::assign(
   self : ChthollyTree,
-  left : Int,
-  right : Int,
-  value : Int,
+  left : Int32,
+  right : Int32,
+  value : Int32,
 ) -> Result[Unit, ChthollyTreeError] {
   match self.validate_range(left, right) {
     Err(err) => return Err(err)
@@ -115,9 +115,9 @@ pub fn ChthollyTree::assign(
 ///Adds `delta` to each value in `[left, right]`.
 pub fn ChthollyTree::add(
   self : ChthollyTree,
-  left : Int,
-  right : Int,
-  delta : Int,
+  left : Int32,
+  right : Int32,
+  delta : Int32,
 ) -> Result[Unit, ChthollyTreeError] {
   match self.validate_range(left, right) {
     Err(err) => return Err(err)
@@ -136,9 +136,9 @@ pub fn ChthollyTree::add(
 ///Computes the sum of values in `[left, right]`.
 pub fn ChthollyTree::query_sum(
   self : ChthollyTree,
-  left : Int,
-  right : Int,
-) -> Result[Int, ChthollyTreeError] {
+  left : Int32,
+  right : Int32,
+) -> Result[Int32, ChthollyTreeError] {
   match self.validate_range(left, right) {
     Err(err) => return Err(err)
     Ok(_) => ()
@@ -157,8 +157,8 @@ pub fn ChthollyTree::query_sum(
 ///|
 fn ChthollyTree::validate_range(
   self : ChthollyTree,
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
 ) -> Result[Unit, ChthollyTreeError] {
   if left < 0 || right < 0 || left > right {
     return Err(ChthollyTreeError::InvalidRange)
@@ -170,7 +170,7 @@ fn ChthollyTree::validate_range(
 }
 
 ///|
-fn ChthollyTree::find_index(self : ChthollyTree, pos : Int) -> Int {
+fn ChthollyTree::find_index(self : ChthollyTree, pos : Int32) -> Int32 {
   let len = self.intervals.length()
   if len == 0 {
     return 0
@@ -194,7 +194,7 @@ fn ChthollyTree::find_index(self : ChthollyTree, pos : Int) -> Int {
 ///|
 fn ChthollyTree::insert_interval(
   self : ChthollyTree,
-  index : Int,
+  index : Int32,
   interval : Interval,
 ) -> Unit {
   let len = self.intervals.length()
@@ -212,8 +212,8 @@ fn ChthollyTree::insert_interval(
 ///|
 fn ChthollyTree::remove_range(
   self : ChthollyTree,
-  start : Int,
-  end : Int,
+  start : Int32,
+  end : Int32,
 ) -> Unit {
   if start > end {
     return
@@ -251,7 +251,7 @@ fn ChthollyTree::normalize(self : ChthollyTree) -> Unit {
 }
 
 ///|
-fn ChthollyTree::split(self : ChthollyTree, pos : Int) -> Int {
+fn ChthollyTree::split(self : ChthollyTree, pos : Int32) -> Int32 {
   if pos <= 0 {
     return 0
   }
@@ -270,6 +270,6 @@ fn ChthollyTree::split(self : ChthollyTree, pos : Int) -> Int {
 }
 
 ///|
-pub impl Default for ChthollyTree with default() {
+pub impl Default for ChthollyTree with fn default() {
   ChthollyTree::new(0, 0)
 }

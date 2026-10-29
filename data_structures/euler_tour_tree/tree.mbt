@@ -4,18 +4,18 @@
 ///query whether two nodes are connected along with the component size.
 ///
 struct Node {
-  id : Int
+  id : Int32
   is_vertex : Bool
-  priority : Int
+  priority : Int32
   mut left : Node?
   mut right : Node?
   mut parent : Node?
-  mut size : Int
-  mut vertex_count : Int
+  mut size : Int32
+  mut vertex_count : Int32
 }
 
 ///|
-fn Node::new(id : Int, is_vertex : Bool, priority : Int) -> Node {
+fn Node::new(id : Int32, is_vertex : Bool, priority : Int32) -> Node {
   let count = if is_vertex { 1 } else { 0 }
   Node::{
     id,
@@ -31,13 +31,13 @@ fn Node::new(id : Int, is_vertex : Bool, priority : Int) -> Node {
 
 ///|
 struct EdgeRef {
-  to : Int
+  to : Int32
   out : Node
   back : Node
 }
 
 ///|
-fn node_size(node_opt : Node?) -> Int {
+fn node_size(node_opt : Node?) -> Int32 {
   match node_opt {
     None => 0
     Some(node) => node.size
@@ -45,7 +45,7 @@ fn node_size(node_opt : Node?) -> Int {
 }
 
 ///|
-fn node_vertex_count(node_opt : Node?) -> Int {
+fn node_vertex_count(node_opt : Node?) -> Int32 {
   match node_opt {
     None => 0
     Some(node) => node.vertex_count
@@ -100,7 +100,7 @@ fn merge_root(left_opt : Node?, right_opt : Node?) -> Node? {
 }
 
 ///|
-fn split(node_opt : Node?, k : Int) -> (Node?, Node?) {
+fn split(node_opt : Node?, k : Int32) -> (Node?, Node?) {
   match node_opt {
     None => (None, None)
     Some(node_value) => {
@@ -145,7 +145,7 @@ fn root_of(node : Node) -> Node {
 }
 
 ///|
-fn node_index(node : Node) -> Int {
+fn node_index(node : Node) -> Int32 {
   let mut idx = node_size(node.left)
   let mut current = node
   while current.parent is Some(parent) {
@@ -161,8 +161,8 @@ fn node_index(node : Node) -> Int {
 pub struct EulerTourTree {
   nodes : Array[Node]
   adjacency : Array[Array[EdgeRef]]
-  mut rng_state : Int
-  mut next_id : Int
+  mut rng_state : Int32
+  mut next_id : Int32
 }
 
 ///|
@@ -174,22 +174,22 @@ pub struct EulerTourTree {
 ///  assert_eq(ett.component_size(0), 1)
 ///```
 ///
-pub fn EulerTourTree::new(size : Int) -> EulerTourTree {
+pub fn EulerTourTree::new(size : Int32) -> EulerTourTree {
   let nodes = Array::make(size, Node::new(0, true, 1))
-  let adjacency = Array::make(size, Array::new())
+  let adjacency = Array::make(size, Array())
   let mut rng_state = 123_456_789
   for i in 0..<size {
     rng_state = next_priority(rng_state)
     nodes[i] = Node::new(i, true, rng_state)
-    adjacency[i] = Array::new()
+    adjacency[i] = Array()
   }
-  { nodes, adjacency, rng_state, next_id: size }
+  { nodes, adjacency, rng_state, next_id: size, }
 }
 
 ///|
 ///Returns the number of vertices in the forest.
 ///
-pub fn EulerTourTree::len(self : EulerTourTree) -> Int {
+pub fn EulerTourTree::len(self : EulerTourTree) -> Int32 {
   self.nodes.length()
 }
 
@@ -202,7 +202,11 @@ pub fn EulerTourTree::len(self : EulerTourTree) -> Int {
 ///  assert_eq(ett.connected(0, 1), false)
 ///```
 ///
-pub fn EulerTourTree::connected(self : EulerTourTree, u : Int, v : Int) -> Bool {
+pub fn EulerTourTree::connected(
+  self : EulerTourTree,
+  u : Int32,
+  v : Int32,
+) -> Bool {
   if u == v {
     return true
   }
@@ -221,7 +225,7 @@ pub fn EulerTourTree::connected(self : EulerTourTree, u : Int, v : Int) -> Bool 
 ///  assert_eq(ett.component_size(0), 2)
 ///```
 ///
-pub fn EulerTourTree::component_size(self : EulerTourTree, v : Int) -> Int {
+pub fn EulerTourTree::component_size(self : EulerTourTree, v : Int32) -> Int32 {
   let root = root_of(self.nodes[v])
   root.vertex_count
 }
@@ -237,7 +241,7 @@ pub fn EulerTourTree::component_size(self : EulerTourTree, v : Int) -> Int {
 ///  assert_eq(ett.link(0, 1), false)
 ///```
 ///
-pub fn EulerTourTree::link(self : EulerTourTree, u : Int, v : Int) -> Bool {
+pub fn EulerTourTree::link(self : EulerTourTree, u : Int32, v : Int32) -> Bool {
   if u == v {
     return false
   }
@@ -257,8 +261,8 @@ pub fn EulerTourTree::link(self : EulerTourTree, u : Int, v : Int) -> Bool {
   if merged is Some(root) {
     root.parent = None
   }
-  self.adjacency[u].push(EdgeRef::{ to: v, out: edge_uv, back: edge_vu })
-  self.adjacency[v].push(EdgeRef::{ to: u, out: edge_vu, back: edge_uv })
+  self.adjacency[u].push(EdgeRef::{ to: v, out: edge_uv, back: edge_vu, })
+  self.adjacency[v].push(EdgeRef::{ to: u, out: edge_vu, back: edge_uv, })
   true
 }
 
@@ -273,7 +277,7 @@ pub fn EulerTourTree::link(self : EulerTourTree, u : Int, v : Int) -> Bool {
 ///  assert_eq(ett.cut(0, 1), true)
 ///```
 ///
-pub fn EulerTourTree::cut(self : EulerTourTree, u : Int, v : Int) -> Bool {
+pub fn EulerTourTree::cut(self : EulerTourTree, u : Int32, v : Int32) -> Bool {
   let edge_index = find_edge_index(self.adjacency[u], v)
   if edge_index is None {
     return false
@@ -307,7 +311,7 @@ pub fn EulerTourTree::cut(self : EulerTourTree, u : Int, v : Int) -> Bool {
 }
 
 ///|
-fn EulerTourTree::make_root(self : EulerTourTree, v : Int) -> Unit {
+fn EulerTourTree::make_root(self : EulerTourTree, v : Int32) -> Unit {
   let node = self.nodes[v]
   let root = root_of(node)
   let idx = node_index(node)
@@ -316,7 +320,7 @@ fn EulerTourTree::make_root(self : EulerTourTree, v : Int) -> Unit {
 }
 
 ///|
-fn next_priority(state : Int) -> Int {
+fn next_priority(state : Int32) -> Int32 {
   let modulus = 2_147_483_647
   let mut next = (state * 1_103_515_245 + 12_345) % modulus
   if next < 0 {
@@ -337,7 +341,7 @@ fn EulerTourTree::new_edge_node(self : EulerTourTree) -> Node {
 }
 
 ///|
-fn find_edge_index(edges : Array[EdgeRef], to : Int) -> Int? {
+fn find_edge_index(edges : Array[EdgeRef], to : Int32) -> Int32? {
   for i in 0..<edges.length() {
     if edges[i].to == to {
       return Some(i)
@@ -347,7 +351,7 @@ fn find_edge_index(edges : Array[EdgeRef], to : Int) -> Int? {
 }
 
 ///|
-fn remove_edge(edges : Array[EdgeRef], index : Int) -> EdgeRef {
+fn remove_edge(edges : Array[EdgeRef], index : Int32) -> EdgeRef {
   let last = edges.length() - 1
   let removed = edges[index]
   edges[index] = edges[last]

@@ -5,7 +5,7 @@ pub enum SegmentTreeError {
 } derive(Debug, Eq)
 
 ///|
-pub impl Show for SegmentTreeError with output(self, logger) {
+pub impl Show for SegmentTreeError with fn output(self, logger) {
   match self {
     IndexOutOfBounds => logger.write_string("IndexOutOfBounds")
     InvalidRange => logger.write_string("InvalidRange")
@@ -14,7 +14,7 @@ pub impl Show for SegmentTreeError with output(self, logger) {
 
 ///|
 pub struct SegmentTree[T] {
-  size : Int
+  size : Int32
   nodes : Array[T]
   merge : (T, T) -> T
 } derive(Debug)
@@ -41,14 +41,14 @@ pub fn[T : Default] SegmentTree::from_array(
   merge : (T, T) -> T,
 ) -> SegmentTree[T] {
   let size = arr.length()
-  let buffer : Array[T] = Array::make(2 * size, T::default())
+  let buffer : Array[T] = Array::make(2 * size, Default::default())
   for i in 0..<size {
     buffer[size + i] = arr[i]
   }
   for i = size - 1; i >= 1; i = i - 1 {
     buffer[i] = merge(buffer[2 * i], buffer[2 * i + 1])
   }
-  SegmentTree::{ size, nodes: buffer, merge }
+  SegmentTree::{ size, nodes: buffer, merge, }
 }
 
 ///|
@@ -74,8 +74,8 @@ pub fn[T : Default] SegmentTree::from_array(
 /// ```
 pub fn[T] SegmentTree::query(
   self : SegmentTree[T],
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
 ) -> Result[T?, SegmentTreeError] {
   if left >= self.size || right >= self.size || left < 0 || right < 0 {
     return Err(SegmentTreeError::InvalidRange)
@@ -130,7 +130,7 @@ pub fn[T] SegmentTree::query(
 /// ```
 pub fn[T : Eq] SegmentTree::update(
   self : SegmentTree[T],
-  idx : Int,
+  idx : Int32,
   val : T,
 ) -> Result[Unit, SegmentTreeError] {
   if idx >= self.size || idx < 0 {

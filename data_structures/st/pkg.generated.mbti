@@ -8,9 +8,8 @@ pub fn[T : Default] from(Array[T], (T, T) -> T) -> ST[T]
 
 // Types and methods
 type ST[T]
-pub fn[T] ST::query(Self[T], Int, Int) -> T
+pub fn[T] ST::query(Self[T], Int32, Int32) -> T
 
 // Type aliases
 
 // Traits
-

@@ -2,16 +2,15 @@
 package "Lampese/Algorithms-Moonbit/graph/lca"
 
 // Values
-pub fn create_Lca(Array[(Int, Int)], root? : Int) -> LCA
+pub fn create_Lca(Array[(Int32, Int32)], root? : Int32) -> LCA
 
 // Errors
 
 // Types and methods
 type LCA
-pub fn LCA::get_root(Self) -> Int
-pub fn LCA::lca(Self, Int, Int) -> Int
+pub fn LCA::get_root(Self) -> Int32
+pub fn LCA::lca(Self, Int32, Int32) -> Int32
 
 // Type aliases
 
 // Traits
-

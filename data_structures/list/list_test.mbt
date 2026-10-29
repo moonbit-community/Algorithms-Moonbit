@@ -1,6 +1,6 @@
 ///|
 test "foreach" {
-  let list : List[Int] = Cons(1, Cons(2, Cons(3, Nil)))
+  let list : @list.List[Int32] = Cons(1, Cons(2, Cons(3, Nil)))
   debug_inspect(
     for current = list, arr = [] {
       match current {

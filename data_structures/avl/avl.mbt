@@ -1,18 +1,18 @@
 ///|
 pub(all) struct AVLTree {
-  val : Int
-  height : Int
+  val : Int32
+  height : Int32
   left : AVLTree?
   right : AVLTree?
 }
 
 ///|
-pub fn new(val : Int) -> AVLTree {
-  AVLTree::{ val, height: 0, left: None, right: None }
+pub fn new(val : Int32) -> AVLTree {
+  AVLTree::{ val, height: 0, left: None, right: None, }
 }
 
 ///|
-pub fn height(node : AVLTree?) -> Int {
+pub fn height(node : AVLTree?) -> Int32 {
   match node {
     Some(n) => n.height
     None => -1
@@ -20,7 +20,7 @@ pub fn height(node : AVLTree?) -> Int {
 }
 
 ///|
-pub fn max(a : Int, b : Int) -> Int {
+pub fn max(a : Int32, b : Int32) -> Int32 {
   if a > b {
     a
   } else {
@@ -39,7 +39,7 @@ pub fn update_height(node : AVLTree) -> AVLTree {
 }
 
 ///|
-pub fn balance_factor(node : AVLTree) -> Int {
+pub fn balance_factor(node : AVLTree) -> Int32 {
   height(node.left) - height(node.right)
 }
 
@@ -150,7 +150,7 @@ pub fn rotate(node : AVLTree) -> AVLTree {
 }
 
 ///|
-pub fn insert(node : AVLTree?, val : Int) -> AVLTree? {
+pub fn insert(node : AVLTree?, val : Int32) -> AVLTree? {
   match node {
     Some(n) => {
       // 1. Insert node
@@ -181,7 +181,7 @@ pub fn insert(node : AVLTree?, val : Int) -> AVLTree? {
 }
 
 ///|
-pub fn remove(node : AVLTree?, val : Int) -> AVLTree? {
+pub fn remove(node : AVLTree?, val : Int32) -> AVLTree? {
   match node {
     Some(n) =>
       // 1. Find and remove node

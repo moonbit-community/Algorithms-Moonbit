@@ -15,11 +15,10 @@ pub fn[T] Heap::build_heap(Self[T]) -> Unit
 pub fn[T] Heap::from_vec(Array[T], (T, T) -> Bool) -> Self[T]
 pub fn[T] Heap::is_empty(Self[T]) -> Bool
 pub fn[T] Heap::iter(Self[T]) -> Iter[T]
-pub fn[T] Heap::len(Self[T]) -> Int
+pub fn[T] Heap::len(Self[T]) -> Int32
 pub fn[T] Heap::new((T, T) -> Bool) -> Self[T]
 pub fn[T] Heap::pop(Self[T]) -> T?
 
 // Type aliases
 
 // Traits
-

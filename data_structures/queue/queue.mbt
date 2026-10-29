@@ -1,12 +1,12 @@
 ///|
 pub struct Queue[T] {
   elements : Array[T]
-  mut start : Int
+  mut start : Int32
 }
 
 ///|
 pub fn[T : Default] Queue::new() -> Queue[T] {
-  Queue::{ elements: Array::make(0, T::default()), start: 0 }
+  Queue::{ elements: Array::make(0, Default::default()), start: 0, }
 }
 
 // Adds an element to the back of the queue
@@ -35,7 +35,7 @@ pub fn[T] Queue::pop(self : Queue[T]) -> T? {
 pub fn[T] Queue::front(self : Queue[T]) -> Ref[T]? {
   match self.elements.length() {
     0 => None
-    _ => Some(@ref.new(self.elements[self.start]))
+    _ => Some(Ref(self.elements[self.start]))
   }
 }
 
@@ -45,14 +45,14 @@ pub fn[T] Queue::front(self : Queue[T]) -> Ref[T]? {
 pub fn[T] Queue::back(self : Queue[T]) -> Ref[T]? {
   match self.is_empty() {
     true => None
-    false => Some(@ref.new(self.elements.last().unwrap()))
+    false => Some(Ref(self.elements.last().unwrap()))
   }
 }
 
 // Returns the number of elements in the queue
 
 ///|
-pub fn[T] Queue::len(self : Queue[T]) -> Int {
+pub fn[T] Queue::len(self : Queue[T]) -> Int32 {
   self.elements.length() - self.start
 }
 
@@ -74,6 +74,6 @@ pub fn[T] Queue::clear(self : Queue[T]) -> Unit {
 // Implementing the Default trait for Queue
 
 ///|
-pub impl[T : Default] Default for Queue[T] with default() {
+pub impl[T : Default] Default for Queue[T] with fn default() {
   Queue::new()
 }

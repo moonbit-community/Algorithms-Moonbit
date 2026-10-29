@@ -7,13 +7,12 @@ package "Lampese/Algorithms-Moonbit/data_structures/dsu"
 
 // Types and methods
 type DSU
-pub fn DSU::find(Self, Int) -> Int
-pub fn DSU::merge(Self, Int, Int) -> Bool
-pub fn DSU::new(Int) -> Self
-pub fn DSU::same(Self, Int, Int) -> Bool
-pub fn DSU::size(Self, Int) -> Int
+pub fn DSU::find(Self, Int32) -> Int32
+pub fn DSU::merge(Self, Int32, Int32) -> Bool
+pub fn DSU::new(Int32) -> Self
+pub fn DSU::same(Self, Int32, Int32) -> Bool
+pub fn DSU::size(Self, Int32) -> Int32
 
 // Type aliases
 
 // Traits
-

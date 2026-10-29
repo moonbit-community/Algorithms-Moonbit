@@ -1,6 +1,6 @@
 ///|
 test "basic construction and queries" {
-  let sam = SuffixAutomaton::new()
+  let sam = @SA.SuffixAutomaton::new()
   sam.build("ababa")
   assert_eq(true, sam.contains("aba"))
   assert_eq(true, sam.contains("bab"))
@@ -9,7 +9,7 @@ test "basic construction and queries" {
 
 ///|
 test "repeated characters collapse correctly" {
-  let sam = SuffixAutomaton::new()
+  let sam = @SA.SuffixAutomaton::new()
   sam.build("aaaa")
   assert_eq(true, sam.contains("a"))
   assert_eq(true, sam.contains("aaaa"))
@@ -19,12 +19,12 @@ test "repeated characters collapse correctly" {
 
 ///|
 test "incremental extension matches build" {
-  let sam_build = SuffixAutomaton::new()
+  let sam_build = @SA.SuffixAutomaton::new()
   sam_build.build("banana")
-  let sam_extend = SuffixAutomaton::new()
+  let sam_extend = @SA.SuffixAutomaton::new()
   let text = "banana"
   for i = 0; i < text.length(); i = i + 1 {
-    sam_extend.extend(text.code_unit_at(i).to_char().unwrap())
+    sam_extend.extend_char(text.code_unit_at(i).to_char().unwrap())
   }
   assert_eq(true, sam_extend.contains("nan"))
   assert_eq(true, sam_extend.contains("banana"))
@@ -34,7 +34,7 @@ test "incremental extension matches build" {
 
 ///|
 test "longest common substring length" {
-  let sam = SuffixAutomaton::new()
+  let sam = @SA.SuffixAutomaton::new()
   sam.build("abracadabra")
   assert_eq(sam.longest_common_substring_length("cadabraa"), 7)
   assert_eq(sam.longest_common_substring_length("xyz"), 0)
@@ -43,7 +43,7 @@ test "longest common substring length" {
 
 ///|
 test "clear resets automaton" {
-  let sam = SuffixAutomaton::new()
+  let sam = @SA.SuffixAutomaton::new()
   sam.build("hello")
   assert_eq(true, sam.contains("ell"))
   sam.clear()
@@ -54,7 +54,7 @@ test "clear resets automaton" {
 
 ///|
 test "alphabet with symbols" {
-  let sam = SuffixAutomaton::new()
+  let sam = @SA.SuffixAutomaton::new()
   sam.build("@#@@!!")
   assert_eq(true, sam.contains("@#"))
   assert_eq(true, sam.contains("!!"))

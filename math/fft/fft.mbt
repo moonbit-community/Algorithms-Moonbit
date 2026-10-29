@@ -11,17 +11,17 @@ struct Complex {
 
 ///|
 fn Complex::new(re : Double, im : Double) -> Complex {
-  { re, im }
+  { re, im, }
 }
 
 ///|
 fn Complex::add(self : Complex, other : Complex) -> Complex {
-  { re: self.re + other.re, im: self.im + other.im }
+  { re: self.re + other.re, im: self.im + other.im, }
 }
 
 ///|
 fn Complex::sub(self : Complex, other : Complex) -> Complex {
-  { re: self.re - other.re, im: self.im - other.im }
+  { re: self.re - other.re, im: self.im - other.im, }
 }
 
 ///|
@@ -34,7 +34,7 @@ fn Complex::mul(self : Complex, other : Complex) -> Complex {
 
 ///|
 fn Complex::scale(self : Complex, factor : Double) -> Complex {
-  { re: self.re * factor, im: self.im * factor }
+  { re: self.re * factor, im: self.im * factor, }
 }
 
 ///|
@@ -113,7 +113,7 @@ pub fn fft(values : Array[Complex], invert : Bool) -> Array[Complex] {
 /// # Returns
 ///
 /// - `Array[Int]` : coefficients of the product polynomial.
-pub fn convolution(a : Array[Int], b : Array[Int]) -> Array[Int] {
+pub fn convolution(a : Array[Int32], b : Array[Int32]) -> Array[Int32] {
   if a.length() == 0 || b.length() == 0 {
     return []
   }
@@ -136,7 +136,7 @@ pub fn convolution(a : Array[Int], b : Array[Int]) -> Array[Int] {
     fa[i] = fa[i].mul(fb[i])
   }
   fa = fft(fa, true)
-  let res : Array[Int] = Array::make(target, 0)
+  let res : Array[Int32] = Array::make(target, 0)
   for i = 0; i < target; i = i + 1 {
     let val = fa[i].real()
     res[i] = @math.round(val).to_int()

@@ -7,15 +7,15 @@ package "Lampese/Algorithms-Moonbit/data_structures/kd_tree"
 
 // Types and methods
 pub struct KDTree {
-  dimension : Int
-  size : Int
+  dimension : Int32
+  size : Int32
   root : Node?
 }
 pub fn KDTree::from_points(Array[Array[Double]]) -> Self
 pub fn KDTree::is_empty(Self) -> Bool
-pub fn KDTree::len(Self) -> Int
+pub fn KDTree::len(Self) -> Int32
 pub fn KDTree::nearest(Self, Array[Double]) -> Array[Double]?
-pub fn KDTree::new(Int) -> Self
+pub fn KDTree::new(Int32) -> Self
 pub fn KDTree::range_search(Self, Array[Double], Array[Double]) -> Array[Array[Double]]
 
 type Node
@@ -23,4 +23,3 @@ type Node
 // Type aliases
 
 // Traits
-

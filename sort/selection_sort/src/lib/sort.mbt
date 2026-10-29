@@ -1,3 +1,4 @@
+///|
 /// The basic idea of selection sorting is to select the smallest (or largest) element from the data 
 /// to be sorted each time and place it at the end of the sorted sequence until all the data is sorted.
 ///
@@ -8,7 +9,7 @@
 /// 
 /// Example :
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// test "基本排序测试" {
 ///   let arr = [3, 1, 4, 1, 5, 9, 2, 6].to_array()
 ///   sort(arr)
@@ -48,16 +49,16 @@
 /// min_idx : Tracks the index of the minimum element found in each pass
 ///
 ///
-pub fn sort(arr: Array[Int]) -> Unit {
+pub fn sort(arr : Array[Int32]) -> Unit {
   let n = arr.length()
   if n <= 1 {
     return
   }
-  
+
   let mut i = 0
   while i < n - 1 {
     let mut min_idx = i
-    
+
     let mut j = i + 1
     while j < n {
       if arr[j] < arr[min_idx] {
@@ -65,13 +66,13 @@ pub fn sort(arr: Array[Int]) -> Unit {
       }
       j += 1
     }
-    
+
     if min_idx != i {
       let temp = arr[i]
       arr[i] = arr[min_idx]
       arr[min_idx] = temp
     }
-    
+
     i += 1
   }
 }

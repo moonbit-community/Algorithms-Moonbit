@@ -13,7 +13,7 @@ like an ordered map keyed by `Compare` values.
 ```moonbit nocheck
 ///|
 test "README treap usage" {
-  let treap : Treap[Int, String] = Treap::new()
+  let treap : Treap[Int32, String] = Treap::new()
   treap.insert(8, "eight")
   treap.insert(3, "three")
   treap.insert(5, "five")

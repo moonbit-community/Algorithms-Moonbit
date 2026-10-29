@@ -1,7 +1,7 @@
 // get next array
 
 ///|
-fn getNext(t : String) -> Array[Int] {
+fn getNext(t : String) -> Array[Int32] {
   let n = t.length()
   let mut k = 0
   let mut i = 1
@@ -41,9 +41,9 @@ fn getNext(t : String) -> Array[Int] {
 ///   let t = "ABA"
 ///   inspect(@kmp.kmp(s, t), content="[1, 3]")
 /// ```
-pub fn kmp(s : String, t : String) -> Array[Int] {
+pub fn kmp(s : String, t : String) -> Array[Int32] {
   let next = getNext(t)
-  let pos : Array[Int] = []
+  let pos : Array[Int32] = []
   let mut i = 0
   let mut j = 0
   let n1 = s.length()
@@ -71,7 +71,7 @@ pub fn kmp(s : String, t : String) -> Array[Int] {
 // get z array of s
 
 ///|
-fn get_z(s : String) -> Array[Int] {
+fn get_z(s : String) -> Array[Int32] {
   let n = s.length()
   let mut l = 0
   let mut r = -1
@@ -111,8 +111,8 @@ fn get_z(s : String) -> Array[Int] {
 ///   inspect(z_func(b), content="[5, 4, 3, 2, 1]")
 ///   inspect(z_func(b, t=a), content="[4, 3, 2, 1, 0, 2, 1]")
 /// ```
-pub fn z_func(s : String, t? : String = "") -> Array[Int] {
-  let z : Array[Int] = get_z(s)
+pub fn z_func(s : String, t~ : String = "") -> Array[Int32] {
+  let z : Array[Int32] = get_z(s)
   match t {
     "" => z
     _ => {

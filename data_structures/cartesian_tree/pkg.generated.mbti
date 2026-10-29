@@ -8,22 +8,21 @@ package "Lampese/Algorithms-Moonbit/data_structures/cartesian_tree"
 // Types and methods
 pub struct CartesianTree[T] {
   values : Array[T]
-  left : Array[Int?]
-  right : Array[Int?]
-  parent : Array[Int?]
-  root : Int?
+  left : Array[Int32?]
+  right : Array[Int32?]
+  parent : Array[Int32?]
+  root : Int32?
 }
 pub fn[T : Compare] CartesianTree::from_array(Array[T]) -> Self[T]
 pub fn[T] CartesianTree::inorder(Self[T]) -> Array[T]
 pub fn[T] CartesianTree::is_empty(Self[T]) -> Bool
-pub fn[T] CartesianTree::left_child(Self[T], Int) -> Int?
-pub fn[T] CartesianTree::len(Self[T]) -> Int
-pub fn[T] CartesianTree::parent_index(Self[T], Int) -> Int?
-pub fn[T] CartesianTree::right_child(Self[T], Int) -> Int?
-pub fn[T] CartesianTree::root_index(Self[T]) -> Int?
-pub fn[T] CartesianTree::value_at(Self[T], Int) -> T?
+pub fn[T] CartesianTree::left_child(Self[T], Int32) -> Int32?
+pub fn[T] CartesianTree::len(Self[T]) -> Int32
+pub fn[T] CartesianTree::parent_index(Self[T], Int32) -> Int32?
+pub fn[T] CartesianTree::right_child(Self[T], Int32) -> Int32?
+pub fn[T] CartesianTree::root_index(Self[T]) -> Int32?
+pub fn[T] CartesianTree::value_at(Self[T], Int32) -> T?
 
 // Type aliases
 
 // Traits
-

@@ -1,7 +1,7 @@
 ///|
 struct LinearBasis {
   basis : Array[Int64]
-  max_bits : Int
+  max_bits : Int32
 }
 
 ///|
@@ -18,12 +18,12 @@ struct LinearBasis {
 /// let basis = LinearBasis::new(60)
 /// inspect(basis.dimension(), content="0")
 /// ```
-pub fn LinearBasis::new(max_bits : Int) -> LinearBasis {
+pub fn LinearBasis::new(max_bits : Int32) -> LinearBasis {
   if max_bits <= 0 {
     abort("max_bits must be positive")
   }
   let basis = Array::make(max_bits, 0L)
-  { basis, max_bits }
+  { basis, max_bits, }
 }
 
 ///|
@@ -136,7 +136,7 @@ pub fn LinearBasis::max_xor(self : LinearBasis, seed : Int64) -> Int64 {
 /// let _ = basis.insert(3L)
 /// inspect(basis.dimension(), content="2")
 /// ```
-pub fn LinearBasis::dimension(self : LinearBasis) -> Int {
+pub fn LinearBasis::dimension(self : LinearBasis) -> Int32 {
   let mut count = 0
   for bit in 0..<self.max_bits {
     if self.basis[bit] != 0L {
@@ -207,7 +207,7 @@ pub fn LinearBasis::vectors(self : LinearBasis) -> Array[Int64] {
 /// inspect(basis.kth_largest(1), content="3")
 /// inspect(basis.kth_largest(3), content="1")
 /// ```
-pub fn LinearBasis::kth_largest(self : LinearBasis, k : Int) -> Int64 {
+pub fn LinearBasis::kth_largest(self : LinearBasis, k : Int32) -> Int64 {
   let vectors = LinearBasis::canonical_vectors(self)
   let rank = vectors.length()
   let shift = rank

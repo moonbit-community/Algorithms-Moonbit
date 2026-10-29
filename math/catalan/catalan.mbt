@@ -17,7 +17,7 @@ struct Catalan {
 /// let catalan = Catalan::new(5)
 /// inspect(catalan.nth(4), content="14")
 /// ```
-pub fn Catalan::new(max_n : Int) -> Catalan {
+pub fn Catalan::new(max_n : Int32) -> Catalan {
   if max_n < 0 {
     abort("max_n must be non-negative")
   }
@@ -49,7 +49,7 @@ pub fn Catalan::new(max_n : Int) -> Catalan {
 /// let catalan = Catalan::new(10)
 /// inspect(catalan.nth(10), content="16796")
 /// ```
-pub fn Catalan::nth(self : Catalan, n : Int) -> Int64 {
+pub fn Catalan::nth(self : Catalan, n : Int32) -> Int64 {
   if n < 0 || n >= self.values.length() {
     abort("n is out of precomputed range")
   }
@@ -87,6 +87,6 @@ pub fn Catalan::values(self : Catalan) -> Array[Int64] {
 /// ```
 /// inspect(catalan_number(3), content="5")
 /// ```
-pub fn catalan_number(n : Int) -> Int64 {
+pub fn catalan_number(n : Int32) -> Int64 {
   Catalan::new(n).nth(n)
 }

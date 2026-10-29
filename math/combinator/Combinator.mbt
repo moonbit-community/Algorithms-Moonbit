@@ -38,14 +38,14 @@ fn qpow(base : Int64, exp : Int64, mod : Int64) -> Int64 {
 /// ```
 /// let _ = Comb::new(10,998242353)
 /// ```
-pub fn Comb::new(size : Int, mod : Int64) -> Comb {
+pub fn Comb::new(size : Int32, mod : Int64) -> Comb {
   let fact : Array[Int64] = Array::make(size, 1L)
   let inv_fact : Array[Int64] = Array::make(size, 1L)
   for i in 1..<size {
     fact[i] = fact[i - 1] * Int64::from_int(i) % mod
     inv_fact[i] = inv_fact[i - 1] * qpow(Int64::from_int(i), mod - 2, mod) % mod
   }
-  { fact, inv_fact, mod }
+  { fact, inv_fact, mod, }
 }
 
 ///|
@@ -66,7 +66,7 @@ pub fn Comb::new(size : Int, mod : Int64) -> Comb {
 /// let comb = Comb::new(10, 1000000007)
 /// inspect(comb.c(3, 1), content="3")
 /// ```
-pub fn Comb::c(self : Comb, x : Int, y : Int) -> Int64 {
+pub fn Comb::c(self : Comb, x : Int32, y : Int32) -> Int64 {
   if x >= self.fact.length() || x < 0 || y >= self.fact.length() || y < 0 {
     abort("value out of range")
   }
@@ -95,7 +95,7 @@ pub fn Comb::c(self : Comb, x : Int, y : Int) -> Int64 {
 /// let ans = comb.a(4, 2)
 /// inspect(ans, content="12")
 /// ```
-pub fn Comb::a(self : Comb, x : Int, y : Int) -> Int64 {
+pub fn Comb::a(self : Comb, x : Int32, y : Int32) -> Int64 {
   if y == 0 {
     return 1L
   }

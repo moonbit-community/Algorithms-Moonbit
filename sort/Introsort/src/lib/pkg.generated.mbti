@@ -1,0 +1,15 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Pzl-love/Introsort/lib"
+
+// Values
+pub fn[T : Compare] is_sorted(ArrayView[T]) -> Bool
+
+pub fn sort(Array[Int32]) -> Unit
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

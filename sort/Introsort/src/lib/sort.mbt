@@ -1,4 +1,5 @@
-///| The implementation of the introsort algorithm combines a hybrid sorting algorithm of quicksort, heap sorting, and insert sorting.
+///|
+/// The implementation of the introsort algorithm combines a hybrid sorting algorithm of quicksort, heap sorting, and insert sorting.
 /// 
 /// Parameters:
 /// * `arr` - An array of variable integers to sort (`Array[Int]`)
@@ -7,7 +8,7 @@
 ///
 /// Example:
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// test "基本排序测试" {
 ///   let arr = [3, 1, 4, 1, 5, 9, 2, 6]
 ///   sort(arr)
@@ -45,11 +46,11 @@
 /// Insert Sort: Used when partition size ≤16 to reduce recursive overhead
 ///
 /// Reference implementation: 'std::sort' algorithm design for C++ STL
-pub fn sort(arr : Array[Int]) -> Unit {
+pub fn sort(arr : Array[Int32]) -> Unit {
   let n = arr.length()
   if n <= 1 {
     return
   }
   let max_depth = 2 * log2(n)
-  introsort(arr, max_depth)
+  introsort(arr.mut_view(), max_depth)
 }

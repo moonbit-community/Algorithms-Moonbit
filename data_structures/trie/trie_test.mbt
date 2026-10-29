@@ -1,6 +1,6 @@
 ///|
 test "trie insertion and retrieval with chars" {
-  let trie : Trie[Char, Int] = Trie::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
   let foo = ['f', 'o', 'o']
   let foobar = ['f', 'o', 'o', 'b', 'a', 'r']
   let bar = ['b', 'a', 'r']
@@ -19,7 +19,7 @@ test "trie insertion and retrieval with chars" {
 
 ///|
 test "trie insertion and retrieval with integers" {
-  let trie : Trie[Int, Int] = Trie::new()
+  let trie : @trie.Trie[Int32, Int32] = @trie.Trie::new()
   let first = [1, 2, 3]
   let extended = [1, 2, 3, 4, 5]
   trie.insert(first.copy(), 1)
@@ -38,18 +38,18 @@ test "trie insertion and retrieval with integers" {
 
 ///|
 test "empty trie behavior" {
-  let trie : Trie[Char, Int] = Trie::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
   let foo = ['f', 'o', 'o']
   @debug.assert_eq(trie.get(foo), None)
-  let empty : Array[Char] = Array::new()
+  let empty : Array[Char] = Array()
   @debug.assert_eq(trie.get(empty.copy()), None)
   @debug.assert_eq(trie.is_empty(), true)
 }
 
 ///|
 test "insert empty key" {
-  let trie : Trie[Char, Int] = Trie::new()
-  let empty : Array[Char] = Array::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
+  let empty : Array[Char] = Array()
   trie.insert(empty.copy(), 42)
   @debug.assert_eq(trie.get(empty.copy()), Some(42))
   let foo = ['f', 'o', 'o']
@@ -59,7 +59,7 @@ test "insert empty key" {
 
 ///|
 test "overlapping keys" {
-  let trie : Trie[Char, Int] = Trie::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
   let car = ['c', 'a', 'r']
   let cart = ['c', 'a', 'r', 't']
   let carter = ['c', 'a', 'r', 't', 'e', 'r']
@@ -75,7 +75,7 @@ test "overlapping keys" {
 
 ///|
 test "partial matches do not return values" {
-  let trie : Trie[Char, Int] = Trie::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
   let apple = ['a', 'p', 'p', 'l', 'e']
   trie.insert(apple.copy(), 10)
   let app = ['a', 'p', 'p']
@@ -89,7 +89,7 @@ test "partial matches do not return values" {
 
 ///|
 test "clear removes all keys" {
-  let trie : Trie[Char, Int] = Trie::new()
+  let trie : @trie.Trie[Char, Int32] = @trie.Trie::new()
   let foo = ['f', 'o', 'o']
   trie.insert(foo.copy(), 1)
   @debug.assert_eq(trie.is_empty(), false)

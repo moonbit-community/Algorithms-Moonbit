@@ -3,12 +3,12 @@
 ///This implementation maintains path sums over `Int` values.
 ///
 pub struct LinkCutTree {
-  left : Array[Int]
-  right : Array[Int]
-  parent : Array[Int]
+  left : Array[Int32]
+  right : Array[Int32]
+  parent : Array[Int32]
   rev : Array[Bool]
-  value : Array[Int]
-  sum : Array[Int]
+  value : Array[Int32]
+  sum : Array[Int32]
 }
 
 ///|
@@ -21,7 +21,7 @@ pub struct LinkCutTree {
 ///  assert_eq(lct.len(), 3)
 ///```
 ///
-pub fn LinkCutTree::new(values : Array[Int]) -> LinkCutTree {
+pub fn LinkCutTree::new(values : Array[Int32]) -> LinkCutTree {
   let n = values.length()
   let left = Array::make(n, -1)
   let right = Array::make(n, -1)
@@ -32,13 +32,13 @@ pub fn LinkCutTree::new(values : Array[Int]) -> LinkCutTree {
   for i in 0..<n {
     sum[i] = value[i]
   }
-  { left, right, parent, rev, value, sum }
+  { left, right, parent, rev, value, sum, }
 }
 
 ///|
 ///Returns the number of nodes in the forest.
 ///
-pub fn LinkCutTree::len(self : LinkCutTree) -> Int {
+pub fn LinkCutTree::len(self : LinkCutTree) -> Int32 {
   self.value.length()
 }
 
@@ -53,8 +53,8 @@ pub fn LinkCutTree::len(self : LinkCutTree) -> Int {
 ///
 pub fn LinkCutTree::set_value(
   self : LinkCutTree,
-  index : Int,
-  value : Int,
+  index : Int32,
+  value : Int32,
 ) -> Unit {
   self.access(index)
   self.value[index] = value
@@ -72,7 +72,7 @@ pub fn LinkCutTree::set_value(
 ///  assert_eq(lct.link(0, 1), false)
 ///```
 ///
-pub fn LinkCutTree::link(self : LinkCutTree, u : Int, v : Int) -> Bool {
+pub fn LinkCutTree::link(self : LinkCutTree, u : Int32, v : Int32) -> Bool {
   self.make_root(u)
   if self.find_root(v) == u {
     return false
@@ -92,7 +92,7 @@ pub fn LinkCutTree::link(self : LinkCutTree, u : Int, v : Int) -> Bool {
 ///  assert_eq(lct.cut(0, 1), true)
 ///```
 ///
-pub fn LinkCutTree::cut(self : LinkCutTree, u : Int, v : Int) -> Bool {
+pub fn LinkCutTree::cut(self : LinkCutTree, u : Int32, v : Int32) -> Bool {
   self.make_root(u)
   self.access(v)
   if self.left[v] != u || self.right[u] != -1 {
@@ -115,7 +115,7 @@ pub fn LinkCutTree::cut(self : LinkCutTree, u : Int, v : Int) -> Bool {
 ///  assert_eq(lct.connected(0, 1), true)
 ///```
 ///
-pub fn LinkCutTree::connected(self : LinkCutTree, u : Int, v : Int) -> Bool {
+pub fn LinkCutTree::connected(self : LinkCutTree, u : Int32, v : Int32) -> Bool {
   if u == v {
     return true
   }
@@ -134,7 +134,11 @@ pub fn LinkCutTree::connected(self : LinkCutTree, u : Int, v : Int) -> Bool {
 ///  assert_eq(lct.path_sum(0, 2), Some(6))
 ///```
 ///
-pub fn LinkCutTree::path_sum(self : LinkCutTree, u : Int, v : Int) -> Int? {
+pub fn LinkCutTree::path_sum(
+  self : LinkCutTree,
+  u : Int32,
+  v : Int32,
+) -> Int32? {
   if !self.connected(u, v) {
     return None
   }
@@ -144,7 +148,7 @@ pub fn LinkCutTree::path_sum(self : LinkCutTree, u : Int, v : Int) -> Int? {
 }
 
 ///|
-fn LinkCutTree::is_root(self : LinkCutTree, x : Int) -> Bool {
+fn LinkCutTree::is_root(self : LinkCutTree, x : Int32) -> Bool {
   let p = self.parent[x]
   if p == -1 {
     return true
@@ -153,7 +157,7 @@ fn LinkCutTree::is_root(self : LinkCutTree, x : Int) -> Bool {
 }
 
 ///|
-fn LinkCutTree::push(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::push(self : LinkCutTree, x : Int32) -> Unit {
   if !self.rev[x] {
     return
   }
@@ -171,7 +175,7 @@ fn LinkCutTree::push(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::pull(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::pull(self : LinkCutTree, x : Int32) -> Unit {
   let mut total = self.value[x]
   let left_child = self.left[x]
   if left_child != -1 {
@@ -185,7 +189,7 @@ fn LinkCutTree::pull(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::push_path(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::push_path(self : LinkCutTree, x : Int32) -> Unit {
   if !self.is_root(x) {
     self.push_path(self.parent[x])
   }
@@ -193,7 +197,7 @@ fn LinkCutTree::push_path(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::rotate(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::rotate(self : LinkCutTree, x : Int32) -> Unit {
   let p = self.parent[x]
   let g = self.parent[p]
   let is_left = self.left[p] == x
@@ -222,7 +226,7 @@ fn LinkCutTree::rotate(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::splay(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::splay(self : LinkCutTree, x : Int32) -> Unit {
   self.push_path(x)
   while !self.is_root(x) {
     let p = self.parent[x]
@@ -239,7 +243,7 @@ fn LinkCutTree::splay(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::access(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::access(self : LinkCutTree, x : Int32) -> Unit {
   let mut v = x
   let mut last = -1
   while v != -1 {
@@ -256,13 +260,13 @@ fn LinkCutTree::access(self : LinkCutTree, x : Int) -> Unit {
 }
 
 ///|
-fn LinkCutTree::make_root(self : LinkCutTree, x : Int) -> Unit {
+fn LinkCutTree::make_root(self : LinkCutTree, x : Int32) -> Unit {
   self.access(x)
   self.rev[x] = !self.rev[x]
 }
 
 ///|
-fn LinkCutTree::find_root(self : LinkCutTree, x : Int) -> Int {
+fn LinkCutTree::find_root(self : LinkCutTree, x : Int32) -> Int32 {
   self.access(x)
   let mut v = x
   self.push(v)

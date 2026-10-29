@@ -1,33 +1,33 @@
 ///|
-let default_alphabet_size : Int = 512
+let default_alphabet_size : Int32 = 512
 
 ///|
 struct SANode {
-  next : Array[Int]
-  mut link : Int
-  mut len : Int
+  next : Array[Int32]
+  mut link : Int32
+  mut len : Int32
 }
 
 ///|
-fn SANode::new(alphabet_size : Int) -> SANode {
-  SANode::{ next: Array::make(alphabet_size, -1), link: -1, len: 0 }
+fn SANode::new(alphabet_size : Int32) -> SANode {
+  SANode::{ next: Array::make(alphabet_size, -1), link: -1, len: 0, }
 }
 
 ///|
 /// A Suffix Automaton that supports incremental construction and pattern queries.
 pub struct SuffixAutomaton {
   nodes : Array[SANode]
-  alphabet_size : Int
-  mut last : Int
+  alphabet_size : Int32
+  mut last : Int32
 }
 
 ///|
 pub fn SuffixAutomaton::new(
-  alphabet_size? : Int = default_alphabet_size,
+  alphabet_size~ : Int32 = default_alphabet_size,
 ) -> SuffixAutomaton {
   let nodes : Array[SANode] = []
   nodes.push(SANode::new(alphabet_size))
-  SuffixAutomaton::{ nodes, alphabet_size, last: 0 }
+  SuffixAutomaton::{ nodes, alphabet_size, last: 0, }
 }
 
 ///|
@@ -40,7 +40,7 @@ pub fn SuffixAutomaton::clear(self : SuffixAutomaton) -> Unit {
 
 ///|
 /// Extend the automaton with a single character.
-pub fn SuffixAutomaton::extend(self : SuffixAutomaton, ch : Char) -> Unit {
+pub fn SuffixAutomaton::extend_char(self : SuffixAutomaton, ch : Char) -> Unit {
   let c = ch.to_int()
   let cur_index = self.nodes.length()
   let cur_node = SANode::new(self.alphabet_size)
@@ -78,7 +78,7 @@ pub fn SuffixAutomaton::extend(self : SuffixAutomaton, ch : Char) -> Unit {
 pub fn SuffixAutomaton::build(self : SuffixAutomaton, s : String) -> Unit {
   self.clear()
   for i = 0; i < s.length(); i = i + 1 {
-    self.extend(s.code_unit_at(i).to_char().unwrap())
+    self.extend_char(s.code_unit_at(i).to_char().unwrap())
   }
 }
 
@@ -101,7 +101,9 @@ pub fn SuffixAutomaton::contains(
 
 ///|
 /// Count the number of distinct substrings represented by the automaton.
-pub fn SuffixAutomaton::distinct_substring_count(self : SuffixAutomaton) -> Int {
+pub fn SuffixAutomaton::distinct_substring_count(
+  self : SuffixAutomaton,
+) -> Int32 {
   let mut total = 0
   for i = 1; i < self.nodes.length(); i = i + 1 {
     let link = self.nodes[i].link
@@ -117,7 +119,7 @@ pub fn SuffixAutomaton::distinct_substring_count(self : SuffixAutomaton) -> Int 
 pub fn SuffixAutomaton::longest_common_substring_length(
   self : SuffixAutomaton,
   text : String,
-) -> Int {
+) -> Int32 {
   let mut state = 0
   let mut length = 0
   let mut best = 0
@@ -146,6 +148,6 @@ pub fn SuffixAutomaton::longest_common_substring_length(
 }
 
 ///|
-pub impl Default for SuffixAutomaton with default() {
+pub impl Default for SuffixAutomaton with fn default() {
   SuffixAutomaton::new()
 }

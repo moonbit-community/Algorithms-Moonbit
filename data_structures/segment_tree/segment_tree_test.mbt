@@ -1,7 +1,7 @@
 ///|
 test "segment_tree_sum_test" {
   let arr = [1, 2, -4, 7, 3, -5, 6, 11, -20, 9, 14, 15, 5, 2, -8]
-  let max_seg = SegmentTree::from_array(arr, fn(a, b) { a + b })
+  let max_seg = @segment_tree.SegmentTree::from_array(arr, fn(a, b) { a + b })
   debug_inspect(max_seg.query(0, 14).unwrap(), content="Some(38)")
   debug_inspect(max_seg.query(1, 3).unwrap(), content="Some(5)")
   debug_inspect(max_seg.query(4, 6).unwrap(), content="Some(4)")
@@ -17,7 +17,7 @@ test "segment_tree_sum_test" {
 ///|
 test "segment_tree_min_test" {
   let arr = [-30, 2, -4, 7, 3, -5, 6, 11, -20, 9, 14, 15, 5, 2, -8]
-  let max_seg = SegmentTree::from_array(arr, @cmp.minimum)
+  let max_seg = @segment_tree.SegmentTree::from_array(arr, @cmp.minimum)
   debug_inspect(max_seg.query(0, 14).unwrap(), content="Some(-30)")
   debug_inspect(max_seg.query(0, 1).unwrap(), content="Some(-30)")
   debug_inspect(max_seg.query(4, 6).unwrap(), content="Some(-5)")
@@ -33,7 +33,7 @@ test "segment_tree_min_test" {
 ///|
 test "segment_tree_max_test" {
   let arr = [1, 2, -4, 7, 3, -5, 6, 11, -20, 9, 14, 15, 5, 2, -8]
-  let max_seg = SegmentTree::from_array(arr, @cmp.maximum)
+  let max_seg = @segment_tree.SegmentTree::from_array(arr, @cmp.maximum)
   debug_inspect(max_seg.query(0, 14).unwrap(), content="Some(15)")
   debug_inspect(max_seg.query(3, 4).unwrap(), content="Some(7)")
   debug_inspect(max_seg.query(4, 7).unwrap(), content="Some(11)")

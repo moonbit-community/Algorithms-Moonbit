@@ -1,3 +1,4 @@
+///|
 /// shell sorting is a type of insertion sorting, which is an improvement on the direct insertion sorting algorithm.
 /// It does this by comparing elements at a certain interval from each other,
 /// and the distance used for each comparison decreases as the algorithm progresses, until only the last order of adjacent elements is compared.
@@ -8,7 +9,7 @@
 ///
 /// Example:
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// test "基本排序测试" {
 ///   let arr = [3, 1, 4, 1, 5, 9, 2, 6].to_array()
 ///   sort(arr)
@@ -53,27 +54,26 @@
 /// 1. Uses the Shell sequence (gap = n/2, then gap/2 each time) for efficient gap reduction
 /// 2. Performs insertion sort on gapped subarrays, which is efficient for partially sorted data
 /// 3. Reduces the gap size over time, transitioning from coarse to fine-grained sorting
-
-pub fn sort(arr: Array[Int]) -> Unit {
+pub fn sort(arr : Array[Int32]) -> Unit {
   let n = arr.length()
-  let mut gap = n / 2  
-  
+  let mut gap = n / 2
+
   while gap > 0 {
-    let mut i = gap    
-    
+    let mut i = gap
+
     while i < n {
       let temp = arr[i]
-      let mut j = i    
-      
+      let mut j = i
+
       while j >= gap && arr[j - gap] > temp {
-        arr[j] = arr[j - gap]  
-        j = j - gap            
+        arr[j] = arr[j - gap]
+        j = j - gap
       }
-      
+
       arr[j] = temp
       i = i + 1
     }
-    
+
     gap = gap / 2
   }
 }

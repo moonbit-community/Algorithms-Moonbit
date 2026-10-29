@@ -1,7 +1,7 @@
 ///|
 struct Floyd {
-  map : Array[Array[Int]]
-  node : Int
+  map : Array[Array[Int32]]
+  node : Int32
 }
 
 ///|
@@ -21,9 +21,9 @@ struct Floyd {
 /// let edge = [(1, 2, 3), (2, 3, 4), (1, 3, 10)]
 /// let _ = create_floyd(edge, 3)
 /// ```
-pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
-  let map : Array[Array[Int]] = Array::makei(node + 1, fn(row : Int) {
-    Array::makei(node + 1, fn(col : Int) {
+pub fn create_floyd(edge : Array[(Int32, Int32, Int32)], node : Int32) -> Floyd {
+  let map : Array[Array[Int32]] = Array::makei(node + 1, fn(row : Int32) {
+    Array::makei(node + 1, fn(col : Int32) {
       if row == col {
         0
       } else {
@@ -45,7 +45,7 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
       }
     }
   }
-  Floyd::{ map, node }
+  Floyd::{ map, node, }
 }
 
 ///|
@@ -67,7 +67,7 @@ pub fn create_floyd(edge : Array[(Int, Int, Int)], node : Int) -> Floyd {
 ///   let floyd = create_floyd(edge, 3)
 ///   inspect(floyd.query(1, 3), content="7")
 /// ```
-pub fn Floyd::query(self : Floyd, u : Int, v : Int) -> Int {
+pub fn Floyd::query(self : Floyd, u : Int32, v : Int32) -> Int32 {
   if u < 1 || u > self.node || v < 1 || v > self.node {
     abort("Invalid node")
   }

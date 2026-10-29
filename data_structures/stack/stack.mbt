@@ -5,11 +5,11 @@ pub(all) struct Stack[T] {
 
 ///|
 pub fn[T] Stack::new() -> Stack[T] {
-  { stack: [] }
+  { stack: [], }
 }
 
 ///|
-pub fn[T] Stack::size(self : Stack[T]) -> Int {
+pub fn[T] Stack::size(self : Stack[T]) -> Int32 {
   self.stack.length()
 }
 

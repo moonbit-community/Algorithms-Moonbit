@@ -1,6 +1,6 @@
 ///|
 test "persistent trie versions" {
-  let trie0 : PersistentTrie[Char, Int] = PersistentTrie::new()
+  let trie0 : @immutable_trie.PersistentTrie[Char, Int32] = @immutable_trie.PersistentTrie::new()
   let cat = ['c', 'a', 't']
   let trie1 = trie0.insert(cat.copy(), 1)
   @debug.assert_eq(trie0.get(cat.copy()), None)
@@ -17,8 +17,8 @@ test "persistent trie versions" {
 
 ///|
 test "persistent trie empty key and clear" {
-  let trie0 : PersistentTrie[Char, Int] = PersistentTrie::new()
-  let empty : Array[Char] = Array::new()
+  let trie0 : @immutable_trie.PersistentTrie[Char, Int32] = @immutable_trie.PersistentTrie::new()
+  let empty : Array[Char] = Array()
   let trie1 = trie0.insert(empty.copy(), 42)
   @debug.assert_eq(trie0.get(empty.copy()), None)
   @debug.assert_eq(trie1.get(empty.copy()), Some(42))
@@ -30,7 +30,7 @@ test "persistent trie empty key and clear" {
 
 ///|
 test "persistent trie with integer keys" {
-  let trie0 : PersistentTrie[Int, Int] = PersistentTrie::new()
+  let trie0 : @immutable_trie.PersistentTrie[Int32, Int32] = @immutable_trie.PersistentTrie::new()
   let first = [1, 2, 3]
   let second = [1, 2, 4]
   let trie1 = trie0.insert(first.copy(), 7)

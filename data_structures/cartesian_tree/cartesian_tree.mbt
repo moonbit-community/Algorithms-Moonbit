@@ -10,10 +10,10 @@
 ///
 pub struct CartesianTree[T] {
   values : Array[T]
-  left : Array[Int?]
-  right : Array[Int?]
-  parent : Array[Int?]
-  root : Int?
+  left : Array[Int32?]
+  right : Array[Int32?]
+  parent : Array[Int32?]
+  root : Int32?
 }
 
 ///|
@@ -38,9 +38,9 @@ pub fn[T : Compare] CartesianTree::from_array(
   let left = Array::make(size, None)
   let right = Array::make(size, None)
   let parent = Array::make(size, None)
-  let stack : Array[Int] = []
+  let stack : Array[Int32] = []
   for index in 0..<size {
-    let mut last : Int? = None
+    let mut last : Int32? = None
     while stack.length() > 0 {
       let top_position = stack.length() - 1
       let top_index = stack[top_position]
@@ -71,13 +71,13 @@ pub fn[T : Compare] CartesianTree::from_array(
       Some(_) => ()
     }
   }
-  CartesianTree::{ values, left, right, parent, root }
+  CartesianTree::{ values, left, right, parent, root, }
 }
 
 ///|
 ///Returns the number of elements stored in the Cartesian Tree.
 ///
-pub fn[T] CartesianTree::len(self : CartesianTree[T]) -> Int {
+pub fn[T] CartesianTree::len(self : CartesianTree[T]) -> Int32 {
   self.values.length()
 }
 
@@ -91,7 +91,7 @@ pub fn[T] CartesianTree::is_empty(self : CartesianTree[T]) -> Bool {
 ///|
 ///Returns the index of the root node within the original array, if the tree is not empty.
 ///
-pub fn[T] CartesianTree::root_index(self : CartesianTree[T]) -> Int? {
+pub fn[T] CartesianTree::root_index(self : CartesianTree[T]) -> Int32? {
   self.root
 }
 
@@ -100,8 +100,8 @@ pub fn[T] CartesianTree::root_index(self : CartesianTree[T]) -> Int? {
 ///
 pub fn[T] CartesianTree::left_child(
   self : CartesianTree[T],
-  index : Int,
-) -> Int? {
+  index : Int32,
+) -> Int32? {
   if index < 0 || index >= self.left.length() {
     None
   } else {
@@ -114,8 +114,8 @@ pub fn[T] CartesianTree::left_child(
 ///
 pub fn[T] CartesianTree::right_child(
   self : CartesianTree[T],
-  index : Int,
-) -> Int? {
+  index : Int32,
+) -> Int32? {
   if index < 0 || index >= self.right.length() {
     None
   } else {
@@ -128,8 +128,8 @@ pub fn[T] CartesianTree::right_child(
 ///
 pub fn[T] CartesianTree::parent_index(
   self : CartesianTree[T],
-  index : Int,
-) -> Int? {
+  index : Int32,
+) -> Int32? {
   if index < 0 || index >= self.parent.length() {
     None
   } else {
@@ -140,7 +140,7 @@ pub fn[T] CartesianTree::parent_index(
 ///|
 ///Retrieves the value stored at the specified index in the original array.
 ///
-pub fn[T] CartesianTree::value_at(self : CartesianTree[T], index : Int) -> T? {
+pub fn[T] CartesianTree::value_at(self : CartesianTree[T], index : Int32) -> T? {
   if index < 0 || index >= self.values.length() {
     None
   } else {
@@ -156,8 +156,8 @@ pub fn[T] CartesianTree::inorder(self : CartesianTree[T]) -> Array[T] {
   match self.root {
     None => ()
     Some(root_index) => {
-      let stack : Array[Int] = []
-      let mut current : Int? = Some(root_index)
+      let stack : Array[Int32] = []
+      let mut current : Int32? = Some(root_index)
       while true {
         match current {
           Some(node_index) => {

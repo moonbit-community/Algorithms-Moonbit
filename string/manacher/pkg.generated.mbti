@@ -2,7 +2,7 @@
 package "Lampese/Algorithms-Moonbit/string/manacher"
 
 // Values
-pub fn manacher(String) -> Int
+pub fn manacher(String) -> Int32
 
 // Errors
 
@@ -11,4 +11,3 @@ pub fn manacher(String) -> Int
 // Type aliases
 
 // Traits
-

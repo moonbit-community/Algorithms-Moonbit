@@ -10,15 +10,16 @@ type Node[K, V]
 
 pub struct Treap[K, V] {
   mut root : Node[K, V]?
-  mut size : Int
-  mut rng_state : Int
+  mut size : Int32
+  mut rng_state : Int32
 }
 pub fn[K, V] Treap::clear(Self[K, V]) -> Unit
 pub fn[K : Compare, V] Treap::contains(Self[K, V], K) -> Bool
+pub fn[K, V] Treap::default() -> Self[K, V]
 pub fn[K : Compare, V] Treap::get(Self[K, V], K) -> V?
 pub fn[K : Compare, V] Treap::insert(Self[K, V], K, V) -> Unit
 pub fn[K, V] Treap::is_empty(Self[K, V]) -> Bool
-pub fn[K, V] Treap::len(Self[K, V]) -> Int
+pub fn[K, V] Treap::len(Self[K, V]) -> Int32
 pub fn[K, V] Treap::new() -> Self[K, V]
 pub fn[K : Compare, V] Treap::remove(Self[K, V], K) -> Bool
 pub impl[K, V] Default for Treap[K, V]
@@ -26,4 +27,3 @@ pub impl[K, V] Default for Treap[K, V]
 // Type aliases
 
 // Traits
-

@@ -1,6 +1,6 @@
 ///|
 test "treap basic operations" {
-  let treap : Treap[Int, Int] = Treap::new()
+  let treap : @treap.Treap[Int32, Int32] = @treap.Treap::new()
   @debug.assert_eq(treap.is_empty(), true)
   treap.insert(10, 100)
   treap.insert(5, 50)
@@ -15,7 +15,7 @@ test "treap basic operations" {
 
 ///|
 test "treap duplicate update preserves size" {
-  let treap : Treap[Int, String] = Treap::new()
+  let treap : @treap.Treap[Int32, String] = @treap.Treap::new()
   treap.insert(1, "one")
   treap.insert(2, "two")
   treap.insert(3, "three")
@@ -27,7 +27,7 @@ test "treap duplicate update preserves size" {
 
 ///|
 test "treap removal cases" {
-  let treap : Treap[Int, Int] = Treap::new()
+  let treap : @treap.Treap[Int32, Int32] = @treap.Treap::new()
   let values = [7, 3, 10, 1, 5, 9, 12]
   for value in values {
     treap.insert(value, value * 2)
@@ -45,7 +45,7 @@ test "treap removal cases" {
 
 ///|
 test "treap clear resets structure" {
-  let treap : Treap[Int, Int] = Treap::default()
+  let treap : @treap.Treap[Int32, Int32] = @treap.Treap::default()
   for value in [1, 2, 3, 4, 5] {
     treap.insert(value, value)
   }
@@ -59,7 +59,7 @@ test "treap clear resets structure" {
 
 ///|
 test "treap handles larger sequence" {
-  let treap : Treap[Int, Int] = Treap::new()
+  let treap : @treap.Treap[Int32, Int32] = @treap.Treap::new()
   for value in 0..<100 {
     treap.insert(value, value)
   }

@@ -1,0 +1,5 @@
+import {
+  "Pzl-love/Introsort/lib",
+}
+
+pkgtype(kind: "executable")

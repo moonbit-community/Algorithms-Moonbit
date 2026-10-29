@@ -1,64 +1,55 @@
 ///|
-let default_alphabet_size : Int = 512
+let default_alphabet_size : Int32 = 512
 
 ///|
 struct ACNode {
-  next : Array[Int]
-  mut fail : Int
-  mut output : Array[Int]
+  next : Array[Int32]
+  mut fail : Int32
+  mut output : Array[Int32]
 }
 
 ///|
-fn ACNode::new(alphabet_size : Int) -> ACNode {
-  ACNode::{
-    next: Array::make(alphabet_size, -1),
-    fail: 0,
-    output: Array::new(),
-  }
+fn ACNode::new(alphabet_size : Int32) -> ACNode {
+  ACNode::{ next: Array::make(alphabet_size, -1), fail: 0, output: Array(), }
 }
 
 ///|
 pub struct ACMatch {
-  start : Int
-  end : Int
-  pattern_index : Int
+  start : Int32
+  end : Int32
+  pattern_index : Int32
 }
 
 ///|
-pub fn ACMatch::start(self : ACMatch) -> Int {
+pub fn ACMatch::start(self : ACMatch) -> Int32 {
   self.start
 }
 
 ///|
-pub fn ACMatch::end(self : ACMatch) -> Int {
+pub fn ACMatch::end(self : ACMatch) -> Int32 {
   self.end
 }
 
 ///|
-pub fn ACMatch::pattern_index(self : ACMatch) -> Int {
+pub fn ACMatch::pattern_index(self : ACMatch) -> Int32 {
   self.pattern_index
 }
 
 ///|
 pub struct ACAutomaton {
   nodes : Array[ACNode]
-  alphabet_size : Int
-  pattern_lengths : Array[Int]
+  alphabet_size : Int32
+  pattern_lengths : Array[Int32]
   mut built : Bool
 }
 
 ///|
 pub fn ACAutomaton::new(
-  alphabet_size? : Int = default_alphabet_size,
+  alphabet_size~ : Int32 = default_alphabet_size,
 ) -> ACAutomaton {
   let nodes : Array[ACNode] = []
   nodes.push(ACNode::new(alphabet_size))
-  ACAutomaton::{
-    nodes,
-    alphabet_size,
-    pattern_lengths: Array::new(),
-    built: false,
-  }
+  ACAutomaton::{ nodes, alphabet_size, pattern_lengths: Array(), built: false, }
 }
 
 ///|
@@ -71,7 +62,7 @@ pub fn ACAutomaton::new(
 /// # Returns
 ///
 /// - `Int` : identifier that can be used to identify matches of this pattern.
-pub fn ACAutomaton::add_pattern(self : ACAutomaton, pattern : String) -> Int {
+pub fn ACAutomaton::add_pattern(self : ACAutomaton, pattern : String) -> Int32 {
   let mut state = 0
   for i = 0; i < pattern.length(); i = i + 1 {
     let idx = pattern.code_unit_at(i).to_byte().to_int()
@@ -101,7 +92,7 @@ pub fn ACAutomaton::build(self : ACAutomaton) -> Unit {
   if self.built {
     return
   }
-  let queue : Array[Int] = []
+  let queue : Array[Int32] = []
   for c = 0; c < self.alphabet_size; c = c + 1 {
     let next_state = self.nodes[0].next[c]
     if next_state != -1 {
@@ -180,7 +171,7 @@ pub fn ACAutomaton::query(self : ACAutomaton, text : String) -> Array[ACMatch] {
       let pid = node.output[j]
       let len = self.pattern_lengths[pid]
       let start = i - len + 1
-      matches.push(ACMatch::{ start, end: i, pattern_index: pid })
+      matches.push(ACMatch::{ start, end: i, pattern_index: pid, })
     }
   }
   matches
@@ -188,7 +179,7 @@ pub fn ACAutomaton::query(self : ACAutomaton, text : String) -> Array[ACMatch] {
 
 ///|
 /// Get the number of patterns stored in the automaton.
-pub fn ACAutomaton::pattern_count(self : ACAutomaton) -> Int {
+pub fn ACAutomaton::pattern_count(self : ACAutomaton) -> Int32 {
   self.pattern_lengths.length()
 }
 
